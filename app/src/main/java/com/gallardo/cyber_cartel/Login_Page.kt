@@ -29,7 +29,8 @@ class Login_Page : AppCompatActivity() {
         }
 
         button.setOnClickListener(){
-            Toast.makeText(this, "okay", Toast.LENGTH_SHORT).show()
+           val intent = Intent(this,Rv_Home_Page ::class.java )
+            startActivity(intent)
         }
 
 
