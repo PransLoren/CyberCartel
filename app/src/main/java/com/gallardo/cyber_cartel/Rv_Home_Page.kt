@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,9 +14,19 @@ class Rv_Home_Page : AppCompatActivity() {
     private var recyclerView : RecyclerView? = null
     private var rv_homepage_Adapter : rv_homepage_Adapter? = null
     private var productList = mutableListOf<Rv_hompage_dataclass>()
+
+    private lateinit var amdlogo : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_home_page)
+
+        amdlogo = findViewById(R.id.img_amd_builder)
+
+        amdlogo.setOnClickListener(){
+            val intent = Intent(this, Rv_amd_build::class.java)
+            startActivity(intent)
+        }
 
 
         productList = ArrayList()
