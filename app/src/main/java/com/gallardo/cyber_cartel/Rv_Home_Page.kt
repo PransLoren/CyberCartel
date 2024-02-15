@@ -16,15 +16,22 @@ class Rv_Home_Page : AppCompatActivity() {
     private var productList = mutableListOf<Rv_hompage_dataclass>()
 
     private lateinit var amdlogo : ImageView
+    private lateinit var intellogo : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_home_page)
 
         amdlogo = findViewById(R.id.img_amd_builder)
+        intellogo = findViewById(R.id.img_intel_builder)
 
         amdlogo.setOnClickListener(){
             val intent = Intent(this, Rv_amd_build::class.java)
+            startActivity(intent)
+        }
+
+        intellogo.setOnClickListener(){
+            val intent = Intent(this, Rv_intel_build::class.java)
             startActivity(intent)
         }
 
