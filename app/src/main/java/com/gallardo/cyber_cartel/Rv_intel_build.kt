@@ -64,6 +64,8 @@ class Rv_intel_build : AppCompatActivity() {
         productList.add(product)
         product = intelbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
         productList.add(product)
+        product = intelbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        productList.add(product)
 
     }
 }

@@ -17,6 +17,7 @@ class Rv_Home_Page : AppCompatActivity() {
 
     private lateinit var amdlogo : ImageView
     private lateinit var intellogo : ImageView
+    private lateinit var cartlogo : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class Rv_Home_Page : AppCompatActivity() {
 
         amdlogo = findViewById(R.id.img_amd_builder)
         intellogo = findViewById(R.id.img_intel_builder)
+        cartlogo = findViewById(R.id.img_cart_homepage)
 
         amdlogo.setOnClickListener(){
             val intent = Intent(this, Rv_amd_build::class.java)
@@ -32,6 +34,10 @@ class Rv_Home_Page : AppCompatActivity() {
 
         intellogo.setOnClickListener(){
             val intent = Intent(this, Rv_intel_build::class.java)
+            startActivity(intent)
+        }
+        cartlogo.setOnClickListener(){
+            val intent = Intent(this, Rv_cart::class.java)
             startActivity(intent)
         }
 
