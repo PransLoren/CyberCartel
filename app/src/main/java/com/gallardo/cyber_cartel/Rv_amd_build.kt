@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Rv_amd_build : AppCompatActivity() {
 
@@ -16,12 +17,35 @@ class Rv_amd_build : AppCompatActivity() {
     private var productList = mutableListOf<amdbuild_dataclass>()
 
     private lateinit var backbutton : ImageView
+    private lateinit var bottomNaviation : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_amd_build)
 
         backbutton = findViewById(R.id.img_backArrow_amd_build)
+        bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
+
+        bottomNaviation.setOnItemSelectedListener {
+            when(it.itemId){
+//                R.id.home -> {val intent = Intent(this, rvHompagee::class.java)
+//                    startActivity(intent)
+//                    finish()}
+
+                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    startActivity(intent)
+                    finish()}
+            }
+            true
+        }
 
             backbutton.setOnClickListener(){
             val intent = Intent(this, Rv_Home_Page::class.java)
