@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_To_Receive_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_To_Receive_DC
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class My_Purchase_Refunded : AppCompatActivity() {
 
@@ -21,10 +22,41 @@ class My_Purchase_Refunded : AppCompatActivity() {
     private lateinit var tv_refunded : TextView
     private lateinit var tv_cancelled : TextView
     private lateinit var img_bck : ImageView
+    private lateinit var cart : ImageView
+    private lateinit var bottomNaviation : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_purchase_refunded)
+
+        cart = findViewById(R.id.Cart)
+        bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
+
+        bottomNaviation.setOnItemSelectedListener {
+            when(it.itemId){
+//                R.id.home -> {val intent = Intent(this, rvHompagee::class.java)
+//                    startActivity(intent)
+//                    finish()}
+
+                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    startActivity(intent)
+                    finish()}
+            }
+            true
+        }
+
+        cart.setOnClickListener(){
+            val intent = Intent(this, Rv_cart::class.java)
+            startActivity(intent)
+        }
 
 
         tv_all = findViewById(R.id.all_tv)

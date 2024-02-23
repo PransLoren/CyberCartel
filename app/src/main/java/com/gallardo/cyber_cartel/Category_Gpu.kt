@@ -22,13 +22,19 @@ class Category_Gpu:AppCompatActivity() {
         recyclerView = findViewById(R.id.category_gpu_rv)
         userAddressAdapter = GPU_Adapter(this, allitemlist)
 
-        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = userAddressAdapter
 
         my_Purchase_All_Data()
     }
     private fun my_Purchase_All_Data() {
         var items = GPU_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = GPU_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = GPU_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = GPU_DC("All Item", 100, R.drawable.image)
         allitemlist.add(items)
     }
 }

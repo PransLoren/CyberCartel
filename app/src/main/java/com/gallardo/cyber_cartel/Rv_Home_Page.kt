@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Rv_Home_Page : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class Rv_Home_Page : AppCompatActivity() {
     private lateinit var amdlogo : ImageView
     private lateinit var intellogo : ImageView
     private lateinit var cartlogo : ImageView
+    private lateinit var bottomNaviation : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,7 @@ class Rv_Home_Page : AppCompatActivity() {
         amdlogo = findViewById(R.id.img_amd_builder)
         intellogo = findViewById(R.id.img_intel_builder)
         cartlogo = findViewById(R.id.img_cart_homepage)
+        bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
         amdlogo.setOnClickListener(){
             val intent = Intent(this, Rv_amd_build::class.java)
@@ -45,6 +48,27 @@ class Rv_Home_Page : AppCompatActivity() {
         cartlogo.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
             startActivity(intent)
+        }
+
+        bottomNaviation.setOnItemSelectedListener {
+            when(it.itemId){
+//                R.id.home -> {val intent = Intent(this, rvHompagee::class.java)
+//                    startActivity(intent)
+//                    finish()}
+
+                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    startActivity(intent)
+                    finish()}
+            }
+            true
         }
 
 

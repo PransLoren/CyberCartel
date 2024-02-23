@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class My_Account: AppCompatActivity() {
 
@@ -23,11 +24,49 @@ class My_Account: AppCompatActivity() {
     private lateinit var my_purchase_history : TextView
     private lateinit var address : TextView
     private lateinit var change_pass : TextView
+    private lateinit var bottomNaviation : BottomNavigationView
+    private lateinit var backbutton : ImageView
+    private lateinit var cart : ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_account)
+
+        bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
+        backbutton = findViewById(R.id.back_to_profile)
+        cart = findViewById(R.id.Cart)
+
+        cart.setOnClickListener(){
+            val intent = Intent(this,Rv_cart::class.java)
+            startActivity(intent)
+        }
+
+        backbutton.setOnClickListener{
+            val intent = Intent(this, Rv_Home_Page::class.java)
+            startActivity(intent)
+        }
+
+        bottomNaviation.setOnItemSelectedListener {
+            when(it.itemId){
+//                R.id.home -> {val intent = Intent(this, rvHompagee::class.java)
+//                    startActivity(intent)
+//                    finish()}
+
+                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
+                    startActivity(intent)
+                    finish()}
+
+                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    startActivity(intent)
+                    finish()}
+            }
+            true
+        }
 
         change_pass = findViewById(R.id.change_password)
         change_pass.setOnClickListener {

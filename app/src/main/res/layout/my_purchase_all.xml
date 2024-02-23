@@ -7,14 +7,7 @@
     android:background="@color/white"
     tools:context=".My_Purchase_All">
 
-    <View
-        android:id="@+id/toolbar3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/back_to_profile"
@@ -26,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -40,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/cart"
+        app:srcCompat="@drawable/cartblk"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -48,20 +41,23 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="214dp"
-        android:layout_marginTop="15dp"
         android:layout_height="37dp"
-        android:src="@drawable/logo"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/cbcartellogo"
+        app:layout_constraintBottom_toBottomOf="@+id/materialDivider_orders"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar3" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnav_bottomNavigation_MyProfile"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:background="@color/white"
         app:itemIconTint="@color/black"
-        app:itemTextColor="@color/navyblue"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,24 +80,24 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btnav_bottomNavigation_MyProfile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialDivider_orders"
+        app:layout_constraintVertical_bias="0.644"
         tools:ignore="MissingConstraints">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_purchase_all_rv"
+            android:id="@+id/my_purchase_All_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="516dp"
             android:layout_marginStart="14dp"
             android:layout_marginEnd="15dp" />
-
 
     </LinearLayout>
 
@@ -109,10 +105,11 @@
         android:id="@+id/bought_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="16dp"
         android:text="Bought"
-        android:textSize="12.5dp"
         android:textColor="@color/black"
+        android:textSize="12.5dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/all_tv"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
@@ -122,10 +119,11 @@
         android:id="@+id/cancelled_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="16dp"
         android:text="Cancelled"
         android:textColor="@color/black"
         android:textSize="12.5dp"
-        android:layout_marginStart="50dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/bought_tv"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3"
@@ -135,10 +133,11 @@
         android:id="@+id/refunded_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="16dp"
         android:text="Refunded"
-        android:textSize="12.5dp"
         android:textColor="@color/black"
-        android:layout_marginStart="50dp"
+        android:textSize="12.5dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/cancelled_tv"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
@@ -147,11 +146,12 @@
         android:id="@+id/all_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="16dp"
         android:text="All"
-        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="12.5dp"
-        android:layout_marginStart="50dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
