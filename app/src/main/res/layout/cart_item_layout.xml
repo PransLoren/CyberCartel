@@ -52,7 +52,7 @@
                 android:layout_height="30dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="7dp"
-                android:src="@drawable/plusicon"
+                android:src="@drawable/plusblk"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -60,7 +60,7 @@
                 android:id="@+id/minus_icon"
                 android:layout_width="30dp"
                 android:layout_height="20dp"
-                android:src="@drawable/minusicon"
+                android:src="@drawable/minusblk"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.803"

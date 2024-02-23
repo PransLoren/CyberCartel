@@ -71,19 +71,19 @@ class Rv_Home_Page : AppCompatActivity() {
     }
 
     private fun prepareiconListData() {
-       var icon = home_page_categories_DC(R.drawable.cpuicon)
+       var icon = home_page_categories_DC(R.drawable.cpubg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.gpuicon)
+        icon = home_page_categories_DC(R.drawable.gpubg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.hddicon)
+        icon = home_page_categories_DC(R.drawable.hddbg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.moboicon)
+        icon = home_page_categories_DC(R.drawable.mobobg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.psuicon)
+        icon = home_page_categories_DC(R.drawable.psubg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.ramicon)
+        icon = home_page_categories_DC(R.drawable.rambg)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.ssdicon)
+        icon = home_page_categories_DC(R.drawable.ssdbg)
         categories_dataClass.add(icon)
     }
 

@@ -36,7 +36,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/backarrowleft" />
+            app:srcCompat="@drawable/backblk" />
 
         <ImageView
             android:id="@+id/img_amdBuilder_logo_amdbuild"

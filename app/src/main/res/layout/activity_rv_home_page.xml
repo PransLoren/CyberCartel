@@ -59,7 +59,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sv_search_homepage"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_cart"/>
+        app:srcCompat="@drawable/cartblk"/>
+
 
 
     <ImageView
