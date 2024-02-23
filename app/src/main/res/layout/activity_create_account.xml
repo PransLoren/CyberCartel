@@ -147,12 +147,13 @@
         android:id="@+id/bt_createAccount"
         android:layout_width="325dp"
         android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/button"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custombutton"
         android:text="CONFIRM"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/til_ConfirmPassword_LogIn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/til_ConfirmPassword_LogIn"
         app:layout_constraintTop_toBottomOf="@+id/til_ConfirmPassword_LogIn" />
 
