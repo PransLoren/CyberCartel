@@ -8,14 +8,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Cart_RecyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="385dp"
         android:layout_height="match_parent"
         android:layout_marginStart="14dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="175dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,54 +25,40 @@
         android:layout_width="41dp"
         android:layout_height="43dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/backblk"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/tv_totalCart"
+        android:id="@+id/total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:fontFamily="sans-serif-light"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Total :"
         android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/tv_totalPriceCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:fontFamily="sans-serif-light"
-        android:text=""
 
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_totalCart"
-        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
 
     <Button
         android:id="@+id/checkOut_Button"
         android:layout_width="120dp"
         android:layout_height="46dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/custombutton"
-        android:fontFamily="sans-serif-light"
-        android:text="Check Out"
+        android:fontFamily="@font/spoof_regular"
+        android:text="Place Order"
         android:textColor="@color/white"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialDivider2"
-        app:layout_constraintVertical_bias="0.272" />
+        app:layout_constraintVertical_bias="0.909" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider"
@@ -91,25 +78,130 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="15dp"
         app:dividerColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Cart_RecyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/Cart_RecyclerView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_Cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-light"
-        android:textColor="@color/black"
+        android:fontFamily="@font/spoof_regular"
         android:text="Cart"
-        android:textSize="50dp"
-        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="Shipping :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/subtotal" />
+
+    <TextView
+        android:id="@+id/subtotal"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="Sub total :"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+
+    <TextView
+        android:id="@+id/tv_subtotal_price"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="1250"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_shipping_price"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="50"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subtotal_price" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="1300"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_shipping_price" />
+
+    <TextView
+        android:id="@+id/peso1"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="₱"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_subtotal_price"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+
+    <TextView
+        android:id="@+id/peso2"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="₱"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_shipping_price"
+        app:layout_constraintTop_toBottomOf="@+id/peso1" />
+
+    <TextView
+        android:id="@+id/peso3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="₱"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/peso2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

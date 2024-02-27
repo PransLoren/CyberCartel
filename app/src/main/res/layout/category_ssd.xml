@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,35 +21,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/case_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/spoof_bold"
         android:text="SSD"
-        android:textColor="@color/white"
-        android:textSize="35dp"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014"
+        app:layout_constraintVertical_bias="0.018"
         tools:ignore="HardcodedText,MissingConstraints,SpUsage" />
 
     <ImageView
-        android:id="@+id/Case_Back_to_Home"
+        android:id="@+id/back_to_home"
         android:layout_width="41dp"
         android:layout_height="43dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,11 +48,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/case_cart"
+        android:id="@+id/iv_cart"
         android:layout_width="40dp"
         android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,64 +61,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/cart"
+        app:srcCompat="@drawable/cartblk"
         tools:ignore="ContentDescription" />
-
-    <SearchView
-        android:id="@+id/ssd_category_sv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="75dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/border"
-        app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/case_main_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.702"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="Search" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="25dp"
-        android:text="Sort Price"
-        android:textColor="@color/black"
-        android:textSize="12.5sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/case_main_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/case_category_sv"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
-
-    <ImageView
-        android:id="@+id/sort_up"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/case_main_container"
-        app:layout_constraintEnd_toStartOf="@+id/sort_down"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/up" />
-
-    <ImageView
-        android:id="@+id/sort_down"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/case_main_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/down" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

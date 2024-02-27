@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Handler().postDelayed({val intent = Intent(this, Rv_Home_Page::class.java)
+        Handler().postDelayed({val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
             finish()}, 2000)
 

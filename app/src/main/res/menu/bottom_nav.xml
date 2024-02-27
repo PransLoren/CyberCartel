@@ -4,11 +4,14 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"
-        android:title="Home" />
+        android:title="Home"
+        android:fontFamily="@font/spoof_regular"/>
     <item android:title="Pre-Built Units"
         android:id="@+id/pre_built"
-        android:icon="@drawable/computer2"/>
+        android:icon="@drawable/computer2"
+        android:fontFamily="@font/spoof_regular"/>
     <item android:title="My Account"
         android:id="@+id/me_profile"
+        android:fontFamily="@font/spoof_regular"
         android:icon="@drawable/baseline_account_circle_24"/>
 </menu>

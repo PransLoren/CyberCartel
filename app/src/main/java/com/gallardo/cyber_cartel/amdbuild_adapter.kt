@@ -14,7 +14,7 @@ class amdbuild_adapter constructor(private val getActivity: Rv_amd_build, privat
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_rv_homepage_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.product_holder, parent, false)
 
         return amdbuild_adapter.MyViewHolder(view)
     }
@@ -33,11 +33,11 @@ class amdbuild_adapter constructor(private val getActivity: Rv_amd_build, privat
     }
 
     class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productTitle : TextView = itemView.findViewById(R.id.tv_title)
-        val productImg : ImageView = itemView.findViewById(R.id.productImage)
-        val cardView : CardView = itemView.findViewById(R.id.cardView)
+        val productTitle : TextView = itemView.findViewById(R.id.tv_product_title)
+        val productImg : ImageView = itemView.findViewById(R.id.iv_product_Image)
+        val cardView : CardView = itemView.findViewById(R.id.product_cardView)
         val productsold : TextView = itemView.findViewById(R.id.Cpu_Sold)
-        val productPrice : TextView = itemView.findViewById(R.id.tv_price)
+        val productPrice : TextView = itemView.findViewById(R.id.tv_product_price)
 
     }
 

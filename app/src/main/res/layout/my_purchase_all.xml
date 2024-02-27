@@ -106,55 +106,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Bought"
         android:textColor="@color/black"
-        android:textSize="12.5dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/all_tv"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/cancelled_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Cancelled"
         android:textColor="@color/black"
-        android:textSize="12.5dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/bought_tv"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/refunded_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Refunded"
         android:textColor="@color/black"
-        android:textSize="12.5dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toEndOf="@+id/cancelled_tv"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <TextView
         android:id="@+id/all_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp"
+        android:fontFamily="@font/spoof_bold"
         android:text="All"
         android:textColor="@color/black"
-        android:textSize="12.5dp"
-        android:textStyle="bold"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

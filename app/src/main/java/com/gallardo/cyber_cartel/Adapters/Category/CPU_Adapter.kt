@@ -15,7 +15,7 @@ import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
 import com.gallardo.cyber_cartel.My_Purchase_All
 import com.gallardo.cyber_cartel.R
 
-class CPU_Adapter (private val getActivity: Category_Cpu, private val allItemList: List<CPU_DC>):
+class CPU_Adapter (private val getActivity: Category_Cpu, private val ItemList: List<CPU_DC>):
     RecyclerView.Adapter<CPU_Adapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CPU_Adapter.MyViewHolder {
@@ -25,24 +25,23 @@ class CPU_Adapter (private val getActivity: Category_Cpu, private val allItemLis
     }
 
     override fun onBindViewHolder(holder: CPU_Adapter.MyViewHolder, position: Int) {
-        holder.tvProductPrice.text = allItemList[position].Product_Price.toString()
-        holder.tvProductInfo.text = allItemList[position].Product_Info
-        holder.ivProductImage.setImageResource(allItemList[position].Product_Image)
+        holder.tvProductPrice.text = ItemList[position].Product_Price.toString()
+        holder.tvProductInfo.text = ItemList[position].Product_Info
+        holder.ivProductImage.setImageResource(ItemList[position].Product_Image)
 
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, allItemList[position].Product_Info, Toast.LENGTH_LONG).show()
+            Toast.makeText(getActivity, ItemList[position].Product_Info, Toast.LENGTH_LONG).show()
         }
     }
 
     override fun getItemCount(): Int {
-        return allItemList.size
+        return ItemList.size
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvProductInfo : TextView = itemView.findViewById(R.id.tv_title)
-        val tvProductPrice : TextView = itemView.findViewById(R.id.tv_price)
-        val ivProductImage : ImageView = itemView.findViewById(R.id.productImage)
+        val tvProductInfo : TextView = itemView.findViewById(R.id.tv_product_title)
+        val tvProductPrice : TextView = itemView.findViewById(R.id.tv_product_title)
+        val ivProductImage : ImageView = itemView.findViewById(R.id.iv_product_Image)
         val cardView : CardView = itemView.findViewById(R.id.product_cardView)
-
     }
 }

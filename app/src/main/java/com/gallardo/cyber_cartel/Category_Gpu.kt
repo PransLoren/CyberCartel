@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,9 +16,24 @@ class Category_Gpu:AppCompatActivity() {
     private lateinit var userAddressAdapter: GPU_Adapter
     private var allitemlist = ArrayList<GPU_DC>()
     private lateinit var img_back : ImageView
+    private lateinit var cart_btn : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.category_gpu)
+
+        img_back = findViewById(R.id.back_to_home)
+        img_back.setOnClickListener{
+            val intent = Intent(this,Rv_Home_Page::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        cart_btn = findViewById(R.id.iv_cart)
+        cart_btn.setOnClickListener{
+            val intent = Intent(this,Rv_cart::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         recyclerView = findViewById(R.id.category_gpu_rv)
         userAddressAdapter = GPU_Adapter(this, allitemlist)
@@ -29,6 +45,10 @@ class Category_Gpu:AppCompatActivity() {
     }
     private fun my_Purchase_All_Data() {
         var items = GPU_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = GPU_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = GPU_DC("All Item", 100, R.drawable.image)
         allitemlist.add(items)
         items = GPU_DC("All Item", 100, R.drawable.image)
         allitemlist.add(items)

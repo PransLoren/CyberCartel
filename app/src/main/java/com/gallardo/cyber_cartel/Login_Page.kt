@@ -26,11 +26,13 @@ class Login_Page : AppCompatActivity() {
         createAccount.setOnClickListener (){
             val intent = Intent(this, Create_account::class.java)
             startActivity(intent)
+            finish()
         }
 
         button.setOnClickListener(){
            val intent = Intent(this,Rv_Home_Page ::class.java )
             startActivity(intent)
+            finish()
         }
 
 
