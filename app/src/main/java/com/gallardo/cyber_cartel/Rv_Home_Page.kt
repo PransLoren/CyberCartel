@@ -113,19 +113,21 @@ class Rv_Home_Page : AppCompatActivity() {
 
 
     private fun prepareProductData() {
-        var product = Rv_hompage_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        var product = Rv_hompage_dataclass("CPU", "10,000",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000P", R.drawable.cpu_product1)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+        productList.add(product)
+        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
 
 

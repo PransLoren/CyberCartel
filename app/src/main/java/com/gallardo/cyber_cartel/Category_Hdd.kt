@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,20 +14,45 @@ class Category_Hdd:AppCompatActivity() {
     private lateinit var userAddressAdapter: HDD_Adapter
     private var allitemlist = ArrayList<HDD_DC>()
     private lateinit var img_back : ImageView
+    private lateinit var cart_btn : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.category_hdd)
 
+        img_back = findViewById(R.id.back_to_home)
+        img_back.setOnClickListener{
+            val intent = Intent(this,Rv_Home_Page::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        cart_btn = findViewById(R.id.iv_cart)
+        cart_btn.setOnClickListener{
+            val intent = Intent(this,Rv_cart::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         recyclerView = findViewById(R.id.category_hdd_rv)
         userAddressAdapter = HDD_Adapter(this, allitemlist)
 
-        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
         recyclerView.adapter = userAddressAdapter
 
         my_Purchase_All_Data()
     }
     private fun my_Purchase_All_Data() {
         var items = HDD_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = HDD_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = HDD_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = HDD_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = HDD_DC("All Item", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = HDD_DC("All Item", 100, R.drawable.image)
         allitemlist.add(items)
     }
 }

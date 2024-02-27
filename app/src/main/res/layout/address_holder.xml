@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_regular"
                 android:text="Full Name"
                 android:textColor="@color/black"
 
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="12dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_regular"
                 android:text="09072866532"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -80,19 +80,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="15dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_bold"
                 android:text="Select"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <ImageView
                 android:id="@+id/trashIcon_address"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/trashiconred"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/close"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,6 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/spoof_regular"
                 android:text="0212"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
@@ -113,6 +115,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="16dp"
                 android:text="Bravo Street"
+                android:fontFamily="@font/spoof_regular"
                 app:layout_constraintStart_toEndOf="@+id/textView17"
                 app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
 
@@ -123,6 +126,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="16dp"
                 android:text="Magtaking"
+                android:fontFamily="@font/spoof_regular"
                 app:layout_constraintStart_toEndOf="@+id/textView18"
                 app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
 
@@ -153,6 +157,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="Bugallon"
+                android:fontFamily="@font/spoof_regular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_House_Number" />
 
@@ -173,6 +178,7 @@
                 android:layout_marginStart="1dp"
                 android:layout_marginTop="8dp"
                 android:text="Pangasinan"
+                android:fontFamily="@font/spoof_regular"
                 app:layout_constraintStart_toEndOf="@+id/textView20"
                 app:layout_constraintTop_toBottomOf="@+id/tv_Barangay" />
 

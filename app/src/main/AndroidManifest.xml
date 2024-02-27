@@ -30,13 +30,62 @@
             android:name=".Rv_Home_Page"
             android:exported="false" />
         <activity
-            android:name=".CreateAccount"
-            android:exported="false" />
-        <activity
             android:name=".Create_account"
             android:exported="false" />
         <activity
+            android:name=".Category_Hdd"
+            android:exported="false" />
+        <activity
+            android:name=".Category_Ram"
+            android:exported="false" />
+        <activity
+            android:name=".Category_Psu"
+            android:exported="false" />
+        <activity
+            android:name=".Category_MoBo"
+            android:exported="false" />
+        <activity
+            android:name=".Category_Gpu"
+            android:exported="false" />
+        <activity
+            android:name=".Category_Cpu"
+            android:exported="false" />
+        <activity
+            android:name=".Category_Ssd"
+            android:exported="false" />
+        <activity
             android:name=".Login_Page"
+            android:exported="false" />
+
+        <activity
+            android:name=".My_Account_Edit_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".My_Account"
+            android:exported="false" />
+        <activity
+            android:name=".My_Purchase_Cancelled"
+            android:exported="false" />
+        <activity
+            android:name=".My_Purchase_Refunded"
+            android:exported="false" />
+        <activity
+            android:name=".My_Purchase_All"
+            android:exported="false" />
+        <activity
+            android:name=".My_Purchase_Bought"
+            android:exported="false" />
+        <activity
+            android:name=".User_Addresses"
+            android:exported="false" />
+        <activity
+            android:name=".Change_Password"
+            android:exported="false" />
+        <activity
+            android:name=".New_Address"
+            android:exported="false" />
+        <activity
+            android:name=".Product_Page"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -18,45 +18,37 @@ class home_page_categories_adapter constructor(private val getActivity: Rv_Home_
         return MyViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return iconsList.size
-    }
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.icon.setImageResource(iconsList[position].Image)
         holder.icon.setOnClickListener{
             if(position == 0){
                 val int = Intent(getActivity,Category_Cpu::class.java)
                 getActivity.startActivity(int)
-                getActivity.finish()
-            }else if (position == 1){
+            } else if (position == 1){
                 val int = Intent(getActivity,Category_Gpu::class.java)
                 getActivity.startActivity(int)
                 getActivity.finish()
             } else if (position == 2){
-            val int = Intent(getActivity,Category_Hdd::class.java)
-            getActivity.startActivity(int)
-            getActivity.finish()
-        } else if (position == 3){
-            val int = Intent(getActivity,Category_MoBo::class.java)
-            getActivity.startActivity(int)
-            getActivity.finish()
-        } else if (position == 4){
-            val int = Intent(getActivity,Category_Psu::class.java)
-            getActivity.startActivity(int)
-            getActivity.finish()
-        } else if (position == 5){
-            val int = Intent(getActivity,Category_Ram::class.java)
-            getActivity.startActivity(int)
-            getActivity.finish()
-        } else {
-            val int = Intent(getActivity,Category_Ssd::class.java)
-            getActivity.startActivity(int)
-            getActivity.finish()
+                val int = Intent(getActivity,Category_Hdd::class.java)
+                getActivity.startActivity(int)
+            } else if (position == 3){
+                val int = Intent(getActivity,Category_MoBo::class.java)
+                getActivity.startActivity(int)
+            } else if (position == 4){
+                val int = Intent(getActivity,Category_Psu::class.java)
+                getActivity.startActivity(int)
+            } else if (position == 5){
+                val int = Intent(getActivity,Category_Ram::class.java)
+                getActivity.startActivity(int)
+            } else {
+                val int = Intent(getActivity,Category_Ssd::class.java)
+                getActivity.startActivity(int)
+            }
         }
-        }
+    }
 
-
+    override fun getItemCount(): Int {
+        return iconsList.size
     }
 
     class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {

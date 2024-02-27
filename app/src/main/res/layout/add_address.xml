@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_bold"
+        android:textColor="@color/black"
         android:text="New Address"
-        android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:elevation="8dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,14 +25,7 @@
 
 
 
-    <View
-        android:id="@+id/toolbar3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/back_to_address"
@@ -44,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -81,11 +74,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_bold"
                 android:text="Full Name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider_account" />
 
@@ -97,6 +89,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
+                android:fontFamily="@font/spoof_regular"
                 android:ems="10"
                 android:hint="Juan Bonita"
                 android:inputType="text"
@@ -109,45 +102,12 @@
 
 
             <TextView
-                android:id="@+id/tv_PhoneNumber_CreateAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-light"
-                android:text="Phone Number"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_FullName_CreateAddress" />
-
-            <EditText
-                android:id="@+id/et_PhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/border"
-                android:ems="10"
-                android:hint="09072866532"
-                android:inputType="number"
-                android:paddingLeft="15dp"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_PhoneNumber_CreateAddress" />
-
-
-            <TextView
                 android:id="@+id/tv_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_bold"
                 android:text="House Number"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -164,6 +124,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
+                android:fontFamily="@font/spoof_regular"
                 android:ems="10"
                 android:hint="0201"
                 android:inputType="number"
@@ -180,9 +141,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Street Name"
+                android:fontFamily="@font/spoof_bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
             <EditText
@@ -194,6 +156,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
                 android:ems="10"
+                android:fontFamily="@font/spoof_regular"
                 android:hint="Canave Street"
                 android:inputType="number"
                 android:paddingLeft="15dp"
@@ -205,6 +168,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Barangay"
+                android:fontFamily="@font/spoof_bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -219,6 +184,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
                 android:ems="10"
+                android:fontFamily="@font/spoof_regular"
                 android:hint="Magtaking"
                 android:inputType="number"
                 android:paddingLeft="15dp"
@@ -230,6 +196,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Municipality"
+                android:fontFamily="@font/spoof_bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -246,6 +214,7 @@
                 android:ems="10"
                 android:hint="Bugallon"
                 android:inputType="number"
+                android:fontFamily="@font/spoof_regular"
                 android:paddingLeft="15dp"
                 android:textSize="18sp" />
 
@@ -255,6 +224,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Province"
+                android:fontFamily="@font/spoof_bold"
+                android:textColor="@color/black"
                 android:layout_marginStart="16dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -270,6 +241,7 @@
                 android:background="@drawable/border"
                 android:ems="10"
                 android:hint="Pangasinan"
+                android:fontFamily="@font/spoof_regular"
                 android:inputType="number"
                 android:paddingLeft="15dp"
                 android:textSize="18sp" />
@@ -282,6 +254,8 @@
                 android:text="Postal Code"
                 android:layout_marginStart="16dp"
                 android:textSize="20sp"
+                android:fontFamily="@font/spoof_bold"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editText" />
@@ -295,6 +269,7 @@
                 android:background="@drawable/border"
                 android:ems="10"
                 android:hint="2416"
+                android:fontFamily="@font/spoof_regular"
                 android:inputType="number"
                 android:paddingLeft="15dp"
                 android:textSize="18sp" />
@@ -310,12 +285,11 @@
         android:layout_marginStart="14dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/navyblue"
-        android:fontFamily="sans-serif-light"
+        android:background="@color/black"
         android:text="Create"
+        android:fontFamily="@font/spoof_bold"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:textStyle="bold"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

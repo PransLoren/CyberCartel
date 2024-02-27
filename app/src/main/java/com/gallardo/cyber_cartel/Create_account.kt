@@ -34,11 +34,13 @@ class Create_account : AppCompatActivity() {
         alreadyhaveanaccount.setOnClickListener (){
             val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
+            finish()
         }
 
         login.setOnClickListener (){
             val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
+            finish()
         }
 
         confirm.setOnClickListener(){
@@ -90,6 +92,7 @@ class Create_account : AppCompatActivity() {
 
             val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

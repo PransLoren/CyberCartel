@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="214dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/cbcartellogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainContainer"
@@ -32,23 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_categories_homepage" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/sv_search_homepage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/custom_background_for_edittext"
-        android:ems="10"
-        android:hint="Search"
-        android:inputType="textAutoComplete"
-        app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="Search" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnav_bottomNavigation_MyProfile"
@@ -75,43 +70,44 @@
         app:srcCompat="@drawable/cartblk"/>
 
 
-
     <ImageView
         android:id="@+id/img_amd_builder"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_search_homepage"
-        app:srcCompat="@drawable/amdlogo"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/amdlogo" />
 
     <ImageView
         android:id="@+id/img_intel_builder"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="70dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sv_search_homepage"
-        app:srcCompat="@drawable/intellogo"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/intellogo" />
 
     <TextView
         android:id="@+id/tv_categories_homepage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="CATEGORIES"
         android:textColor="@color/black"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/mainContainer"
         app:layout_constraintEnd_toEndOf="@+id/img_intel_builder"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="@+id/img_amd_builder"
         app:layout_constraintTop_toBottomOf="@+id/sv_search_homepage" />
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/btnav_bottomNavigation"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->

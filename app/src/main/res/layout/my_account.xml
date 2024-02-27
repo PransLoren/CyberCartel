@@ -7,8 +7,6 @@
     android:background="@color/white"
     tools:context=".My_Account">
 
-
-
     <ImageView
         android:id="@+id/Case_Back_to_Home"
         android:layout_width="41dp"
@@ -24,6 +22,18 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="214dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/cbcartellogo"
+        app:layout_constraintBottom_toTopOf="@+id/background_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
         android:id="@+id/Cart"
         android:layout_width="40dp"
         android:layout_height="35dp"
@@ -37,22 +47,20 @@
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
+
     <ImageView
         android:id="@+id/back_to_profile"
         android:layout_width="41dp"
         android:layout_height="43dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.014"
+        app:layout_constraintVertical_bias="0.015"
         app:srcCompat="@drawable/backblk"
-        android:elevation="8dp"
         tools:ignore="ContentDescription" />
-
-
-
 
     <ImageView
         android:id="@+id/background_img"
@@ -77,6 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider_checkout2"
         android:layout_width="match_parent"
@@ -86,50 +95,50 @@
         app:dividerColor="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334" />
-
+        app:layout_constraintVertical_bias="0.351" />
 
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_regular"
         android:text="Username"
         android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialDivider_checkout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/background_img" />
+        app:layout_constraintTop_toBottomOf="@+id/background_img"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Email"
         android:textColor="@color/black"
-        android:textSize="15dp"
-        android:textStyle="bold"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/materialDivider_checkout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
-
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/LogOut_MyProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="28dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_regular"
         android:text="LOG OUT"
         android:textColor="@color/gray"
         android:textSize="15dp"
@@ -147,6 +156,7 @@
         android:background="@color/white"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -167,11 +177,12 @@
         android:id="@+id/cancelled_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="43dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Cancelled"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/bought_tv"
         app:layout_constraintTop_toBottomOf="@+id/cancelled_img" />
 
@@ -179,11 +190,12 @@
         android:id="@+id/bought_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/spoof_regular"
         android:text="Bought"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/all_tv"
         app:layout_constraintTop_toBottomOf="@+id/all_img" />
 
@@ -194,7 +206,8 @@
         android:layout_marginTop="4dp"
         android:text="Refunded"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="12dp"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toEndOf="@+id/cancelled_tv"
@@ -220,7 +233,8 @@
         android:layout_marginTop="8dp"
         android:text="All"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="12dp"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
@@ -253,6 +267,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="My Purchases"
+        android:textSize="18dp"
+        android:fontFamily="@font/spoof_regular"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
@@ -267,6 +283,7 @@
         android:text="View Purchase History >"
         android:textColor="@color/black"
         android:textSize="10.5dp"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,10 +298,10 @@
         app:dividerColor="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.604" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider_checkout3"
@@ -305,7 +322,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textSize="18dp"
         android:text="Account Settings"
+        android:fontFamily="@font/spoof_regular"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
@@ -333,6 +352,7 @@
         android:text="Address"
         android:textColor="@color/black"
         android:textSize="12dp"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
@@ -346,23 +366,13 @@
         android:text="Change Password"
         android:textColor="@color/black"
         android:textSize="12dp"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="214dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="12dp"
-        android:src="@drawable/cbcartellogo"
-        app:layout_constraintBottom_toTopOf="@+id/background_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

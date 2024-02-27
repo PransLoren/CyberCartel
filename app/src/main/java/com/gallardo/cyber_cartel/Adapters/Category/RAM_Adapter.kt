@@ -39,10 +39,10 @@ class RAM_Adapter (private val getActivity: Category_Ram, private val allItemLis
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val tvProductInfo : TextView = itemView.findViewById(R.id.product_Info)
-        val tvProductPrice : TextView = itemView.findViewById(R.id.product_price)
-        val ivProductImage : ImageView = itemView.findViewById(R.id.product_image)
-        val cardView : CardView = itemView.findViewById(R.id.my_purchase_product_holder)
+        val tvProductInfo : TextView = itemView.findViewById(R.id.tv_product_title)
+        val tvProductPrice : TextView = itemView.findViewById(R.id.tv_product_title)
+        val ivProductImage : ImageView = itemView.findViewById(R.id.iv_product_Image)
+        val cardView : CardView = itemView.findViewById(R.id.product_cardView)
 
     }
 }
