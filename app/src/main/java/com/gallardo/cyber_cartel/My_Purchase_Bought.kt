@@ -22,6 +22,7 @@ class My_Purchase_Bought : AppCompatActivity() {
     private lateinit var tv_refunded : TextView
     private lateinit var tv_cancelled : TextView
     private lateinit var img_bck : ImageView
+    private lateinit var cart : ImageView
     private lateinit var bottomNaviation : BottomNavigationView
 
 
@@ -50,6 +51,13 @@ class My_Purchase_Bought : AppCompatActivity() {
                     finish()}
             }
             true
+        }
+
+        cart = findViewById(R.id.Cart)
+        cart.setOnClickListener(){
+            val intent = Intent(this, Rv_cart::class.java)
+            intent.putExtra("previous_activity", "My_Purchase_Bought")
+            startActivity(intent)
         }
 
 

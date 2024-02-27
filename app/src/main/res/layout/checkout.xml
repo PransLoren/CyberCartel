@@ -48,27 +48,19 @@
         app:layout_constraintStart_toEndOf="@+id/tv_FullName_checkout"
         app:layout_constraintTop_toBottomOf="@+id/tv_DeliveryAddress_checkout" />
 
-    <View
-        android:id="@+id/toolbar3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_checkout_checkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_bold"
         android:text="Check Out"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/Cart_backButton_checkout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -98,7 +90,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView_checkout"
+        android:id="@+id/rv_checkout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="14dp"
@@ -115,8 +107,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:fontFamily="sans-serif-light"
-        android:text="Total :"
+        android:fontFamily="@font/spoof_bold"
+        android:text="Total : ₱"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -152,8 +144,8 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
-        android:background="@color/navyblue"
-        android:fontFamily="sans-serif-light"
+        android:background="@color/black"
+        android:fontFamily="@font/spoof_bold"
         android:text="CONFIRM"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -169,7 +161,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -201,39 +193,43 @@
         android:id="@+id/comma1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
         android:text=", "
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/checkout_house_number"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/checkout_street_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
         android:fontFamily="@font/spoof_regular"
         android:text="Bravo Street"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/comma1"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/comma2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
         android:text=", "
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/checkout_street_name"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/checkout_barangay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
         android:fontFamily="@font/spoof_regular"
         android:text="Magtaking"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/comma2"
-        tools:layout_editor_absoluteY="157dp" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <TextView
         android:id="@+id/checkout_municipality"
@@ -251,20 +247,36 @@
         android:id="@+id/comma4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text=", "
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/checkout_municipality"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkout_street_name" />
 
     <TextView
         android:id="@+id/checkout_province"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/spoof_regular"
         android:text="Pangasinan"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/comma4"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintTop_toBottomOf="@+id/checkout_street_name" />
+
+    <TextView
+        android:id="@+id/amount_Checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/spoof_bold"
+        android:text="100.00"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_totalCart_checkout"
+        app:layout_constraintTop_toBottomOf="@+id/materialDivider2_checkout"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

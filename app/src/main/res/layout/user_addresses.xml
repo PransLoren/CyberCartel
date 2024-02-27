@@ -5,15 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <View
-        android:id="@+id/toolbar3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/back_to_profile"
         android:layout_width="41dp"
@@ -24,20 +15,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="214dp"
-        android:layout_marginTop="15dp"
-        android:layout_height="37dp"
-        android:src="@drawable/logo"
+    <TextView
+        android:id="@+id/tv_Account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/spoof_bold"
+        android:text="My Address"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbar3" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider_orders"
@@ -73,8 +69,9 @@
         app:layout_constraintBottom_toTopOf="@+id/materialDivider_orders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.946"
+        android:fontFamily="@font/spoof_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Account"
         app:layout_constraintVertical_bias="0.72" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

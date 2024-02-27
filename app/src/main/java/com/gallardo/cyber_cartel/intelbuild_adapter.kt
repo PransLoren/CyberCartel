@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,12 @@ class intelbuild_adapter constructor(private val getActivity: Rv_intel_build, pr
         holder.productImg.setImageResource(productList[position].productimg)
         holder.productPrice.text = productList[position].productprice
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, productList[position].productitle, Toast.LENGTH_LONG).show()
+            val selected = productList[position]
+
+            val intent = Intent(getActivity, selected.targetActivity)
+            intent.putExtra("previous_activity", "Intel_Build")
+            getActivity.startActivity(intent)
+            getActivity.finish()
         }
     }
 

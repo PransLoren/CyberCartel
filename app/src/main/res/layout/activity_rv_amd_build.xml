@@ -19,7 +19,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_amd_build"
             android:layout_width="385dp"
-            android:layout_height="468dp"
+            android:layout_height="650dp"
+            android:layout_marginBottom="55dp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="190dp"
             android:layout_marginEnd="14dp"
@@ -61,21 +62,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/amdlogo" />
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/amd_build_serachView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="15dp"
-            app:defaultQueryHint="Search"
-            app:queryBackground="@android:color/transparent"
-            app:iconifiedByDefault="false"
-            app:layout_constraintBottom_toTopOf="@+id/rv_amd_build"
-            android:background="@drawable/custom_background_for_edittext"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_amdBuilder_logo_amdbuild" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,15 +21,14 @@ class Category_Cpu:AppCompatActivity() {
         setContentView(R.layout.category_cpu)
 
         img_back = findViewById(R.id.back_to_home)
-        img_back.setOnClickListener{
-            val intent = Intent(this,Rv_Home_Page::class.java)
-            startActivity(intent)
-            finish()
+        img_back.setOnClickListener {
+            navigateBack()
         }
 
         cart_btn = findViewById(R.id.iv_cart)
         cart_btn.setOnClickListener{
             val intent = Intent(this,Rv_cart::class.java)
+            intent.putExtra("previous_activity", "Category_Cpu")
             startActivity(intent)
             finish()
         }
@@ -43,18 +42,23 @@ class Category_Cpu:AppCompatActivity() {
 
         cpu_Product_Data()
     }
+    private fun navigateBack() {
+        startActivity(Intent(this, Rv_Home_Page::class.java))
+        finish()
+    }
+
     private fun cpu_Product_Data() {
-        var items = CPU_DC("All Item", 100, R.drawable.image)
+        var items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = CPU_DC("All Item", 100, R.drawable.image)
+        items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = CPU_DC("All Item", 100, R.drawable.image)
+        items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = CPU_DC("All Item", 100, R.drawable.image)
+        items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = CPU_DC("All Item", 100, R.drawable.image)
+        items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = CPU_DC("All Item", 100, R.drawable.image)
+        items = CPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
     }
 }

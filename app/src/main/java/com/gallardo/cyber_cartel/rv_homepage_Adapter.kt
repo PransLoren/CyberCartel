@@ -31,7 +31,6 @@ class rv_homepage_Adapter(private val getActivity: Rv_Home_Page, private val pro
         holder.productPrice.text = productList[position].productprice
         holder.cardView.setOnClickListener{
             val selected = productList[position]
-
             val intent = Intent(getActivity, selected.targetActivity)
             getActivity.startActivity(intent)
             getActivity.finish()

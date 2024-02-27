@@ -12,24 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_bold"
         android:text="Account"
-        android:textColor="@color/white"
-        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/toolbar3"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/back_to_profile"
@@ -41,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/back_button"
+        app:srcCompat="@drawable/backblk"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -110,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="30dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_bold"
                 android:text="Username"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -128,6 +121,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
+                android:fontFamily="@font/spoof_regular"
                 android:ems="10"
                 android:hint="Username"
                 android:inputType="text"
@@ -140,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="@font/spoof_bold"
                 android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -157,6 +151,7 @@
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/border"
                 android:ems="10"
+                android:fontFamily="@font/spoof_regular"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
@@ -191,7 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:fontFamily="sans-serif-light"
+        android:fontFamily="@font/spoof_bold"
         android:text="Save"
         android:textColor="@color/gray"
         android:textSize="25sp"

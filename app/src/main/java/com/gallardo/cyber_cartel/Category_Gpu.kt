@@ -23,14 +23,13 @@ class Category_Gpu:AppCompatActivity() {
 
         img_back = findViewById(R.id.back_to_home)
         img_back.setOnClickListener{
-            val intent = Intent(this,Rv_Home_Page::class.java)
-            startActivity(intent)
-            finish()
+            navigateBack()
         }
 
         cart_btn = findViewById(R.id.iv_cart)
         cart_btn.setOnClickListener{
             val intent = Intent(this,Rv_cart::class.java)
+            intent.putExtra("previous_activity", "Category_Gpu")
             startActivity(intent)
             finish()
         }
@@ -43,18 +42,22 @@ class Category_Gpu:AppCompatActivity() {
 
         my_Purchase_All_Data()
     }
+    private fun navigateBack() {
+        startActivity(Intent(this, Rv_Home_Page::class.java))
+        finish()
+    }
     private fun my_Purchase_All_Data() {
-        var items = GPU_DC("All Item", 100, R.drawable.image)
+        var items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = GPU_DC("All Item", 100, R.drawable.image)
+        items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = GPU_DC("All Item", 100, R.drawable.image)
+        items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = GPU_DC("All Item", 100, R.drawable.image)
+        items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = GPU_DC("All Item", 100, R.drawable.image)
+        items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = GPU_DC("All Item", 100, R.drawable.image)
+        items = GPU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
     }
 }

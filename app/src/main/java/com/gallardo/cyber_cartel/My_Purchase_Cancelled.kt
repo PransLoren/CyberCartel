@@ -54,9 +54,9 @@ class My_Purchase_Cancelled: AppCompatActivity() {
         }
 
         cart = findViewById(R.id.Cart)
-
         cart.setOnClickListener(){
-            val intent = Intent(this,Rv_cart::class.java)
+            val intent = Intent(this, Rv_cart::class.java)
+            intent.putExtra("previous_activity", "My_Purchase_Cancelled")
             startActivity(intent)
         }
 
