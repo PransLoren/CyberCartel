@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 
 class Product_Page : AppCompatActivity() {
 
@@ -21,6 +22,17 @@ class Product_Page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
+
+
+        //Product Images
+        val Product_viewPager: ViewPager2 = findViewById(R.id.product_viewPager2)
+
+        //Add Images here:
+        val images = listOf(
+            R.drawable.image,
+            R.drawable.image,
+            R.drawable.image,)
+        Product_viewPager.adapter = ViewPager_Adapter(images)
 
         img_back = findViewById(R.id.back_btn)
         img_back.setOnClickListener {
@@ -40,6 +52,19 @@ class Product_Page : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
+        //Product Name
+        productName = findViewById(R.id.product_name)
+        productName.text = "Product Name"
+
+        //Product Price
+        productPrice = findViewById(R.id.product_price)
+        productPrice.text = "Product Price"
+
+        //Product Description
+        productDescription = findViewById(R.id.product_description)
+        productDescription.text = "General Specs \n"
     }
 
     private fun navigateBack() {

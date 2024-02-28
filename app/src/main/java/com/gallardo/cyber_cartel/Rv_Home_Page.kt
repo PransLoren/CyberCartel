@@ -61,10 +61,6 @@ class Rv_Home_Page : AppCompatActivity() {
                     startActivity(intent)
                     finish()}
 
-                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
-                    startActivity(intent)
-                    finish()}
-
                 R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
                     startActivity(intent)
                     finish()}

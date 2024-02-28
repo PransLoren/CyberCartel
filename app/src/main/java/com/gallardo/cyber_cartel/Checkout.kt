@@ -36,6 +36,9 @@ class Checkout: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.checkout)
 
+
+
+        //Users Address
         fullName = findViewById(R.id.tv_FullName_checkout)
         fullName.text = "Full Name"
 
@@ -60,6 +63,8 @@ class Checkout: AppCompatActivity() {
         postalCode = findViewById(R.id.tv_PostalCode_checkout)
         postalCode.text = "Postal Code"
 
+
+        //Total Price
         total = findViewById(R.id.amount_Checkout)
         total.text = "100.00"
 

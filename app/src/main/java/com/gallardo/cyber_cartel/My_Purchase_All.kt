@@ -3,6 +3,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -41,10 +42,6 @@ class My_Purchase_All : AppCompatActivity() {
 //                    finish()}
 
                 R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
-                    startActivity(intent)
-                    finish()}
-
-                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
                     startActivity(intent)
                     finish()}
 
@@ -113,7 +110,12 @@ class My_Purchase_All : AppCompatActivity() {
     }
 
     private fun my_Purchase_All_Data() {
-        var items = My_Purchase_All_DC("All Item", 100, R.drawable.image)
+        var items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
         allitemlist.add(items)
+        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
+        allitemlist.add(items)
+        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
+        allitemlist.add(items)
+
     }
 }
