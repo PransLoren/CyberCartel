@@ -47,6 +47,7 @@ class Rv_Home_Page : AppCompatActivity() {
         }
         cartlogo.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
+            intent.putExtra("previous_activity", "Rv_Home_Page")
             startActivity(intent)
         }
 

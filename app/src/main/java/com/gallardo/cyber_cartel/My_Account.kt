@@ -27,6 +27,7 @@ class My_Account: AppCompatActivity() {
     private lateinit var bottomNaviation : BottomNavigationView
     private lateinit var backbutton : ImageView
     private lateinit var cart : ImageView
+    private lateinit var logout : TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +36,12 @@ class My_Account: AppCompatActivity() {
 
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
         backbutton = findViewById(R.id.back_to_profile)
-        cart = findViewById(R.id.Cart)
 
+
+        cart = findViewById(R.id.Cart)
         cart.setOnClickListener(){
             val intent = Intent(this,Rv_cart::class.java)
+            intent.putExtra("previous_activity", "My_Account")
             startActivity(intent)
         }
 
@@ -162,6 +165,13 @@ class My_Account: AppCompatActivity() {
         img_refunded = findViewById(R.id.refunded_img)
         img_refunded.setOnClickListener{
             val intent = Intent(this, My_Purchase_Refunded::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        logout = findViewById(R.id.LogOut_MyProfile)
+        logout.setOnClickListener {
+            val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
             finish()
         }

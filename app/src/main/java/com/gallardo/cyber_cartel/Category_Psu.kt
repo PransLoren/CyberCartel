@@ -24,14 +24,13 @@ class Category_Psu: AppCompatActivity() {
 
         img_back = findViewById(R.id.back_to_home)
         img_back.setOnClickListener{
-            val intent = Intent(this,Rv_Home_Page::class.java)
-            startActivity(intent)
-            finish()
+            navigateBack()
         }
 
         cart_btn = findViewById(R.id.iv_cart)
         cart_btn.setOnClickListener{
             val intent = Intent(this,Rv_cart::class.java)
+            intent.putExtra("previous_activity", "Category_Psu")
             startActivity(intent)
             finish()
         }
@@ -44,18 +43,22 @@ class Category_Psu: AppCompatActivity() {
 
         my_Purchase_All_Data()
     }
+    private fun navigateBack() {
+        startActivity(Intent(this, Rv_Home_Page::class.java))
+        finish()
+    }
     private fun my_Purchase_All_Data() {
-        var items = PSU_DC("All Item", 100, R.drawable.image)
+        var items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = PSU_DC("All Item", 100, R.drawable.image)
+        items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = PSU_DC("All Item", 100, R.drawable.image)
+        items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = PSU_DC("All Item", 100, R.drawable.image)
+        items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = PSU_DC("All Item", 100, R.drawable.image)
+        items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = PSU_DC("All Item", 100, R.drawable.image)
+        items = PSU_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
 
 

@@ -58,6 +58,7 @@ class My_Purchase_All : AppCompatActivity() {
         cart = findViewById(R.id.Cart)
         cart.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
+            intent.putExtra("previous_activity", "My_Purchase_All")
             startActivity(intent)
         }
 

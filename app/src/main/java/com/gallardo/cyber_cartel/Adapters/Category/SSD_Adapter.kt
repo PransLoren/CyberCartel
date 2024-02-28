@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel.Adapters.Category
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
 import com.gallardo.cyber_cartel.My_Purchase_All
 import com.gallardo.cyber_cartel.R
 
-class SSD_Adapter (private val getActivity: Category_Ssd, private val allItemList: List<SSD_DC>):
+class SSD_Adapter (private val getActivity: Category_Ssd, private val ItemList: List<SSD_DC>):
     RecyclerView.Adapter<SSD_Adapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SSD_Adapter.MyViewHolder {
@@ -25,17 +26,21 @@ class SSD_Adapter (private val getActivity: Category_Ssd, private val allItemLis
     }
 
     override fun onBindViewHolder(holder: SSD_Adapter.MyViewHolder, position: Int) {
-        holder.tvProductPrice.text = allItemList[position].Product_Price.toString()
-        holder.tvProductInfo.text = allItemList[position].Product_Info
-        holder.ivProductImage.setImageResource(allItemList[position].Product_Image)
+        holder.tvProductPrice.text = ItemList[position].Product_Price.toString()
+        holder.tvProductInfo.text = ItemList[position].Product_Info
+        holder.ivProductImage.setImageResource(ItemList[position].Product_Image)
 
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, allItemList[position].Product_Info, Toast.LENGTH_LONG).show()
+            val selected = ItemList[position]
+            val intent = Intent(getActivity, selected.targetActivity)
+            intent.putExtra("previous_activity", "Category_Ssd")
+            getActivity.startActivity(intent)
+            getActivity.finish()
         }
     }
 
     override fun getItemCount(): Int {
-        return allItemList.size
+        return ItemList.size
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

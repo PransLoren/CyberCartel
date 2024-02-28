@@ -28,9 +28,7 @@ class Category_Hdd:AppCompatActivity() {
 
         cart_btn = findViewById(R.id.iv_cart)
         cart_btn.setOnClickListener{
-            val intent = Intent(this,Rv_cart::class.java)
-            startActivity(intent)
-            finish()
+            navigateBack()
         }
 
         recyclerView = findViewById(R.id.category_hdd_rv)
@@ -41,18 +39,22 @@ class Category_Hdd:AppCompatActivity() {
 
         my_Purchase_All_Data()
     }
+    private fun navigateBack() {
+        startActivity(Intent(this, Rv_Home_Page::class.java))
+        finish()
+    }
     private fun my_Purchase_All_Data() {
-        var items = HDD_DC("All Item", 100, R.drawable.image)
+        var items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = HDD_DC("All Item", 100, R.drawable.image)
+        items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = HDD_DC("All Item", 100, R.drawable.image)
+        items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = HDD_DC("All Item", 100, R.drawable.image)
+        items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = HDD_DC("All Item", 100, R.drawable.image)
+        items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
-        items = HDD_DC("All Item", 100, R.drawable.image)
+        items = HDD_DC("All Item", 100, R.drawable.image, Product_Page::class.java)
         allitemlist.add(items)
     }
 }

@@ -9,7 +9,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_intel_builder"
         android:layout_width="386dp"
-        android:layout_height="480dp"
+        android:layout_height="650dp"
+        android:layout_marginBottom="55dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="192dp"
         android:layout_marginEnd="14dp"
@@ -56,20 +57,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/intellogo" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/intel_build_serachView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="15dp"
-        app:defaultQueryHint="Search"
-        app:queryBackground="@android:color/transparent"
-        app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@+id/rv_intel_builder"
-        android:background="@drawable/custom_background_for_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_intelBuilder_logo_intelbuilder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

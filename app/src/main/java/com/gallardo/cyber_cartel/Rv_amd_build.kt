@@ -65,19 +65,19 @@ class Rv_amd_build : AppCompatActivity() {
     }
 
     private fun prepareProductListData() {
-        var product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        var product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
-        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1)
+        product = amdbuild_dataclass("CPU", "10,000P",R.drawable.cpu_product1, Product_Page::class.java)
         productList.add(product)
     }
 

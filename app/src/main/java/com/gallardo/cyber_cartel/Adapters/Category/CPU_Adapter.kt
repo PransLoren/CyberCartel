@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel.Adapters.Category
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,11 @@ class CPU_Adapter (private val getActivity: Category_Cpu, private val ItemList: 
         holder.ivProductImage.setImageResource(ItemList[position].Product_Image)
 
         holder.cardView.setOnClickListener{
-            Toast.makeText(getActivity, ItemList[position].Product_Info, Toast.LENGTH_LONG).show()
+            val selected = ItemList[position]
+            val intent = Intent(getActivity, selected.targetActivity)
+            intent.putExtra("previous_activity", "Category_Cpu")
+            getActivity.startActivity(intent)
+            getActivity.finish()
         }
     }
 
