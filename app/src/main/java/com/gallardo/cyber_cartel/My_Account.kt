@@ -88,13 +88,6 @@ class My_Account: AppCompatActivity() {
             finish()
         }
 
-        background_pic = findViewById<ImageView>(R.id.background_img)
-        background_pic.setOnClickListener {
-            val intent = Intent(this, My_Account_Edit_Profile::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         tv_all = findViewById<TextView>(R.id.all_tv)
         tv_all.setOnClickListener{
             val intent = Intent(this, My_Purchase_All::class.java)
