@@ -60,10 +60,6 @@ class My_Account: AppCompatActivity() {
                     startActivity(intent)
                     finish()}
 
-                R.id.pre_built ->{val intent = Intent(this, Rv_amd_build::class.java)
-                    startActivity(intent)
-                    finish()}
-
                 R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
                     startActivity(intent)
                     finish()}
@@ -87,13 +83,6 @@ class My_Account: AppCompatActivity() {
 
         profile_pic = findViewById<ImageView>(R.id.profile_img)
         profile_pic.setOnClickListener {
-            val intent = Intent(this, My_Account_Edit_Profile::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        background_pic = findViewById<ImageView>(R.id.background_img)
-        background_pic.setOnClickListener {
             val intent = Intent(this, My_Account_Edit_Profile::class.java)
             startActivity(intent)
             finish()

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
@@ -19,6 +20,9 @@ class Rv_cart : AppCompatActivity() {
     private lateinit var BackArrow : ImageView
     private lateinit var checkOut : Button
 
+    private lateinit var subTotal : TextView
+    private lateinit var shipping : TextView
+    private lateinit var total : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,21 @@ class Rv_cart : AppCompatActivity() {
             navigateBack()
         }
 
+
+
+        // Cart Prices
+        subTotal = findViewById(R.id.tv_subtotal_price)
+        subTotal.text = "100.00"
+
+        subTotal = findViewById(R.id.tv_shipping_price)
+        subTotal.text = "50.00"
+
+        subTotal = findViewById(R.id.tv_total_price)
+        subTotal.text = "150.00"
+
+
+
+        //Checkout Button
         checkOut = findViewById(R.id.checkOut_Button)
         checkOut.setOnClickListener{
             val intent = Intent(this,Checkout::class.java)
@@ -114,9 +133,6 @@ class Rv_cart : AppCompatActivity() {
         productList.add(product)
         product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
         productList.add(product)
-        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-        productList.add(product)
-        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-        productList.add(product)
+
     }
 }

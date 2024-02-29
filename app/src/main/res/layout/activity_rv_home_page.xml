@@ -72,8 +72,8 @@
         android:id="@+id/img_amd_builder"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/amdlogo" />
@@ -82,8 +82,8 @@
         android:id="@+id/img_intel_builder"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/intellogo" />
