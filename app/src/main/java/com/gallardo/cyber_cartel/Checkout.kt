@@ -2,11 +2,13 @@ package com.gallardo.cyber_cartel
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.Category.CPU_Adapter
 import com.gallardo.cyber_cartel.Adapters.Category.PSU_Adapter
@@ -14,8 +16,24 @@ import com.gallardo.cyber_cartel.Adapters.Checkout_Adapter
 import com.gallardo.cyber_cartel.DataClass.Category.CPU_DC
 import com.gallardo.cyber_cartel.DataClass.Category.SSD_DC
 import com.gallardo.cyber_cartel.DataClass.Checkout_DC
+import com.gallardo.cyber_cartel.api.MyAdapter_Cart
+import com.gallardo.cyber_cartel.api.MyAdapter_Checkout
+import com.gallardo.cyber_cartel.api.models.CartItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class Checkout: AppCompatActivity() {
+
+    // API ===
+    lateinit var myAdapter_Checkout: MyAdapter_Checkout
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var rv_checkout: RecyclerView
+    //
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var checkOutAdapter: Checkout_Adapter
     private var checkOutlist = ArrayList<Checkout_DC>()
@@ -35,6 +53,18 @@ class Checkout: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.checkout)
+
+
+        // API ===
+
+        rv_checkout = findViewById(R.id.rv_checkout)
+
+        rv_checkout.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        rv_checkout.layoutManager = linearLayoutManager
+        getMyCart()
+
+        // ===
 
 
 
@@ -86,25 +116,57 @@ class Checkout: AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 1)
         recyclerView.adapter = checkOutAdapter
 
-        checkOut_Data()
+//        checkOut_Data()
     }
 
-    private fun checkOut_Data() {
-        var items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
-        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
-        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
-        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
-        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
-        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
-        checkOutlist.add(items)
 
+    // FOR API ===
+    private fun getMyCart(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
 
+        val retrofitData = retrofitBuilder.getCheckout()
 
+        retrofitData.enqueue(object : Callback<List<CartItem>?> {
+            override fun onResponse(
+                call: Call<List<CartItem>?>,
+                response: Response<List<CartItem>?>
+            ) {
+
+                val responseBody = response.body()!!
+
+                myAdapter_Checkout = MyAdapter_Checkout(baseContext, responseBody)
+                myAdapter_Checkout.notifyDataSetChanged()
+                rv_checkout.adapter = myAdapter_Checkout
+            }
+
+            override fun onFailure(call: Call<List<CartItem>?>, t: Throwable) {
+                Log.d("HomePage", "onFailure" + t.message)
+            }
+        })
     }
+    // ===
+
+
+//    private fun checkOut_Data() {
+//        var items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//        items = Checkout_DC("All Item", 100.00, R.drawable.image, 1)
+//        checkOutlist.add(items)
+//
+//
+//
+//    }
 
 }

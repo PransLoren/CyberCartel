@@ -3,19 +3,43 @@ package com.gallardo.cyber_cartel
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gallardo.cyber_cartel.api.MyAdapter_Products
+import com.gallardo.cyber_cartel.api.models.Products
+import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
+
+
+// API ===
+const val BASE_URL = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/"
+// ===
+
 
 class Rv_Home_Page : AppCompatActivity() {
 
+    // API ===
+    lateinit var myAdapter_Products: MyAdapter_Products
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var mainContainer: RecyclerView
+    //
 
-    private var recyclerView : RecyclerView? = null
-    private var rv_homepage_Adapter : rv_homepage_Adapter? = null
-    private var productList = mutableListOf<Rv_hompage_dataclass>()
+//    private var recyclerView : RecyclerView? = null
+//    private var rv_homepage_Adapter : rv_homepage_Adapter? = null
+//    private var productList = mutableListOf<Rv_hompage_dataclass>()
+//
+
 
     //CATEGORIES PART
     private lateinit var homepagecategoriesRV : RecyclerView
@@ -30,6 +54,17 @@ class Rv_Home_Page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_home_page)
+
+        mainContainer = findViewById(R.id.mainContainer)
+
+        // API ===
+
+        mainContainer.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        mainContainer.layoutManager = linearLayoutManager
+        getMyProducts()
+
+        // ===
 
         amdlogo = findViewById(R.id.img_amd_builder)
         intellogo = findViewById(R.id.img_intel_builder)
@@ -47,7 +82,6 @@ class Rv_Home_Page : AppCompatActivity() {
         }
         cartlogo.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
-            intent.putExtra("previous_activity", "Rv_Home_Page")
             startActivity(intent)
         }
 
@@ -67,10 +101,10 @@ class Rv_Home_Page : AppCompatActivity() {
             }
             true
         }
-
-
-        productList = ArrayList()
-       categories_dataClass = ArrayList()
+//
+//
+//        productList = ArrayList()
+        categories_dataClass = ArrayList()
 
         homepagecategoriesRV = findViewById<View>(R.id.recyclerView_Categories) as RecyclerView
         home_page_categories_adapter = home_page_categories_adapter(this@Rv_Home_Page,categories_dataClass )
@@ -81,18 +115,48 @@ class Rv_Home_Page : AppCompatActivity() {
         prepareiconListData()
 
 
-        recyclerView= findViewById<View>(R.id.mainContainer) as RecyclerView
-        rv_homepage_Adapter = rv_homepage_Adapter(this@Rv_Home_Page,productList)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this,2)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = rv_homepage_Adapter
+//        recyclerView= findViewById<View>(R.id.mainContainer) as RecyclerView
+//        rv_homepage_Adapter = rv_homepage_Adapter(this@Rv_Home_Page,productList)
+//        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this,2)
+//        recyclerView!!.layoutManager = layoutManager
+//        recyclerView!!.adapter = rv_homepage_Adapter
+//
+//        prepareProductData()
 
-        prepareProductData()
-        
     }
 
+    // FOR API ===
+    private fun getMyProducts(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getProducts()
+
+        retrofitData.enqueue(object : Callback<List<ProductsItem>?> {
+            override fun onResponse(
+                call: Call<List<ProductsItem>?>,
+                response: Response<List<ProductsItem>?>) {
+                val responseBody = response.body()!!
+
+                myAdapter_Products = MyAdapter_Products(baseContext, responseBody)
+                myAdapter_Products.notifyDataSetChanged()
+                mainContainer.adapter = myAdapter_Products
+            }
+
+            override fun onFailure(call: Call<List<ProductsItem>?>, t: Throwable) {
+                d("HomePage", "onFailure" + t.message)
+            }
+        })
+    }
+    // ===
+
+
+
     private fun prepareiconListData() {
-       var icon = home_page_categories_DC(R.drawable.cpubg)
+        var icon = home_page_categories_DC(R.drawable.cpubg)
         categories_dataClass.add(icon)
         icon = home_page_categories_DC(R.drawable.gpubg)
         categories_dataClass.add(icon)
@@ -107,26 +171,26 @@ class Rv_Home_Page : AppCompatActivity() {
         icon = home_page_categories_DC(R.drawable.ssdbg)
         categories_dataClass.add(icon)
     }
-
-
-    private fun prepareProductData() {
-        var product = Rv_hompage_dataclass("CPU", "10,000",R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-        productList.add(product)
-
-
-    }
+//
+//
+//    private fun prepareProductData() {
+//        var product = Rv_hompage_dataclass("CPU", "10,000",R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
+//        productList.add(product)
+//
+//
+//    }
 }

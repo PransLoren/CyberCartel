@@ -3,6 +3,8 @@ package com.gallardo.cyber_cartel
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.util.Log.d
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -10,12 +12,33 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import com.gallardo.cyber_cartel.api.MyAdapter_Cart
+import com.gallardo.cyber_cartel.api.MyAdapter_Products
+import com.gallardo.cyber_cartel.api.models.CartItem
+import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+
+
 
 class Rv_cart : AppCompatActivity() {
 
-    private var recyclerView : RecyclerView? = null
-    private var cartAdapter : cart_adapter? = null
-    private var productList = mutableListOf<cart_dataclass>()
+
+
+    // API ===
+    lateinit var myAdapter_Cart: MyAdapter_Cart
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var Cart_RecyclerView: RecyclerView
+    //
+
+//    private var recyclerView : RecyclerView? = null
+//    private var cartAdapter : cart_adapter? = null
+//    private var productList = mutableListOf<cart_dataclass>()
 
     private lateinit var BackArrow : ImageView
     private lateinit var checkOut : Button
@@ -28,7 +51,18 @@ class Rv_cart : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_cart)
 
-        productList = ArrayList()
+        // API ===
+
+        Cart_RecyclerView = findViewById(R.id.Cart_RecyclerView)
+
+        Cart_RecyclerView.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        Cart_RecyclerView.layoutManager = linearLayoutManager
+        getMyCart()
+
+        // ===
+
+//        productList = ArrayList()
 
         BackArrow = findViewById(R.id.Cart_backButton)
         BackArrow.setOnClickListener {
@@ -48,7 +82,6 @@ class Rv_cart : AppCompatActivity() {
         subTotal.text = "150.00"
 
 
-
         //Checkout Button
         checkOut = findViewById(R.id.checkOut_Button)
         checkOut.setOnClickListener{
@@ -58,16 +91,44 @@ class Rv_cart : AppCompatActivity() {
             finish()
         }
 
-        recyclerView = findViewById<View>(R.id.Cart_RecyclerView) as RecyclerView
-        cartAdapter = cart_adapter(this@Rv_cart,productList)
-        val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this)
-        recyclerView!!.layoutManager = layoutManager
-//        cartRecyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView!!.adapter = cartAdapter
-
-        prepareProductListData()
+//        recyclerView = findViewById<View>(R.id.Cart_RecyclerView) as RecyclerView
+//        cartAdapter = cart_adapter(this@Rv_cart,productList)
+//        val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this)
+//        recyclerView!!.layoutManager = layoutManager
+////        cartRecyclerView.layoutManager = LinearLayoutManager(this)
+//        recyclerView!!.adapter = cartAdapter
+//
+//        prepareProductListData()
 
     }
+
+    // FOR API ===
+    private fun getMyCart(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getCart()
+
+        retrofitData.enqueue(object : Callback<List<CartItem>?> {
+            override fun onResponse(
+                call: Call<List<CartItem>?>,
+                response: Response<List<CartItem>?>) {
+
+                val responseBody = response.body()!!
+                myAdapter_Cart = MyAdapter_Cart(baseContext, responseBody)
+                myAdapter_Cart.notifyDataSetChanged()
+                Cart_RecyclerView.adapter = myAdapter_Cart
+            }
+
+            override fun onFailure(call: Call<List<CartItem>?>, t: Throwable) {
+                d("HomePage", "onFailure" + t.message)
+            }
+        })
+    }
+    // ===
 
     private fun navigateBack() {
         val previousActivity = intent.getStringExtra("previous_activity")
@@ -126,13 +187,13 @@ class Rv_cart : AppCompatActivity() {
         finish()
     }
 
-    private fun prepareProductListData() {
-        var product = cart_dataclass("AMD INTELCORE 15GEN PROCESSOR", "12,000","okay",R.drawable.cpu_product1,"1")
-        productList.add(product)
-        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-        productList.add(product)
-        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-        productList.add(product)
-
-    }
+//    private fun prepareProductListData() {
+//        var product = cart_dataclass("AMD INTELCORE 15GEN PROCESSOR", "12,000","okay",R.drawable.cpu_product1,"1")
+//        productList.add(product)
+//        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
+//        productList.add(product)
+//        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
+//        productList.add(product)
+//
+//    }
 }

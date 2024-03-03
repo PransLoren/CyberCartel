@@ -2,18 +2,33 @@ package com.gallardo.cyber_cartel
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_All_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
+import com.gallardo.cyber_cartel.api.MyAdapter_ProfileProducts
+import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class My_Purchase_All : AppCompatActivity() {
+
+    // API ===
+    lateinit var myAdapter_ProfileProducts: MyAdapter_ProfileProducts
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var my_purchase_All_rv: RecyclerView
+    //
 
     private var recyclerView : RecyclerView? = null
     private var myPurchaseAllAdapter : My_Purchase_All_Adapter? = null
@@ -32,6 +47,15 @@ class My_Purchase_All : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_purchase_all)
+
+        // API ===
+        my_purchase_All_rv = findViewById(R.id.my_purchase_All_rv)
+
+        my_purchase_All_rv.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        my_purchase_All_rv.layoutManager = linearLayoutManager
+        getProfileProducts()
+        // ===
 
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
@@ -108,6 +132,35 @@ class My_Purchase_All : AppCompatActivity() {
 
 
     }
+
+    // FOR API ===
+    private fun getProfileProducts(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getAllProducts()
+
+        retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
+            override fun onResponse(
+                call: Call<List<ProfileProductsItem>?>,
+                response: Response<List<ProfileProductsItem>?>
+            ) {
+
+                val responseBody = response.body()!!
+                myAdapter_ProfileProducts = MyAdapter_ProfileProducts(baseContext, responseBody)
+                myAdapter_ProfileProducts.notifyDataSetChanged()
+                my_purchase_All_rv.adapter = myAdapter_ProfileProducts
+            }
+
+            override fun onFailure(call: Call<List<ProfileProductsItem>?>, t: Throwable) {
+                Log.d("HomePage", "onFailure" + t.message)
+            }
+        })
+    }
+    // ===
 
     private fun my_Purchase_All_Data() {
         var items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)

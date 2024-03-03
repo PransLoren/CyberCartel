@@ -2,19 +2,34 @@ package com.gallardo.cyber_cartel
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_All_Adapter
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_Cancelled_Adapter
-import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Cancelled_DC
+import com.gallardo.cyber_cartel.api.MyAdapter_Cancelled
+import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class My_Purchase_Cancelled: AppCompatActivity() {
+
+    // API ===
+    lateinit var myAdapter_Cancelled: MyAdapter_Cancelled
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var my_purchase_cancelled_rv: RecyclerView
+    //
+
     private var recyclerView : RecyclerView? = null
     private var myPurchaseCancelledAdapter : My_Purchase_Cancelled_Adapter? = null
     private var cancelledItemList = mutableListOf<My_Purchase_Cancelled_DC>()
@@ -29,6 +44,17 @@ class My_Purchase_Cancelled: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_purchase_cancelled)
+
+        // API ===
+
+        my_purchase_cancelled_rv = findViewById(R.id.my_purchase_cancelled_rv)
+
+        my_purchase_cancelled_rv.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        my_purchase_cancelled_rv.layoutManager = linearLayoutManager
+        getCancelled()
+
+        // ===
 
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
@@ -102,6 +128,34 @@ class My_Purchase_Cancelled: AppCompatActivity() {
 
         my_Purchase_Cancelled_Data()
     }
+
+    // FOR API ===
+    private fun getCancelled(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getCancelled()
+
+        retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
+            override fun onResponse(
+                call: Call<List<ProfileProductsItem>?>,
+                response: Response<List<ProfileProductsItem>?>) {
+
+                val responseBody = response.body()!!
+                myAdapter_Cancelled = MyAdapter_Cancelled(baseContext, responseBody)
+                myAdapter_Cancelled.notifyDataSetChanged()
+                my_purchase_cancelled_rv.adapter = myAdapter_Cancelled
+            }
+
+            override fun onFailure(call: Call<List<ProfileProductsItem>?>, t: Throwable) {
+                d("HomePage", "onFailure" + t.message)
+            }
+        })
+    }
+    // ===
 
     private fun my_Purchase_Cancelled_Data() {
         var items = My_Purchase_Cancelled_DC("All Item", 100, R.drawable.image)

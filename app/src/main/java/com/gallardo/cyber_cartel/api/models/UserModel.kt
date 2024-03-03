@@ -1,6 +1,6 @@
-package com.gallardo.cyber_cartel.api
+package com.gallardo.cyber_cartel.api.models
 
-data class User(
+data class UserModel(
     val name: String,
     val email: String,
     val password: String,

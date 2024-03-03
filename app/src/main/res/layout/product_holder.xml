@@ -79,7 +79,7 @@
             </TextView>
 
             <TextView
-                android:id="@+id/Cpu_Sold"
+                android:id="@+id/tv_category_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/spoof_bold"
