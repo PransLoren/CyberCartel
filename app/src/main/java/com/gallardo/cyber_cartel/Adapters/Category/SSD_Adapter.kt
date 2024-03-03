@@ -6,17 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_All_Adapter
-import com.gallardo.cyber_cartel.Category_Ssd
+import com.gallardo.cyber_cartel.Category_Case
 import com.gallardo.cyber_cartel.DataClass.Category.SSD_DC
-import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
-import com.gallardo.cyber_cartel.My_Purchase_All
 import com.gallardo.cyber_cartel.R
 
-class SSD_Adapter (private val getActivity: Category_Ssd, private val ItemList: List<SSD_DC>):
+class SSD_Adapter (private val getActivity: Category_Case, private val ItemList: List<SSD_DC>):
     RecyclerView.Adapter<SSD_Adapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SSD_Adapter.MyViewHolder {

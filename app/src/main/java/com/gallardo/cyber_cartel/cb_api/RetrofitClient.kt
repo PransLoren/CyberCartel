@@ -5,9 +5,11 @@ package com.gallardo.cyber_cartel.cb_api
     import retrofit2.Retrofit
     import retrofit2.converter.gson.GsonConverterFactory
 
+
+
     interface RetrofitClient {
         companion object{
-            private const val BASE_URL = "https://immense-wildwood-52155-6910ad3f7744.herokuapp.com/"
+            private const val BASE_URL = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/"
 
             fun getService(): ApiService{
                 val loggingInterceptor = HttpLoggingInterceptor().apply{

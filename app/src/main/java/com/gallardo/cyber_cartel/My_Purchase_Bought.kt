@@ -2,17 +2,33 @@ package com.gallardo.cyber_cartel
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_Received_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Received_DC
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Bought
+import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class My_Purchase_Bought : AppCompatActivity() {
+
+    // API ===
+    lateinit var myAdapter_Bought: MyAdapter_Bought
+    lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var my_purchase_bought_rv: RecyclerView
+    //
 
     private var recyclerView : RecyclerView? = null
     private var myPurchaseRecievedAdapter : My_Purchase_Received_Adapter? = null
@@ -29,6 +45,15 @@ class My_Purchase_Bought : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_purchase_bought)
+
+        // API ===
+        my_purchase_bought_rv = findViewById(R.id.my_purchase_bought_rv)
+
+        my_purchase_bought_rv.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        my_purchase_bought_rv.layoutManager = linearLayoutManager
+        getBought()
+        // ===
 
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
@@ -101,11 +126,40 @@ class My_Purchase_Bought : AppCompatActivity() {
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = myPurchaseRecievedAdapter
 
-        my_Purchase_Received_Data()
+//        my_Purchase_Received_Data()
     }
 
-    private fun my_Purchase_Received_Data() {
-        var items = My_Purchase_Received_DC("All Item", 100, R.drawable.image)
-        receiveditemlist.add(items)
+    // FOR API ===
+    private fun getBought(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getBought()
+
+        retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
+            override fun onResponse(
+                call: Call<List<ProfileProductsItem>?>,
+                response: Response<List<ProfileProductsItem>?>
+            ) {
+
+                val responseBody = response.body()!!
+                myAdapter_Bought = MyAdapter_Bought(baseContext, responseBody)
+                myAdapter_Bought.notifyDataSetChanged()
+                my_purchase_bought_rv.adapter = myAdapter_Bought
+            }
+
+            override fun onFailure(call: Call<List<ProfileProductsItem>?>, t: Throwable) {
+                Log.d("HomePage", "onFailure" + t.message)
+            }
+        })
     }
+    // ===
+
+//    private fun my_Purchase_Received_Data() {
+//        var items = My_Purchase_Received_DC("All Item", 100, R.drawable.image)
+//        receiveditemlist.add(items)
+//    }
 }

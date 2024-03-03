@@ -43,7 +43,7 @@ class intelbuild_adapter constructor(private val getActivity: Rv_intel_build, pr
         val productTitle : TextView = itemView.findViewById(R.id.tv_product_title)
         val productImg : ImageView = itemView.findViewById(R.id.iv_product_Image)
         val cardView : CardView = itemView.findViewById(R.id.product_cardView)
-        val productsold : TextView = itemView.findViewById(R.id.Cpu_Sold)
+//        val productsold : TextView = itemView.findViewById(R.id.Cpu_Sold)
         val productPrice : TextView = itemView.findViewById(R.id.tv_product_price)
 
 

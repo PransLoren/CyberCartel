@@ -24,44 +24,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_FullName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/spoof_regular"
-                android:text="Full Name"
-                android:textColor="@color/black"
-
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view"
-                android:layout_width="2dp"
-                android:layout_height="25dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintStart_toEndOf="@+id/tv_FullName"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_PhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/spoof_regular"
-                android:text="09072866532"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
                 android:id="@+id/tv_PostalCode"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -99,56 +61,13 @@
 
             <TextView
                 android:id="@+id/tv_House_Number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="75dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/spoof_regular"
                 android:text="0212"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
-
-            <TextView
-                android:id="@+id/tv_Street"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:text="Bravo Street"
-                android:fontFamily="@font/spoof_regular"
-                app:layout_constraintStart_toEndOf="@+id/textView17"
-                app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
-
-            <TextView
-                android:id="@+id/tv_Barangay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:text="Magtaking"
-                android:fontFamily="@font/spoof_regular"
-                app:layout_constraintStart_toEndOf="@+id/textView18"
-                app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:text=", "
-                app:layout_constraintStart_toEndOf="@+id/tv_House_Number"
-                app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="16dp"
-                android:text=", "
-                app:layout_constraintStart_toEndOf="@+id/tv_Street"
-                app:layout_constraintTop_toBottomOf="@+id/tv_FullName" />
+                tools:layout_editor_absoluteY="16dp" />
 
             <TextView
                 android:id="@+id/tv_Municipality"
@@ -162,25 +81,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_House_Number" />
 
             <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="8dp"
-                android:text=", "
-                app:layout_constraintStart_toEndOf="@+id/tv_Municipality"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Street" />
-
-            <TextView
                 android:id="@+id/tv_Province"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="8dp"
-                android:text="Pangasinan"
                 android:fontFamily="@font/spoof_regular"
-                app:layout_constraintStart_toEndOf="@+id/textView20"
-                app:layout_constraintTop_toBottomOf="@+id/tv_Barangay" />
+                android:text="Pangasinan"
+                tools:layout_editor_absoluteX="75dp"
+                tools:layout_editor_absoluteY="48dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

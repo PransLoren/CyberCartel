@@ -41,7 +41,7 @@ class home_page_categories_adapter constructor(private val getActivity: Rv_Home_
                 val int = Intent(getActivity,Category_Ram::class.java)
                 getActivity.startActivity(int)
             } else {
-                val int = Intent(getActivity,Category_Ssd::class.java)
+                val int = Intent(getActivity,Category_Case::class.java)
                 getActivity.startActivity(int)
             }
         }
