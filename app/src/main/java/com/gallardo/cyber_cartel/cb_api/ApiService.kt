@@ -24,7 +24,7 @@ interface ApiService {
     // ===== FOR PRODUCTS ===== //
     // SHOWS ALL PRODUCTS FOR SALE
     @GET("api/products/products-show")
-    fun getProducts():Call<List<ProductsItem>>
+    fun getProducts():Call<List<ProductsItem>> // <<<<< ---- ITO YUN PRI
 
     // SHOWS CPUS
     @GET("api/products/show-cpu")

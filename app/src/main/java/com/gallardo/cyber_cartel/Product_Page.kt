@@ -1,6 +1,7 @@
 package com.gallardo.cyber_cartel
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -8,6 +9,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.gallardo.cyber_cartel.api.models.Products
+import com.gallardo.cyber_cartel.api.models.ProductsItem
 
 class Product_Page : AppCompatActivity() {
 
@@ -22,7 +25,6 @@ class Product_Page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
-
 
         //Product Images
         val Product_viewPager: ViewPager2 = findViewById(R.id.product_viewPager2)

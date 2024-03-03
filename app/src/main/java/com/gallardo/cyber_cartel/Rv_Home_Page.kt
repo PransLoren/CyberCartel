@@ -52,16 +52,24 @@ class Rv_Home_Page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_home_page)
 
-        mainContainer = findViewById(R.id.mainContainer)
-
         // API ===
-
+        mainContainer = findViewById(R.id.mainContainer)
         mainContainer.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
         mainContainer.layoutManager = linearLayoutManager
+
         getMyProducts()
 
+        // OLD CLICK VIEW
+
+//        myAdapter_Products.onItemClick = {
+//            val intent = Intent(this, Product_Page::class.java)
+////            intent.putExtra("products")
+//            startActivity(intent)
+//        }
+
         // ===
+        // END OF API===
 
         amdlogo = findViewById(R.id.img_amd_builder)
         intellogo = findViewById(R.id.img_intel_builder)
