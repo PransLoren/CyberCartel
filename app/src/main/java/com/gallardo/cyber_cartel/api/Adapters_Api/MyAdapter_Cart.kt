@@ -1,4 +1,4 @@
-package com.gallardo.cyber_cartel.api
+package com.gallardo.cyber_cartel.api.Adapters_Api
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.CartItem
-import com.gallardo.cyber_cartel.api.models.ProductsItem
 
 class MyAdapter_Cart (val context: Context, val cartList: List<CartItem>): RecyclerView.Adapter<MyAdapter_Cart.ViewHolder>() {
 

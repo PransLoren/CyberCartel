@@ -10,14 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.Category.CPU_Adapter
-import com.gallardo.cyber_cartel.Adapters.Category.PSU_Adapter
 import com.gallardo.cyber_cartel.Adapters.Checkout_Adapter
-import com.gallardo.cyber_cartel.DataClass.Category.CPU_DC
-import com.gallardo.cyber_cartel.DataClass.Category.SSD_DC
 import com.gallardo.cyber_cartel.DataClass.Checkout_DC
-import com.gallardo.cyber_cartel.api.MyAdapter_Cart
-import com.gallardo.cyber_cartel.api.MyAdapter_Checkout
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Checkout
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import retrofit2.Call

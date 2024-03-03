@@ -83,7 +83,7 @@ class Product_Page : AppCompatActivity() {
                 startActivity(Intent(this, Category_MoBo::class.java))
             }
             "Category_Ssd" -> {
-                startActivity(Intent(this, Category_Ssd::class.java))
+                startActivity(Intent(this, Category_Case::class.java))
             }
             "Category_Ram" -> {
                 startActivity(Intent(this, Category_Ram::class.java))

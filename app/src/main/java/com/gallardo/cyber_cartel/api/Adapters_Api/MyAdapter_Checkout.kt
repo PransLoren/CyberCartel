@@ -1,4 +1,4 @@
-package com.gallardo.cyber_cartel.api
+package com.gallardo.cyber_cartel.api.Adapters_Api
 
 import android.content.Context
 import android.view.LayoutInflater

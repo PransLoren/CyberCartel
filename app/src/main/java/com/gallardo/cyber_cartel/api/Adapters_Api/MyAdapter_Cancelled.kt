@@ -1,4 +1,4 @@
-package com.gallardo.cyber_cartel.api
+package com.gallardo.cyber_cartel.api.Adapters_Api
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 
-class MyAdapter_ProfileProducts (val context: Context, val cancelledList: List<ProfileProductsItem>): RecyclerView.Adapter<MyAdapter_ProfileProducts.ViewHolder>() {
+class MyAdapter_Cancelled (val context: Context, val cancelledList: List<ProfileProductsItem>): RecyclerView.Adapter<MyAdapter_Cancelled.ViewHolder>(){
 
     class ViewHolder(cancelledView: View): RecyclerView.ViewHolder(cancelledView){
 
         val product_Info: TextView = cancelledView.findViewById(R.id.product_Info)
         val product_price: TextView = cancelledView.findViewById(R.id.product_price)
+
 
     }
 
@@ -32,5 +33,7 @@ class MyAdapter_ProfileProducts (val context: Context, val cancelledList: List<P
 
         holder.product_Info.text=currentItem.name
         holder.product_price.text=currentItem.price
+
     }
+
 }

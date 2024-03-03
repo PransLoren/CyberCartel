@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.api.MyAdapter_Products
-import com.gallardo.cyber_cartel.api.models.Products
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Products
 import com.gallardo.cyber_cartel.api.models.ProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,7 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 
 // API ===
@@ -120,7 +117,7 @@ class Rv_Home_Page : AppCompatActivity() {
 //        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this,2)
 //        recyclerView!!.layoutManager = layoutManager
 //        recyclerView!!.adapter = rv_homepage_Adapter
-//
+
 //        prepareProductData()
 
     }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_All_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
-import com.gallardo.cyber_cartel.api.MyAdapter_ProfileProducts
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_ProfileProducts
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -128,7 +128,7 @@ class My_Purchase_All : AppCompatActivity() {
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = myPurchaseAllAdapter
 
-        my_Purchase_All_Data()
+//        my_Purchase_All_Data()
 
 
     }
@@ -162,13 +162,13 @@ class My_Purchase_All : AppCompatActivity() {
     }
     // ===
 
-    private fun my_Purchase_All_Data() {
-        var items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
-        allitemlist.add(items)
-        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
-        allitemlist.add(items)
-        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
-        allitemlist.add(items)
-
-    }
+//    private fun my_Purchase_All_Data() {
+//        var items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
+//        allitemlist.add(items)
+//        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
+//        allitemlist.add(items)
+//        items = My_Purchase_All_DC("Item Name", 100, R.drawable.image)
+//        allitemlist.add(items)
+//
+//    }
 }

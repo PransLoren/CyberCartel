@@ -3,19 +3,14 @@ package com.gallardo.cyber_cartel
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.d
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.gallardo.cyber_cartel.api.MyAdapter_Cart
-import com.gallardo.cyber_cartel.api.MyAdapter_Products
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cart
 import com.gallardo.cyber_cartel.api.models.CartItem
-import com.gallardo.cyber_cartel.api.models.ProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -146,7 +141,7 @@ class Rv_cart : AppCompatActivity() {
                 startActivity(Intent(this, Category_MoBo::class.java))
             }
             "Category_Ssd" -> {
-                startActivity(Intent(this, Category_Ssd::class.java))
+                startActivity(Intent(this, Category_Case::class.java))
             }
             "Category_Ram" -> {
                 startActivity(Intent(this, Category_Ram::class.java))

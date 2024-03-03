@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel.cb_api
 
+import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.api.models.ProductsItem
@@ -25,6 +26,34 @@ interface ApiService {
     @GET("api/products/products-show")
     fun getProducts():Call<List<ProductsItem>>
 
+    // SHOWS CPUS
+    @GET("api/products/show-cpu")
+    fun getCPUS(): Call<List<ProductsItem>>
+
+    // SHOWS GPUS
+    @GET("api/products/show-gpu")
+    fun getGPUS(): Call<List<ProductsItem>>
+
+    // SHOWS MOTHERBOARDS
+    @GET("api/products/show-motherboard")
+    fun getMotherboards(): Call<List<ProductsItem>>
+
+    // SHOWS STORAGE
+    @GET("api/products/show-storage")
+    fun getStorage(): Call<List<ProductsItem>>
+
+    // SHOWS PSUS
+    @GET("api/products/show-psu")
+    fun getPSUS(): Call<List<ProductsItem>>
+
+    // SHOWS CASE
+    @GET("api/products/show-case")
+    fun getCase(): Call<List<ProductsItem>>
+
+    // SHOWS RAM
+    @GET("api/products/show-ram")
+    fun getRAM(): Call<List<ProductsItem>>
+
     // SHOWS ALL PRODUCTS IN USER PROFILE
     @GET("api/profile/products-show-all")
     fun getAllProducts(): Call<List<ProfileProductsItem>>
@@ -46,7 +75,6 @@ interface ApiService {
 
 
 
-
     // ===== FOR CART =====//
     // SHOWS CART ITEMS
     @GET("api/cart/cart-show")
@@ -56,6 +84,14 @@ interface ApiService {
     @GET("api/cart/cart-show")
     fun getCheckout(): Call<List<CartItem>>
     // ===== END FOR CART===== //
+
+
+
+
+
+    // ===== FOR ADDRESS ===== //
+    @GET("api/profile/address-index")
+    fun getAddress(): Call<List<AddressItem>>
 
 
 

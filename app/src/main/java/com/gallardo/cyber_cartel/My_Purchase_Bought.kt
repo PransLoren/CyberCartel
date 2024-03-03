@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_Received_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Received_DC
-import com.gallardo.cyber_cartel.api.MyAdapter_Bought
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Bought
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -126,7 +126,7 @@ class My_Purchase_Bought : AppCompatActivity() {
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = myPurchaseRecievedAdapter
 
-        my_Purchase_Received_Data()
+//        my_Purchase_Received_Data()
     }
 
     // FOR API ===
@@ -158,8 +158,8 @@ class My_Purchase_Bought : AppCompatActivity() {
     }
     // ===
 
-    private fun my_Purchase_Received_Data() {
-        var items = My_Purchase_Received_DC("All Item", 100, R.drawable.image)
-        receiveditemlist.add(items)
-    }
+//    private fun my_Purchase_Received_Data() {
+//        var items = My_Purchase_Received_DC("All Item", 100, R.drawable.image)
+//        receiveditemlist.add(items)
+//    }
 }

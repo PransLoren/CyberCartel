@@ -51,7 +51,7 @@
             android:name=".Category_Cpu"
             android:exported="false" />
         <activity
-            android:name=".Category_Ssd"
+            android:name=".Category_Case"
             android:exported="false" />
         <activity
             android:name=".Login_Page"

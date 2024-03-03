@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.Adapters.My_Purchase_To_Receive_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_To_Receive_DC
-import com.gallardo.cyber_cartel.api.MyAdapter_Refunded
+import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Refunded
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.google.android.material.bottomnavigation.BottomNavigationView
