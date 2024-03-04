@@ -19,7 +19,7 @@ class MyAdapter_Refunded (val context: Context, val cancelledList: List<ProfileP
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val cancelledView = LayoutInflater.from(context).inflate(R.layout.my_purchase_item_holder, parent, false)
+        val cancelledView = LayoutInflater.from(context).inflate(R.layout.layout_my_purchase_refunded_items, parent, false)
         return ViewHolder(cancelledView)
     }
 

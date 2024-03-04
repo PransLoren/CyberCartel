@@ -71,20 +71,9 @@ class Rv_Home_Page : AppCompatActivity() {
         // ===
         // END OF API===
 
-        amdlogo = findViewById(R.id.img_amd_builder)
-        intellogo = findViewById(R.id.img_intel_builder)
         cartlogo = findViewById(R.id.img_cart_homepage)
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
-        amdlogo.setOnClickListener(){
-            val intent = Intent(this, Rv_amd_build::class.java)
-            startActivity(intent)
-        }
-
-        intellogo.setOnClickListener(){
-            val intent = Intent(this, Rv_intel_build::class.java)
-            startActivity(intent)
-        }
         cartlogo.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
             startActivity(intent)

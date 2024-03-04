@@ -20,7 +20,7 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val cancelledView = LayoutInflater.from(context).inflate(R.layout.my_purchase_item_holder, parent, false)
+        val cancelledView = LayoutInflater.from(context).inflate(R.layout.layout_my_purchase_bought_items, parent, false)
         return ViewHolder(cancelledView)
     }
 

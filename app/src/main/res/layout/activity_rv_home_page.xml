@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.444" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_Categories"
         android:layout_width="match_parent"
@@ -39,10 +40,10 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/mainContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_categories_homepage" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/tv_categories_homepage"
+        app:layout_constraintVertical_bias="0.75" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnav_bottomNavigation_MyProfile"
@@ -68,31 +69,10 @@
         app:srcCompat="@drawable/cartblk"/>
 
 
-    <ImageView
-        android:id="@+id/img_amd_builder"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/amdlogo" />
-
-    <ImageView
-        android:id="@+id/img_intel_builder"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="80dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/intellogo" />
-
     <TextView
         android:id="@+id/tv_categories_homepage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/spoof_regular"
         android:text="CATEGORIES"
@@ -100,9 +80,11 @@
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/mainContainer"
-        app:layout_constraintEnd_toEndOf="@+id/img_intel_builder"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="@+id/img_amd_builder" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.8" />
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/btnav_bottomNavigation"-->

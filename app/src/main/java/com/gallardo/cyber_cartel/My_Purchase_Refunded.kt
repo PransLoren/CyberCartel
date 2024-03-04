@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_To_Receive_Adapter
-import com.gallardo.cyber_cartel.DataClass.My_Purchase_To_Receive_DC
+import com.gallardo.cyber_cartel.Adapters.My_Purchase_Refunded_Adapter
+import com.gallardo.cyber_cartel.DataClass.My_Purchase_Refunded_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Refunded
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
@@ -31,8 +31,8 @@ class My_Purchase_Refunded : AppCompatActivity() {
     //
 
     private var recyclerView : RecyclerView? = null
-    private var myPurchaseToReceiveAdapter : My_Purchase_To_Receive_Adapter? = null
-    private var toReceiveItemList = mutableListOf<My_Purchase_To_Receive_DC>()
+    private var myPurchaseToReceiveAdapter : My_Purchase_Refunded_Adapter? = null
+    private var toReceiveItemList = mutableListOf<My_Purchase_Refunded_DC>()
     private lateinit var tv_all : TextView
     private lateinit var tv_bought : TextView
     private lateinit var tv_refunded : TextView
@@ -121,7 +121,7 @@ class My_Purchase_Refunded : AppCompatActivity() {
         toReceiveItemList= ArrayList()
 
         recyclerView = findViewById<View>(R.id.my_purchase_refunded_rv) as RecyclerView
-        myPurchaseToReceiveAdapter = My_Purchase_To_Receive_Adapter(this@My_Purchase_Refunded,toReceiveItemList)
+        myPurchaseToReceiveAdapter = My_Purchase_Refunded_Adapter(this@My_Purchase_Refunded,toReceiveItemList)
         val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
         recyclerView!!.layoutManager = layoutManager
         recyclerView!!.adapter = myPurchaseToReceiveAdapter
@@ -159,7 +159,7 @@ class My_Purchase_Refunded : AppCompatActivity() {
     // ===
 
     private fun my_Purchase_To_Receive_Data() {
-        var items = My_Purchase_To_Receive_DC("All Item", 100, R.drawable.image)
+        var items = My_Purchase_Refunded_DC("All Item", 100, R.drawable.image)
         toReceiveItemList.add(items)
     }
 }

@@ -18,7 +18,7 @@ class My_Purchase_Cancelled_Adapter(private val getActivity: My_Purchase_Cancell
     RecyclerView.Adapter<My_Purchase_Cancelled_Adapter.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): My_Purchase_Cancelled_Adapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.my_purchase_item_holder, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_my_purchase_cancelled_items, parent, false)
 
         return My_Purchase_Cancelled_Adapter.MyViewHolder(view)
     }
@@ -41,6 +41,6 @@ class My_Purchase_Cancelled_Adapter(private val getActivity: My_Purchase_Cancell
         val tvProductInfo_Cancelled : TextView = itemView.findViewById(R.id.product_Info)
         val tvProductPrice_Cancelled : TextView = itemView.findViewById(R.id.product_price)
         val ivProductImage_Cancelled : ImageView = itemView.findViewById(R.id.product_image)
-        val cardView_Cancelled : CardView = itemView.findViewById(R.id.my_purchase_product_holder)
+        val cardView_Cancelled : CardView = itemView.findViewById(R.id.my_purchase_cancelled_items)
     }
 }
