@@ -26,15 +26,37 @@ class Product_Page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
 
+
+
+        // FOR API ===
+        val img_second = findViewById<ImageView>(R.id.product_viewPager2)
+        val product_name = findViewById<TextView>(R.id.product_viewPager2)
+        val product_price = findViewById<TextView>(R.id.product_price)
+        val product_details  = findViewById<TextView>(R.id.product_description)
+
+        val intent = intent
+
+        val name = intent?.getStringExtra("name")
+        val price = intent?.getStringExtra("price")
+        val details = intent?.getStringExtra("details")
+
+        product_name.text = name
+        product_price.text = price
+        product_details.text = details
+
+        // ===
+
+
+
         //Product Images
         val Product_viewPager: ViewPager2 = findViewById(R.id.product_viewPager2)
 
         //Add Images here:
-        val images = listOf(
-            R.drawable.image,
-            R.drawable.image,
-            R.drawable.image,)
-        Product_viewPager.adapter = ViewPager_Adapter(images)
+//        val images = listOf(
+//            R.drawable.image,
+//            R.drawable.image,
+//            R.drawable.image,)
+//        Product_viewPager.adapter = ViewPager_Adapter(images)
 
         img_back = findViewById(R.id.back_btn)
         img_back.setOnClickListener {
@@ -56,17 +78,17 @@ class Product_Page : AppCompatActivity() {
         }
 
 
-        //Product Name
-        productName = findViewById(R.id.product_name)
-        productName.text = "Product Name"
-
-        //Product Price
-        productPrice = findViewById(R.id.product_price)
-        productPrice.text = "Product Price"
-
-        //Product Description
-        productDescription = findViewById(R.id.product_description)
-        productDescription.text = "General Specs \n"
+//        //Product Name
+//        productName = findViewById(R.id.product_name)
+//        productName.text = "Product Name"
+//
+//        //Product Price
+//        productPrice = findViewById(R.id.product_price)
+//        productPrice.text = "Product Price"
+//
+//        //Product Description
+//        productDescription = findViewById(R.id.product_description)
+//        productDescription.text = "General Specs \n"
     }
 
     private fun navigateBack() {

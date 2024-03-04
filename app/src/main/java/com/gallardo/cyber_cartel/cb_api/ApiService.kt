@@ -4,11 +4,13 @@ import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.api.models.ProductsRequest
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
-
+import retrofit2.http.Path
 
 
 interface ApiService {
@@ -83,6 +85,14 @@ interface ApiService {
     // SHOWS CART ITEMS IN CHECKOUT
     @GET("api/cart/cart-show")
     fun getCheckout(): Call<List<CartItem>>
+
+    // ADD TO CART
+    @POST("cart/cart-add/{id}")
+//    fun addToCart(@Body productRequest: ProductsRequest) Call<>
+
+    // REMOVES FROM CART
+    @DELETE("cart/cart-remove/{id}")
+    fun removeItem(@Path("id") id: Int): Call<Unit>
     // ===== END FOR CART===== //
 
 
