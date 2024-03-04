@@ -56,11 +56,11 @@ class My_Account: AppCompatActivity() {
 //                    startActivity(intent)
 //                    finish()}
 
-                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
                     startActivity(intent)
                     finish()}
 
-                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
                     startActivity(intent)
                     finish()}
             }
@@ -77,13 +77,6 @@ class My_Account: AppCompatActivity() {
         address = findViewById(R.id.address)
         address.setOnClickListener {
             val intent = Intent(this, User_Addresses::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        profile_pic = findViewById<ImageView>(R.id.profile_img)
-        profile_pic.setOnClickListener {
-            val intent = Intent(this, My_Account_Edit_Profile::class.java)
             startActivity(intent)
             finish()
         }
@@ -119,13 +112,6 @@ class My_Account: AppCompatActivity() {
         my_purchase_history = findViewById<TextView>(R.id.view_all_purchase)
         my_purchase_history.setOnClickListener{
             val intent = Intent(this, My_Purchase_All::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        tv_edit_profile = findViewById<TextView>(R.id.edit_profile)
-        tv_edit_profile.setOnClickListener{
-            val intent = Intent(this, My_Account_Edit_Profile::class.java)
             startActivity(intent)
             finish()
         }

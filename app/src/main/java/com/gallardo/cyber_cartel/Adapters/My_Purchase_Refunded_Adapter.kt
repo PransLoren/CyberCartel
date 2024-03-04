@@ -8,17 +8,17 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.DataClass.My_Purchase_To_Receive_DC
+import com.gallardo.cyber_cartel.DataClass.My_Purchase_Refunded_DC
 import com.gallardo.cyber_cartel.My_Purchase_Refunded
 import com.gallardo.cyber_cartel.R
 
-class My_Purchase_To_Receive_Adapter (private val getActivity: My_Purchase_Refunded, private val toReceiveItemList: List<My_Purchase_To_Receive_DC>):
-    RecyclerView.Adapter<My_Purchase_To_Receive_Adapter.MyViewHolder>(){
+class My_Purchase_Refunded_Adapter (private val getActivity: My_Purchase_Refunded, private val toReceiveItemList: List<My_Purchase_Refunded_DC>):
+    RecyclerView.Adapter<My_Purchase_Refunded_Adapter.MyViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): My_Purchase_To_Receive_Adapter.MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.my_purchase_item_holder, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): My_Purchase_Refunded_Adapter.MyViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_my_purchase_refunded_items, parent, false)
 
-        return My_Purchase_To_Receive_Adapter.MyViewHolder(view)
+        return My_Purchase_Refunded_Adapter.MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -39,6 +39,6 @@ class My_Purchase_To_Receive_Adapter (private val getActivity: My_Purchase_Refun
         val tvProductInfo_ToReceive : TextView = itemView.findViewById(R.id.product_Info)
         val tvProductPrice_ToReceive : TextView = itemView.findViewById(R.id.product_price)
         val ivProductImage_ToReceive : ImageView = itemView.findViewById(R.id.product_image)
-        val cardView_ToReceive : CardView = itemView.findViewById(R.id.my_purchase_product_holder)
+        val cardView_ToReceive : CardView = itemView.findViewById(R.id.my_purchase_refunded_items)
     }
 }

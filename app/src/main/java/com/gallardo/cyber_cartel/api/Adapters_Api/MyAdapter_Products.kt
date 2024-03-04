@@ -43,6 +43,8 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
         holder.constraint_row.setOnClickListener{
 
             val intent = Intent(it.context, Product_Page::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
 
             intent.putExtra("name", currentItem.name)
             intent.putExtra("price", currentItem.price)

@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/tv_FullName_checkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="20dp"
         android:layout_marginStart="14dp"
         android:layout_marginTop="5dp"
         android:fontFamily="@font/spoof_bold"
@@ -33,20 +33,6 @@
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Cart_backButton_checkout" />
-
-
-    <TextView
-        android:id="@+id/tv_PhoneNumber_checkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="6dp"
-        android:fontFamily="@font/spoof_regular"
-        android:text="09072866532"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_FullName_checkout"
-        app:layout_constraintTop_toBottomOf="@+id/tv_DeliveryAddress_checkout" />
 
 
     <TextView
@@ -76,6 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_FullName_checkout" />
 
+
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider_checkout"
         android:layout_width="match_parent"
@@ -86,15 +73,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="225dp" />
-
+        tools:layout_editor_absoluteY="185dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_checkout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="@+id/materialDivider2_checkout"
@@ -128,16 +114,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="2dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        android:background="#D3D3D3"
-        app:layout_constraintEnd_toStartOf="@+id/tv_PhoneNumber_checkout"
-        app:layout_constraintStart_toEndOf="@+id/tv_FullName_checkout"
-        app:layout_constraintTop_toBottomOf="@+id/tv_DeliveryAddress_checkout" />
 
     <Button
         android:id="@+id/checkOut_Button_checkout"
@@ -193,76 +169,43 @@
         android:id="@+id/comma1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="4dp"
         android:text=", "
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/checkout_house_number"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <TextView
-        android:id="@+id/checkout_street_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:fontFamily="@font/spoof_regular"
-        android:text="Bravo Street"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/comma1"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <TextView
-        android:id="@+id/comma2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:text=", "
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/checkout_street_name"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <TextView
-        android:id="@+id/checkout_barangay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:fontFamily="@font/spoof_regular"
-        android:text="Magtaking"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/comma2"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_PostalCode_checkout" />
 
     <TextView
         android:id="@+id/checkout_municipality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/spoof_regular"
         android:text="Bugallon"
         android:textSize="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkout_house_number" />
+        app:layout_constraintStart_toEndOf="@+id/comma1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_PostalCode_checkout" />
 
     <TextView
         android:id="@+id/comma4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:text=", "
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/checkout_municipality"
-        app:layout_constraintTop_toBottomOf="@+id/checkout_street_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_PostalCode_checkout" />
 
     <TextView
         android:id="@+id/checkout_province"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/spoof_regular"
         android:text="Pangasinan"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/comma4"
-        app:layout_constraintTop_toBottomOf="@+id/checkout_street_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_PostalCode_checkout" />
 
     <TextView
         android:id="@+id/amount_Checkout"

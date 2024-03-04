@@ -67,17 +67,9 @@ class Checkout: AppCompatActivity() {
         fullName = findViewById(R.id.tv_FullName_checkout)
         fullName.text = "Full Name"
 
-        phoneNumber = findViewById(R.id.tv_PhoneNumber_checkout)
-        phoneNumber.text = "Phone Number"
 
         houseNumber = findViewById(R.id.checkout_house_number)
         houseNumber.text = "House Number"
-
-        streetName = findViewById(R.id.checkout_street_name)
-        streetName.text = "Street Name"
-
-        barangay = findViewById(R.id.checkout_barangay)
-        barangay.text = "Barangay"
 
         municipality = findViewById(R.id.checkout_municipality)
         municipality.text = "Municipality"
