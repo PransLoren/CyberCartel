@@ -11,11 +11,11 @@
     android:id="@+id/product_cardView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_row"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_row"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_gravity="start"
