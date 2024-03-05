@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_Bought_Adapter
+//import com.gallardo.cyber_cartel.Adapters.My_Purchase_Bought_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Bought_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Bought
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
@@ -31,7 +31,7 @@ class My_Purchase_Bought : AppCompatActivity() {
     //
 
     private var recyclerView : RecyclerView? = null
-    private var myPurchaseRecievedAdapter : My_Purchase_Bought_Adapter? = null
+//    private var myPurchaseRecievedAdapter : My_Purchase_Bought_Adapter? = null
     private var receiveditemlist = mutableListOf<My_Purchase_Bought_DC>()
     private lateinit var tv_all : TextView
     private lateinit var tv_bought : TextView
@@ -118,13 +118,13 @@ class My_Purchase_Bought : AppCompatActivity() {
         }
 
 
-        receiveditemlist = ArrayList()
-
-        recyclerView = findViewById<View>(R.id.my_purchase_bought_rv) as RecyclerView
-        myPurchaseRecievedAdapter = My_Purchase_Bought_Adapter(this@My_Purchase_Bought,receiveditemlist)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = myPurchaseRecievedAdapter
+//        receiveditemlist = ArrayList()
+//
+//        recyclerView = findViewById<View>(R.id.my_purchase_bought_rv) as RecyclerView
+//        myPurchaseRecievedAdapter = My_Purchase_Bought_Adapter(this@My_Purchase_Bought,receiveditemlist)
+//        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
+//        recyclerView!!.layoutManager = layoutManager
+//        recyclerView!!.adapter = myPurchaseRecievedAdapter
 
 //        my_Purchase_Received_Data()
     }

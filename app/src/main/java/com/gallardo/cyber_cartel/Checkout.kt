@@ -27,7 +27,9 @@ class Checkout: AppCompatActivity() {
     lateinit var myAdapter_Checkout: MyAdapter_Checkout
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var rv_checkout: RecyclerView
-    //
+
+
+    // ===
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var checkOutAdapter: Checkout_Adapter

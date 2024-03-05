@@ -44,24 +44,26 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
         val imagepath = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/$imagename"
         Glide.with(this.context).load(imagepath).into(holder.iv_product_Image)
 
-        holder.tv_product_title.text=currentItem.name
-        holder.tv_category_title.text=currentItem.category
-        holder.tv_product_price.text=currentItem.price
+        holder.tv_product_title.text = currentItem.name
+        holder.tv_category_title.text = currentItem.category
+        holder.tv_product_price.text = currentItem.price
 
         val cont = holder.constraint_row.context
-        holder.constraint_row.setOnClickListener{
-
+        holder.constraint_row.setOnClickListener {
 
             val intent = Intent(it.context, Product_Page::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
 
+            intent.putExtra("name", currentItem.name)
+            intent.putExtra("price", currentItem.price)
+            intent.putExtra("category", currentItem.category)
+            intent.putExtra("details", currentItem.details)
+            intent.putExtra("photo", imagepath)
 
-            context.startActivity(intent)
+            it.context.startActivity(intent)
 
         }
 
     }
-
-
 }
