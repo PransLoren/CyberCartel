@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_Refunded_Adapter
+//import com.gallardo.cyber_cartel.Adapters.My_Purchase_Refunded_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Refunded_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Refunded
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
@@ -31,7 +31,7 @@ class My_Purchase_Refunded : AppCompatActivity() {
     //
 
     private var recyclerView : RecyclerView? = null
-    private var myPurchaseToReceiveAdapter : My_Purchase_Refunded_Adapter? = null
+//    private var myPurchaseToReceiveAdapter : My_Purchase_Refunded_Adapter? = null
     private var toReceiveItemList = mutableListOf<My_Purchase_Refunded_DC>()
     private lateinit var tv_all : TextView
     private lateinit var tv_bought : TextView
@@ -120,13 +120,13 @@ class My_Purchase_Refunded : AppCompatActivity() {
 
         toReceiveItemList= ArrayList()
 
-        recyclerView = findViewById<View>(R.id.my_purchase_refunded_rv) as RecyclerView
-        myPurchaseToReceiveAdapter = My_Purchase_Refunded_Adapter(this@My_Purchase_Refunded,toReceiveItemList)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = myPurchaseToReceiveAdapter
+//        recyclerView = findViewById<View>(R.id.my_purchase_refunded_rv) as RecyclerView
+//        myPurchaseToReceiveAdapter = My_Purchase_Refunded_Adapter(this@My_Purchase_Refunded,toReceiveItemList)
+//        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
+//        recyclerView!!.layoutManager = layoutManager
+//        recyclerView!!.adapter = myPurchaseToReceiveAdapter
 
-        my_Purchase_To_Receive_Data()
+//        my_Purchase_To_Receive_Data()
     }
 
     // FOR API ===
@@ -158,8 +158,8 @@ class My_Purchase_Refunded : AppCompatActivity() {
     }
     // ===
 
-    private fun my_Purchase_To_Receive_Data() {
-        var items = My_Purchase_Refunded_DC("All Item", 100, R.drawable.image)
-        toReceiveItemList.add(items)
-    }
+//    private fun my_Purchase_To_Receive_Data() {
+//        var items = My_Purchase_Refunded_DC("All Item", 100, R.drawable.image)
+//        toReceiveItemList.add(items)
+//    }
 }

@@ -3,22 +3,20 @@
   <component name="deploymentTargetDropDown">
     <value>
       <entry key="app">
-
         <State>
-          <targetSelectedWithDropDown>
+          <runningDeviceTargetSelectedWithDropDown>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\EXOUSIA\.android\avd\TEST_PHONE.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="8RB4C19306016728" />
                 </Key>
               </deviceKey>
             </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-04T08:11:17.808356200Z" />
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-05T10:44:05.098490100Z" />
         </State>
-
       </entry>
     </value>
   </component>

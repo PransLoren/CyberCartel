@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.gallardo.cyber_cartel.api.models.Products
 import com.gallardo.cyber_cartel.api.models.ProductsItem
 
@@ -30,12 +31,13 @@ class Product_Page : AppCompatActivity() {
 
         // FOR API ===
         val img_second = findViewById<ImageView>(R.id.product_viewPager2)
-        val product_name = findViewById<TextView>(R.id.product_viewPager2)
+        val product_name = findViewById<TextView>(R.id.product_name)
         val product_price = findViewById<TextView>(R.id.product_price)
         val product_details  = findViewById<TextView>(R.id.product_description)
 
         val intent = intent
 
+        val photo = intent?.getStringExtra("photo")
         val name = intent?.getStringExtra("name")
         val price = intent?.getStringExtra("price")
         val details = intent?.getStringExtra("details")
@@ -44,31 +46,36 @@ class Product_Page : AppCompatActivity() {
         product_price.text = price
         product_details.text = details
 
+        Glide.with(this).load(photo).into(img_second)
         // ===
 
 
 
         //Product Images
-        val Product_viewPager: ViewPager2 = findViewById(R.id.product_viewPager2)
+//        val Product_viewPager: ViewPager2 = findViewById(R.id.product_viewPager2)
 
-        //Add Images here:
+//        Add Images here:
 //        val images = listOf(
 //            R.drawable.image,
 //            R.drawable.image,
 //            R.drawable.image,)
+
 //        Product_viewPager.adapter = ViewPager_Adapter(images)
 
+        // YUNG BACK
         img_back = findViewById(R.id.back_btn)
         img_back.setOnClickListener {
             navigateBack()
         }
 
+        // BUTTON NA ADD TO CART
         product_cart = findViewById(R.id.product_addToCart)
         product_cart.setOnClickListener {
             // Show a toast message
             Toast.makeText(this@Product_Page, "Product added to cart!", Toast.LENGTH_SHORT).show()
         }
 
+        // ITO ATA YUNG BUTTON NA PAPUNTA CART
         cartz = findViewById(R.id.Cart)
         cartz.setOnClickListener {
             val intent = Intent(this,Rv_cart::class.java)
@@ -77,18 +84,17 @@ class Product_Page : AppCompatActivity() {
             finish()
         }
 
+        //Product Name
+        productName = findViewById(R.id.product_name)
+        productName.text = name
 
-//        //Product Name
-//        productName = findViewById(R.id.product_name)
-//        productName.text = "Product Name"
-//
-//        //Product Price
-//        productPrice = findViewById(R.id.product_price)
-//        productPrice.text = "Product Price"
-//
-//        //Product Description
-//        productDescription = findViewById(R.id.product_description)
-//        productDescription.text = "General Specs \n"
+        //Product Price
+        productPrice = findViewById(R.id.product_price)
+        productPrice.text = price
+
+        //Product Description
+        productDescription = findViewById(R.id.product_description)
+        productDescription.text = details
     }
 
     private fun navigateBack() {
