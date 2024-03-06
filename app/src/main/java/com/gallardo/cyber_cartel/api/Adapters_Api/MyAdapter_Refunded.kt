@@ -4,14 +4,18 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 
 class MyAdapter_Refunded (val context: Context, val cancelledList: List<ProfileProductsItem>): RecyclerView.Adapter<MyAdapter_Refunded.ViewHolder>(){
 
     class ViewHolder(cancelledView: View): RecyclerView.ViewHolder(cancelledView){
+
+        val item_image: ImageView = cancelledView.findViewById(R.id.product_image)
 
         val product_Info: TextView = cancelledView.findViewById(R.id.product_Info)
         val product_price: TextView = cancelledView.findViewById(R.id.product_price)
@@ -29,6 +33,10 @@ class MyAdapter_Refunded (val context: Context, val cancelledList: List<ProfileP
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = cancelledList[position]
+
+        val imagename = currentItem.photo
+        val imagepath = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/$imagename"
+        Glide.with(this.context).load(imagepath).into(holder.item_image)
 
         holder.product_Info.text=currentItem.name
         holder.product_price.text=currentItem.price

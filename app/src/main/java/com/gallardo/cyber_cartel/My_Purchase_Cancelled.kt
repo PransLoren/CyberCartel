@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.Adapters.My_Purchase_Cancelled_Adapter
+//import com.gallardo.cyber_cartel.Adapters.My_Purchase_Cancelled_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Cancelled_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cancelled
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
@@ -31,7 +31,7 @@ class My_Purchase_Cancelled: AppCompatActivity() {
     //
 
     private var recyclerView : RecyclerView? = null
-    private var myPurchaseCancelledAdapter : My_Purchase_Cancelled_Adapter? = null
+//    private var myPurchaseCancelledAdapter : My_Purchase_Cancelled_Adapter? = null
     private var cancelledItemList = mutableListOf<My_Purchase_Cancelled_DC>()
     private lateinit var tv_all : TextView
     private lateinit var tv_bought : TextView
@@ -118,15 +118,15 @@ class My_Purchase_Cancelled: AppCompatActivity() {
         }
 
 
-        cancelledItemList = ArrayList()
-
-        recyclerView = findViewById<View>(R.id.my_purchase_cancelled_rv) as RecyclerView
-        myPurchaseCancelledAdapter = My_Purchase_Cancelled_Adapter(this@My_Purchase_Cancelled,cancelledItemList)
-        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
-        recyclerView!!.layoutManager = layoutManager
-        recyclerView!!.adapter = myPurchaseCancelledAdapter
-
-        my_Purchase_Cancelled_Data()
+//        cancelledItemList = ArrayList()
+//
+//        recyclerView = findViewById<View>(R.id.my_purchase_cancelled_rv) as RecyclerView
+//        myPurchaseCancelledAdapter = My_Purchase_Cancelled_Adapter(this@My_Purchase_Cancelled,cancelledItemList)
+//        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager (this,1)
+//        recyclerView!!.layoutManager = layoutManager
+//        recyclerView!!.adapter = myPurchaseCancelledAdapter
+//
+//        my_Purchase_Cancelled_Data()
     }
 
     // FOR API ===
@@ -157,8 +157,8 @@ class My_Purchase_Cancelled: AppCompatActivity() {
     }
     // ===
 
-    private fun my_Purchase_Cancelled_Data() {
-        var items = My_Purchase_Cancelled_DC("All Item", 100, R.drawable.image)
-        cancelledItemList.add(items)
-    }
+//    private fun my_Purchase_Cancelled_Data() {
+//        var items = My_Purchase_Cancelled_DC("All Item", 100, R.drawable.image)
+//        cancelledItemList.add(items)
+//    }
 }

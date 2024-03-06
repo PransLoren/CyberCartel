@@ -4,7 +4,7 @@ import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.api.models.ProductsItem
-import com.gallardo.cyber_cartel.api.models.ProductsRequest
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -59,7 +59,10 @@ interface ApiService {
     // SHOWS ALL PRODUCTS IN USER PROFILE
     @GET("api/profile/products-show-all")
     fun getAllProducts(): Call<List<ProfileProductsItem>>
+    // ===== END FOR PRODUCTS ===== //
 
+
+    // ===== FOR PROFILE ====== //
     // SHOWS ALL CANCELLED PRODUCTS
     @GET("api/profile/cancelled-index")
     fun getCancelled(): Call<List<ProfileProductsItem>>
@@ -71,7 +74,10 @@ interface ApiService {
     // SHOWS ALL REFUNDED PRODUCTS
     @GET("api/profile/refunded-index")
     fun getRefunded(): Call<List<ProfileProductsItem>>
-    // ===== END FOR PRODUCTS ===== //
+
+    // MOVES BOUGHT TO CANCELLED
+//    @POST("")
+    // ===== END FOR PROFILE ===== //
 
 
 
@@ -87,12 +93,20 @@ interface ApiService {
     fun getCheckout(): Call<List<CartItem>>
 
     // ADD TO CART
-    @POST("cart/cart-add/{id}")
+//    @POST("cart/cart-add/{id}")
 //    fun addToCart(@Body productRequest: ProductsRequest) Call<>
 
     // REMOVES FROM CART
-    @DELETE("cart/cart-remove/{id}")
-    fun removeItem(@Path("id") id: Int): Call<Unit>
+    @DELETE("api/cart/cart-remove/{id}")
+    fun removeItem(@Path("id") id: Int): Call<ResponseBody>
+
+    // INCREASES QUANTITY SOMETHING FROM CART
+    @POST("api/cart/increase/{id}")
+    fun increaseItem(@Path("id")id:Int): Call<Void>
+
+    // DECREASES QUANTITY SOMETHING FROM CART
+    @POST("api/cart/decrease/{id}")
+    fun decreaseItem(@Path("id")id:Int): Call<Void>
     // ===== END FOR CART===== //
 
 
@@ -100,8 +114,13 @@ interface ApiService {
 
 
     // ===== FOR ADDRESS ===== //
+    //DISPLAY ADDRESS
     @GET("api/profile/address-index")
     fun getAddress(): Call<List<AddressItem>>
+
+    // DELETE AN ADDRESS
+    @DELETE("api/profile/address-delete/{id}")
+    fun deleteAddress(@Path("id")id:Int): Call<ResponseBody>
 
 
 
