@@ -34,12 +34,20 @@ class My_Account: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.my_account)
 
+        // API
+        // TOKEN
+        val authToken = intent.getStringExtra("authToken")
+        //
+
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
         backbutton = findViewById(R.id.back_to_profile)
 
 
         cart = findViewById(R.id.Cart)
         cart.setOnClickListener(){
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this,Rv_cart::class.java)
             intent.putExtra("previous_activity", "My_Account")
             startActivity(intent)
@@ -57,10 +65,16 @@ class My_Account: AppCompatActivity() {
 //                    finish()}
 
                 R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    // TOKEN
+                    intent.putExtra("authToken", authToken)
+
                     startActivity(intent)
                     finish()}
 
                 R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    // TOKEN
+                    intent.putExtra("authToken", authToken)
+
                     startActivity(intent)
                     finish()}
             }
@@ -76,6 +90,9 @@ class My_Account: AppCompatActivity() {
 
         address = findViewById(R.id.address)
         address.setOnClickListener {
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, User_Addresses::class.java)
             startActivity(intent)
             finish()
@@ -83,6 +100,9 @@ class My_Account: AppCompatActivity() {
 
         tv_all = findViewById<TextView>(R.id.all_tv)
         tv_all.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_All::class.java)
             startActivity(intent)
             finish()
@@ -90,6 +110,9 @@ class My_Account: AppCompatActivity() {
 
         tv_bought = findViewById<TextView>(R.id.bought_tv)
         tv_bought.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Bought::class.java)
             startActivity(intent)
             finish()
@@ -97,6 +120,9 @@ class My_Account: AppCompatActivity() {
 
         tv_cancelled = findViewById<TextView>(R.id.cancelled_tv)
         tv_cancelled.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Cancelled::class.java)
             startActivity(intent)
             finish()
@@ -104,6 +130,9 @@ class My_Account: AppCompatActivity() {
 
         tv_refunded = findViewById<TextView>(R.id.refunded_tv)
         tv_refunded.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Refunded::class.java)
             startActivity(intent)
             finish()
@@ -111,6 +140,9 @@ class My_Account: AppCompatActivity() {
 
         my_purchase_history = findViewById<TextView>(R.id.view_all_purchase)
         my_purchase_history.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_All::class.java)
             startActivity(intent)
             finish()
@@ -118,6 +150,9 @@ class My_Account: AppCompatActivity() {
 
         img_all = findViewById(R.id.all_img)
         img_all.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_All::class.java)
             startActivity(intent)
             finish()
@@ -125,6 +160,9 @@ class My_Account: AppCompatActivity() {
 
         img_bought = findViewById(R.id.bought_img)
         img_bought.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Bought::class.java)
             startActivity(intent)
             finish()
@@ -132,6 +170,9 @@ class My_Account: AppCompatActivity() {
 
         img_cancelled = findViewById(R.id.cancelled_img)
         img_cancelled.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Cancelled::class.java)
             startActivity(intent)
             finish()
@@ -139,6 +180,9 @@ class My_Account: AppCompatActivity() {
 
         img_refunded = findViewById(R.id.refunded_img)
         img_refunded.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, My_Purchase_Refunded::class.java)
             startActivity(intent)
             finish()

@@ -53,6 +53,10 @@ class Rv_Home_Page : AppCompatActivity() {
         setContentView(R.layout.activity_rv_home_page)
 
         // API ===
+
+        // TOKEN
+        val authToken = intent.getStringExtra("authToken")
+
         mainContainer = findViewById(R.id.mainContainer)
         mainContainer.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
@@ -75,6 +79,9 @@ class Rv_Home_Page : AppCompatActivity() {
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
         cartlogo.setOnClickListener(){
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this, Rv_cart::class.java)
             startActivity(intent)
         }
@@ -86,10 +93,16 @@ class Rv_Home_Page : AppCompatActivity() {
 //                    finish()}
 
                 R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
+                    // TOKEN
+                    intent.putExtra("authToken", authToken)
+
                     startActivity(intent)
                     finish()}
 
                 R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
+                    // TOKEN
+                    intent.putExtra("authToken", authToken)
+
                     startActivity(intent)
                     finish()}
             }
