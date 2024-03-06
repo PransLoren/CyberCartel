@@ -1,17 +1,19 @@
 package com.gallardo.cyber_cartel
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
-import com.gallardo.cyber_cartel.api.models.Products
-import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class Product_Page : AppCompatActivity() {
 
@@ -37,6 +39,7 @@ class Product_Page : AppCompatActivity() {
 
         val intent = intent
 
+        val id = intent?.getIntExtra("id", 0)
         val photo = intent?.getStringExtra("photo")
         val name = intent?.getStringExtra("name")
         val price = intent?.getStringExtra("price")
@@ -73,6 +76,11 @@ class Product_Page : AppCompatActivity() {
         product_cart.setOnClickListener {
             // Show a toast message
             Toast.makeText(this@Product_Page, "Product added to cart!", Toast.LENGTH_SHORT).show()
+
+            // API ADD TO CART
+            if (id != null) {
+                addToCart(id)
+            }
         }
 
         // ITO ATA YUNG BUTTON NA PAPUNTA CART
@@ -95,6 +103,27 @@ class Product_Page : AppCompatActivity() {
         //Product Description
         productDescription = findViewById(R.id.product_description)
         productDescription.text = details
+    }
+
+    fun addToCart(id:Int){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+
+        val retrofitData = retrofitBuilder.addToCart(id)
+
+        retrofitData.enqueue(object : Callback<Void?> {
+            override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
+                //
+            }
+
+            override fun onFailure(call: Call<Void?>, t: Throwable) {
+                //
+            }
+        })
     }
 
     private fun navigateBack() {

@@ -53,6 +53,8 @@ class Checkout: AppCompatActivity() {
 
 
         // API ===
+        // TOKEN
+        val authToken = intent.getStringExtra("authToken")
 
         rv_checkout = findViewById(R.id.rv_checkout)
 
@@ -60,6 +62,12 @@ class Checkout: AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         rv_checkout.layoutManager = linearLayoutManager
         getMyCart()
+
+//        val id = intent?.getStringExtra("id")
+        val address = intent.getStringExtra("address")
+        val region = intent.getStringExtra("region")
+        val city = intent.getStringExtra("city")
+        val postal_code = intent.getStringExtra("postal_code")
 
         // ===
 
@@ -71,16 +79,16 @@ class Checkout: AppCompatActivity() {
 
 
         houseNumber = findViewById(R.id.checkout_house_number)
-        houseNumber.text = "House Number"
+        houseNumber.text = address
 
         municipality = findViewById(R.id.checkout_municipality)
-        municipality.text = "Municipality"
+        municipality.text = city
 
         province = findViewById(R.id.checkout_province)
-        province.text = "Province"
+        province.text = region
 
         postalCode = findViewById(R.id.tv_PostalCode_checkout)
-        postalCode.text = "Postal Code"
+        postalCode.text = postal_code
 
 
         //Total Price
@@ -95,6 +103,11 @@ class Checkout: AppCompatActivity() {
         }
         confirm = findViewById(R.id.checkOut_Button_checkout)
         confirm.setOnClickListener(){
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
+            checkout()
+
             val intent = Intent(this, My_Purchase_Bought::class.java)
             startActivity(intent)
         }
@@ -106,6 +119,7 @@ class Checkout: AppCompatActivity() {
         recyclerView.adapter = checkOutAdapter
 
 //        checkOut_Data()
+
     }
 
 
@@ -134,6 +148,27 @@ class Checkout: AppCompatActivity() {
 
             override fun onFailure(call: Call<List<CartItem>?>, t: Throwable) {
                 Log.d("HomePage", "onFailure" + t.message)
+            }
+        })
+    }
+
+    private fun checkout(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+
+        val retrofitData = retrofitBuilder.checkout()
+
+        retrofitData.enqueue(object : Callback<Void?> {
+            override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
+                //
+            }
+
+            override fun onFailure(call: Call<Void?>, t: Throwable) {
+                //
             }
         })
     }

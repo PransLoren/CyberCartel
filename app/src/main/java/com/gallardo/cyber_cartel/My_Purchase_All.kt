@@ -149,10 +149,10 @@ class My_Purchase_All : AppCompatActivity() {
                 response: Response<List<ProfileProductsItem>?>
             ) {
 
-                val responseBody = response.body()!!
-                myAdapter_ProfileProducts = MyAdapter_ProfileProducts(baseContext, responseBody)
-                myAdapter_ProfileProducts.notifyDataSetChanged()
-                my_purchase_All_rv.adapter = myAdapter_ProfileProducts
+//                val responseBody = response.body()!!
+//                myAdapter_ProfileProducts = MyAdapter_ProfileProducts(baseContext, responseBody)
+//                myAdapter_ProfileProducts.notifyDataSetChanged()
+//                my_purchase_All_rv.adapter = myAdapter_ProfileProducts
             }
 
             override fun onFailure(call: Call<List<ProfileProductsItem>?>, t: Throwable) {

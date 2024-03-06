@@ -11,9 +11,16 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.gallardo.cyber_cartel.BASE_URL
 import com.gallardo.cyber_cartel.Product_Page
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.cb_api.ApiService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MyAdapter_Products(val context: Context, val productsList: List<ProductsItem>): RecyclerView.Adapter<MyAdapter_Products.ViewHolder>() {
     class ViewHolder(productView: View): RecyclerView.ViewHolder(productView){
@@ -55,6 +62,7 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
 
+            intent.putExtra("id", currentItem.id)
             intent.putExtra("name", currentItem.name)
             intent.putExtra("price", currentItem.price)
             intent.putExtra("category", currentItem.category)
@@ -64,6 +72,5 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
             it.context.startActivity(intent)
 
         }
-
     }
 }
