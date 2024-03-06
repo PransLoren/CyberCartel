@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/backblk"
+        app:srcCompat="@drawable/back"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -25,7 +25,7 @@
         android:id="@+id/imageView5"
         android:layout_width="214dp"
         android:layout_height="37dp"
-        android:src="@drawable/cbcartellogo"
+        android:src="@drawable/cbcartel_text"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/cartblk"
+        app:srcCompat="@drawable/cart_green"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -68,10 +68,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.429">
+        app:layout_constraintVertical_bias="0.661">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -105,14 +105,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/product_price"
+                android:id="@+id/pesos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/spoof_bold"
                 android:layout_marginBottom="10dp"
-                android:text="Price: ₱2,590.00"
+                android:fontFamily="@font/spoof_bold"
+                android:text="Price: ₱"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.529" />
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/spoof_bold"
+                android:text="100"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 app:layout_constraintBottom_toTopOf="@+id/divider"
@@ -178,8 +193,9 @@ Dimensions: L338*W255*H335mm"
         android:id="@+id/product_addToCart"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@drawable/custombutton"
         android:text="Add to Cart"
+        android:fontFamily="@font/spoof_bold"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -145,7 +145,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18"
-        app:srcCompat="@drawable/cbcartellogo" />
+        app:srcCompat="@drawable/cbcartel_text" />
 
 
     <Button

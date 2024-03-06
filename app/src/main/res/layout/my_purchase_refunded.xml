@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/cartblk"
+        app:srcCompat="@drawable/cart_green"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -30,7 +30,7 @@
         android:layout_height="37dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="72dp"
-        android:src="@drawable/cbcartellogo"
+        android:src="@drawable/cbcartel_text"
         app:layout_constraintBottom_toBottomOf="@+id/materialDivider_orders"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
@@ -40,9 +40,9 @@
         android:id="@+id/btnav_bottomNavigation_MyProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        android:background="@drawable/gradient"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/backblk"
+        app:srcCompat="@drawable/back"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 

@@ -120,7 +120,7 @@
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
-        android:background="@color/black"
+        android:background="@drawable/custombutton"
         android:fontFamily="@font/spoof_bold"
         android:text="CONFIRM"
         android:textColor="@color/white"
@@ -137,7 +137,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backblk"
+        app:srcCompat="@drawable/back"
         tools:ignore="ContentDescription" />
 
     <TextView

@@ -150,19 +150,19 @@ class Rv_Home_Page : AppCompatActivity() {
 
 
     private fun prepareiconListData() {
-        var icon = home_page_categories_DC(R.drawable.cpubg)
+        var icon = home_page_categories_DC(R.drawable.processor)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.gpubg)
+        icon = home_page_categories_DC(R.drawable.graphics_card)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.hddbg)
+        icon = home_page_categories_DC(R.drawable.storage)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.mobobg)
+        icon = home_page_categories_DC(R.drawable.motherboard_cat)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.psubg)
+        icon = home_page_categories_DC(R.drawable.psu)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.rambg)
+        icon = home_page_categories_DC(R.drawable.ram)
         categories_dataClass.add(icon)
-        icon = home_page_categories_DC(R.drawable.ssdbg)
+        icon = home_page_categories_DC(R.drawable.chassis)
         categories_dataClass.add(icon)
     }
 //

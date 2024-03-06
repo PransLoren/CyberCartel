@@ -10,7 +10,7 @@
         android:layout_width="214dp"
         android:layout_height="37dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/cbcartellogo"
+        android:src="@drawable/cbcartel_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,22 +36,22 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_Categories"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="90dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/mainContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_categories_homepage"
-        app:layout_constraintVertical_bias="0.75" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnav_bottomNavigation_MyProfile"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        android:background="@drawable/gradient"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -63,10 +63,10 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cartblk"/>
+        app:srcCompat="@drawable/cart_green" />
 
 
     <TextView
@@ -84,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
 <!--        android:id="@+id/btnav_bottomNavigation"-->

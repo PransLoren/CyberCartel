@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.014"
-        app:srcCompat="@drawable/backblk"
+        app:srcCompat="@drawable/back"
         android:elevation="8dp"
         tools:ignore="ContentDescription" />
 
@@ -23,13 +23,13 @@
         android:id="@+id/tv_Account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:elevation="8dp"
         android:fontFamily="@font/spoof_bold"
         android:text="My Address"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

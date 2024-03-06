@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toTopOf="@+id/materialDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backblk"
+        app:srcCompat="@drawable/back"
         tools:ignore="ContentDescription" />
 
     <TextView
