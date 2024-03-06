@@ -23,6 +23,7 @@ class Product_Page : AppCompatActivity() {
 
     private lateinit var img_back: ImageView
     private lateinit var product_cart: Button
+    private lateinit var buyNow : Button
     private lateinit var cartz: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,6 +89,14 @@ class Product_Page : AppCompatActivity() {
         cartz.setOnClickListener {
             val intent = Intent(this,Rv_cart::class.java)
             intent.putExtra("previous_activity", "Cart")
+            startActivity(intent)
+            finish()
+        }
+
+        buyNow = findViewById(R.id.product_buyNow)
+        buyNow.setOnClickListener {
+            val intent = Intent(this,Checkout::class.java)
+            intent.putExtra("previous_activity", "CheckOut")
             startActivity(intent)
             finish()
         }
