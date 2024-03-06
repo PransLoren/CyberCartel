@@ -19,7 +19,7 @@ interface ApiService {
     @POST("api/auth/register")
     fun register(@Body user: User):Call<User>
     @POST("api/auth/login")
-    fun loginUser(@Body loginUser: LoginUser): Call<LoginUser>
+    fun loginUser(@Body loginUser: LoginUser): Call<LoginResponse> // PINALITAN RESPONSE INTO LOGIN RESPONSE FROM LOGIN USER
 
 
 
@@ -75,8 +75,11 @@ interface ApiService {
     @GET("api/profile/refunded-index")
     fun getRefunded(): Call<List<ProfileProductsItem>>
 
-    // MOVES BOUGHT TO CANCELLED
-//    @POST("")
+    @POST("api/profile/products-refund/{id}")
+    fun refundProduct(@Path("id") id: Int): Call<Void>
+
+    @POST("api/profile/products-cancel/{id}")
+    fun cancelProduct(@Path("id") id: Int): Call<Void>
     // ===== END FOR PROFILE ===== //
 
 
@@ -93,8 +96,11 @@ interface ApiService {
     fun getCheckout(): Call<List<CartItem>>
 
     // ADD TO CART
-//    @POST("cart/cart-add/{id}")
-//    fun addToCart(@Body productRequest: ProductsRequest) Call<>
+    @POST("api/cart/cart-add/{id}")
+    fun addToCart(@Path("id") id: Int): Call<Void>
+
+    @POST("api/cart/cart-checkout")
+    fun checkout(): Call<Void>
 
     // REMOVES FROM CART
     @DELETE("api/cart/cart-remove/{id}")
