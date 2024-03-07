@@ -81,13 +81,6 @@ class My_Account: AppCompatActivity() {
             true
         }
 
-        change_pass = findViewById(R.id.change_password)
-        change_pass.setOnClickListener {
-            val intent = Intent(this, Change_Password::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         address = findViewById(R.id.address)
         address.setOnClickListener {
             // TOKEN
