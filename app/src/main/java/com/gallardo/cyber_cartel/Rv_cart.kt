@@ -67,12 +67,6 @@ class Rv_cart : AppCompatActivity() {
 
 
         // Cart Prices
-        subTotal = findViewById(R.id.tv_subtotal_price)
-        subTotal.text = "100.00"
-
-        subTotal = findViewById(R.id.tv_shipping_price)
-        subTotal.text = "50.00"
-
         subTotal = findViewById(R.id.tv_total_price)
         subTotal.text = "150.00"
 
