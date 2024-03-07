@@ -53,8 +53,6 @@ class Checkout: AppCompatActivity() {
 
 
         // API ===
-        // TOKEN
-        val authToken = intent.getStringExtra("authToken")
 
         rv_checkout = findViewById(R.id.rv_checkout)
 
@@ -63,17 +61,21 @@ class Checkout: AppCompatActivity() {
         rv_checkout.layoutManager = linearLayoutManager
         getMyCart()
 
-//        val id = intent?.getStringExtra("id")
+        // ===
+        val intent = intent
+
+        val id = intent.getStringExtra("id")
         val address = intent.getStringExtra("address")
         val region = intent.getStringExtra("region")
         val city = intent.getStringExtra("city")
         val postal_code = intent.getStringExtra("postal_code")
 
-        // ===
 
 
 
         //Users Address
+//        fullName = findViewById(R.id.tv_FullName_checkout)
+//        fullName.text = "Full Name"
 
 
         houseNumber = findViewById(R.id.checkout_house_number)
@@ -101,12 +103,8 @@ class Checkout: AppCompatActivity() {
         }
         confirm = findViewById(R.id.checkOut_Button_checkout)
         confirm.setOnClickListener(){
-            // TOKEN
-            intent.putExtra("authToken", authToken)
-
-            checkout()
-
             val intent = Intent(this, My_Purchase_Bought::class.java)
+            checkout()
             startActivity(intent)
         }
 
@@ -117,7 +115,6 @@ class Checkout: AppCompatActivity() {
         recyclerView.adapter = checkOutAdapter
 
 //        checkOut_Data()
-
     }
 
 
@@ -157,7 +154,6 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-
         val retrofitData = retrofitBuilder.checkout()
 
         retrofitData.enqueue(object : Callback<Void?> {
@@ -170,6 +166,7 @@ class Checkout: AppCompatActivity() {
             }
         })
     }
+
     // ===
 
 

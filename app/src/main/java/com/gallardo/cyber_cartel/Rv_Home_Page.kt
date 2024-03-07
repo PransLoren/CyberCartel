@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Products
@@ -57,32 +58,32 @@ class Rv_Home_Page : AppCompatActivity() {
         // TOKEN
         val authToken = intent.getStringExtra("authToken")
 
+        val intent = Intent(this@Rv_Home_Page, MyAdapter_Products::class.java)
+        intent.putExtra("authToken", authToken)
+
+
+        // CHECK IF MERON TOKEN
+        val testing = findViewById<ImageView>(R.id.imageView5)
+        testing.setOnClickListener{
+            Toast.makeText(this@Rv_Home_Page, "$authToken", Toast.LENGTH_SHORT).show()
+        }
+
         mainContainer = findViewById(R.id.mainContainer)
         mainContainer.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
         mainContainer.layoutManager = linearLayoutManager
 
         getMyProducts()
-
-        // OLD CLICK VIEW
-
-//        myAdapter_Products.onItemClick = {
-//            val intent = Intent(this, Product_Page::class.java)
-////            intent.putExtra("products")
-//            startActivity(intent)
-//        }
-
-        // ===
         // END OF API===
 
         cartlogo = findViewById(R.id.img_cart_homepage)
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
         cartlogo.setOnClickListener(){
+            val intent = Intent(this, Rv_cart::class.java)
+
             // TOKEN
             intent.putExtra("authToken", authToken)
-
-            val intent = Intent(this, Rv_cart::class.java)
             startActivity(intent)
         }
 

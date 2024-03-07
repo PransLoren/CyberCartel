@@ -1,5 +1,6 @@
 package com.gallardo.cyber_cartel
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -25,14 +26,13 @@ class Product_Page : AppCompatActivity() {
     private lateinit var product_cart: Button
     private lateinit var buyNow : Button
     private lateinit var cartz: ImageView
+    private lateinit var testing : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.product_details)
 
-
-
-        // FOR API ===
+        // FOR API === //
         val img_second = findViewById<ImageView>(R.id.product_viewPager2)
         val product_name = findViewById<TextView>(R.id.product_name)
         val product_price = findViewById<TextView>(R.id.product_price)
@@ -45,13 +45,23 @@ class Product_Page : AppCompatActivity() {
         val name = intent?.getStringExtra("name")
         val price = intent?.getStringExtra("price")
         val details = intent?.getStringExtra("details")
+        val category = intent?.getStringExtra("category")
+
+        val authToken = intent?.getStringExtra("authToken")
+
+        // TEST IF MAY TOKEN
+        val testing = findViewById<ImageView>(R.id.imageView5)
+        testing.setOnClickListener{
+            Toast.makeText(this@Product_Page, "$authToken", Toast.LENGTH_SHORT).show()
+        }
 
         product_name.text = name
         product_price.text = price
         product_details.text = details
 
         Glide.with(this).load(photo).into(img_second)
-        // ===
+        // ===== //
+
 
 
 
@@ -72,7 +82,7 @@ class Product_Page : AppCompatActivity() {
             navigateBack()
         }
 
-        // BUTTON NA ADD TO CART
+        // ADD TO CART
         product_cart = findViewById(R.id.product_addToCart)
         product_cart.setOnClickListener {
             // Show a toast message
@@ -84,19 +94,33 @@ class Product_Page : AppCompatActivity() {
             }
         }
 
-        // ITO ATA YUNG BUTTON NA PAPUNTA CART
-        cartz = findViewById(R.id.Cart)
-        cartz.setOnClickListener {
-            val intent = Intent(this,Rv_cart::class.java)
-            intent.putExtra("previous_activity", "Cart")
-            startActivity(intent)
-            finish()
-        }
+
 
         buyNow = findViewById(R.id.product_buyNow)
         buyNow.setOnClickListener {
             val intent = Intent(this,Checkout::class.java)
             intent.putExtra("previous_activity", "CheckOut")
+            if (id != null) {
+                addToCart(id)
+            }
+            startActivity(intent)
+            finish()
+        }
+
+        // ITO ATA YUNG BUTTON NA PAPUNTA CART
+        cartz = findViewById(R.id.Cart)
+        cartz.setOnClickListener {
+            val intent = Intent(this,Rv_cart::class.java)
+            intent.putExtra("previous_activity", "Cart")
+
+            // TESTING PRA SA DATA TRANSFER
+            intent.putExtra("id", id)
+            intent.putExtra("name", name)
+            intent.putExtra("price", price)
+            intent.putExtra("category", category)
+            intent.putExtra("details", details)
+            intent.putExtra("photo", photo)
+
             startActivity(intent)
             finish()
         }
@@ -112,6 +136,9 @@ class Product_Page : AppCompatActivity() {
         //Product Description
         productDescription = findViewById(R.id.product_description)
         productDescription.text = details
+
+//        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+//        val authToken = sharedPreferences.getString("authToken", null)
     }
 
     fun addToCart(id:Int){
@@ -120,8 +147,6 @@ class Product_Page : AppCompatActivity() {
             .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
-
-
         val retrofitData = retrofitBuilder.addToCart(id)
 
         retrofitData.enqueue(object : Callback<Void?> {

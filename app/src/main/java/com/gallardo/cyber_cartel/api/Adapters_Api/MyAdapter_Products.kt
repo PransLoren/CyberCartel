@@ -48,6 +48,7 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
         val currentItem = productsList[position]
 
         val imagename = currentItem.photo
+
         val imagepath = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/$imagename"
         Glide.with(this.context).load(imagepath).into(holder.iv_product_Image)
 
@@ -55,12 +56,17 @@ class MyAdapter_Products(val context: Context, val productsList: List<ProductsIt
         holder.tv_category_title.text = currentItem.category
         holder.tv_product_price.text = currentItem.price
 
+
+
         val cont = holder.constraint_row.context
         holder.constraint_row.setOnClickListener {
 
             val intent = Intent(it.context, Product_Page::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
+
+            val authToken = intent.getStringExtra("authToken")
+            intent.putExtra("authToken", authToken)
 
             intent.putExtra("id", currentItem.id)
             intent.putExtra("name", currentItem.name)
