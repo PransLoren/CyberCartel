@@ -126,7 +126,7 @@
                 android:background="@drawable/border"
                 android:ems="10"
                 android:hint="Bugallon"
-                android:inputType="number"
+                android:inputType="text"
                 android:fontFamily="@font/spoof_regular"
                 android:paddingLeft="15dp"
                 android:textSize="18sp" />
@@ -155,7 +155,7 @@
                 android:ems="10"
                 android:hint="Pangasinan"
                 android:fontFamily="@font/spoof_regular"
-                android:inputType="number"
+                android:inputType="text"
                 android:paddingLeft="15dp"
                 android:textSize="18sp" />
 
