@@ -7,6 +7,7 @@ import android.util.Log.d
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cart
@@ -58,16 +59,43 @@ class Rv_cart : AppCompatActivity() {
         Cart_RecyclerView.layoutManager = linearLayoutManager
         getMyCart()
 
+        // DATA TRANSFER
+        val id = intent?.getIntExtra("id", 0)
+        val photo = intent?.getStringExtra("photo")
+        val name = intent?.getStringExtra("name")
+        val price = intent?.getStringExtra("price")
+        val details = intent?.getStringExtra("details")
+        val category = intent?.getStringExtra("category")
+
         // ===
+
+        // TOKEN TESTING
+        val testing = findViewById<TextView>(R.id.tv_Cart)
+        testing.setOnClickListener{
+            Toast.makeText(this@Rv_cart, "$authToken", Toast.LENGTH_SHORT).show()
+        }
 
 //        productList = ArrayList()
 
+        // PABALIK SA PRODUCT
         BackArrow = findViewById(R.id.Cart_backButton)
         BackArrow.setOnClickListener {
+            val intent = Intent(this, Rv_Home_Page::class.java)
+
+            intent.putExtra("id", id)
+            intent.putExtra("name", name)
+            intent.putExtra("price", price)
+            intent.putExtra("category", category)
+            intent.putExtra("details", details)
+            intent.putExtra("photo", photo)
+
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
+//            startActivity(intent)
+
             navigateBack()
         }
-
-
 
         // Cart Prices
         subTotal = findViewById(R.id.tv_subtotal_price)
@@ -92,19 +120,10 @@ class Rv_cart : AppCompatActivity() {
             finish()
         }
 
-//        recyclerView = findViewById<View>(R.id.Cart_RecyclerView) as RecyclerView
-//        cartAdapter = cart_adapter(this@Rv_cart,productList)
-//        val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this)
-//        recyclerView!!.layoutManager = layoutManager
-////        cartRecyclerView.layoutManager = LinearLayoutManager(this)
-//        recyclerView!!.adapter = cartAdapter
-//
-//        prepareProductListData()
-
     }
-
     // FOR API ===
     private fun getMyCart(){
+        val authToken = intent.getStringExtra("authToken")
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -129,72 +148,79 @@ class Rv_cart : AppCompatActivity() {
             }
         })
     }
-    // ===
+    // === //
 
     private fun navigateBack() {
+        val authToken = intent.getStringExtra("authToken")
         val previousActivity = intent.getStringExtra("previous_activity")
         when (previousActivity) {
             "Category_Cpu" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Cpu::class.java))
             }
             "Category_Gpu" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Gpu::class.java))
             }
             "Category_Hdd" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Hdd::class.java))
             }
             "Category_MoBo" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_MoBo::class.java))
             }
             "Category_Ssd" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Case::class.java))
             }
             "Category_Ram" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Ram::class.java))
             }
             "Category_Psu" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Category_Psu::class.java))
             }
             "Cart" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Product_Page::class.java))
             }
             "My_Account" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, My_Account::class.java))
             }
             "My_Purchase_All" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, My_Purchase_All::class.java))
             }
             "My_Purchase_Bought" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, My_Purchase_Bought::class.java))
             }
             "My_Purchase_Cancelled" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, My_Purchase_Cancelled::class.java))
             }
             "My_Purchase_Refunded" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, My_Purchase_Refunded::class.java))
             }
             "Amd_Build" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Rv_amd_build::class.java))
             }
             "Intel_Build" -> {
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Rv_intel_build::class.java))
             }
             else -> {
                 // Handle unknown previous activity or default behavior
                 // For example, navigate back to the home screen
+                intent.putExtra("authToken", authToken)
                 startActivity(Intent(this, Rv_Home_Page::class.java))
             }
         }
         finish()
     }
-
-//    private fun prepareProductListData() {
-//        var product = cart_dataclass("AMD INTELCORE 15GEN PROCESSOR", "12,000","okay",R.drawable.cpu_product1,"1")
-//        productList.add(product)
-//        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-//        productList.add(product)
-//        product = cart_dataclass("cpu", "12,000","okay",R.drawable.cpu_product1,"1")
-//        productList.add(product)
-//
-//    }
 }

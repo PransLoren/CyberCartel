@@ -1,6 +1,7 @@
 package com.gallardo.cyber_cartel
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.JsonToken
@@ -20,12 +21,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class Login_Page : AppCompatActivity() {
 
     private lateinit var createAccount: TextView
     private lateinit var button : Button
     private lateinit var email : EditText
     private lateinit var password : EditText
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +83,7 @@ class Login_Page : AppCompatActivity() {
 //        )
 //    }
 
-    // PINALITAN KO RESPONSES FROM LOGUNUSER TO LOGIN RESPONSE
+    // PINALITAN KO RESPONSES FROM LOGIN USER TO LOGIN RESPONSE
     private fun loginUser() {
         val email = findViewById<EditText>(R.id.et_email_logInPage).text.toString().trim()
         val password = findViewById<EditText>(R.id.et_passwordLogIn).text.toString().trim()
@@ -103,13 +106,20 @@ class Login_Page : AppCompatActivity() {
 
                     // TOKEN
                     val authToken = "Bearer ${response.body()?.token}"
-
                     // Login successful, navigate to main activity
-                    loginNav(authToken)
+//                    intent.putExtra("authToken", authToken)
+//                    startActivity(Intent(this@Login_Page, Rv_Home_Page::class.java))
+//                    loginNav(authToken)
+
+                    val intent = Intent(this@Login_Page, Rv_Home_Page::class.java)
+                    intent.putExtra("authToken", authToken)
+                    startActivity(intent)
+                    // END NG TOKEN PART
+
                     finish()
                     Toast.makeText(
                         this@Login_Page,
-                        "Login successful!",
+                        "Login Successful",
                         Toast.LENGTH_SHORT
                     ).show()
                 } else {

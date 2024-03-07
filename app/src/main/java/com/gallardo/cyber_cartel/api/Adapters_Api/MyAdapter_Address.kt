@@ -32,6 +32,7 @@ class MyAdapter_Address (val context: Context, val addressList: List<AddressItem
         val postal: TextView = addressView.findViewById(R.id.tv_PostalCode)
 
         val delete_button: ImageView = addressView.findViewById(R.id.trashIcon_address)
+        val select_button: TextView = addressView.findViewById(R.id.tv_SelectButton_address)
 
     }
 
@@ -56,14 +57,30 @@ class MyAdapter_Address (val context: Context, val addressList: List<AddressItem
             deleteItem(currentItem.id)
         }
 
-        val intent = Intent(context, Checkout::class.java)
+        holder.select_button.setOnClickListener{
+            val intent = Intent(it.context, Checkout::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra("id", currentItem.id)
+            intent.putExtra("address", currentItem.address)
+            intent.putExtra("region", currentItem.region)
+            intent.putExtra("city", currentItem.city)
+            intent.putExtra("postal_code", currentItem.postal_code)
+            it.context.startActivity(intent)
+        }
 
-        intent.putExtra("id", currentItem.id)
-        intent.putExtra("address", currentItem.address)
-        intent.putExtra("region", currentItem.region)
-        intent.putExtra("city", currentItem.city)
-        intent.putExtra("postal_code", currentItem.postal_code)
-        context.startActivity(intent)
+        // SELECT WORKS BUT DOESNT STAY
+//        holder.select_button.setOnClickListener{
+//            val intent = Intent(context, Checkout::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+//            context.startActivity(intent)
+//
+//            intent.putExtra("id", currentItem.id)
+//            intent.putExtra("address", currentItem.address)
+//            intent.putExtra("region", currentItem.region)
+//            intent.putExtra("city", currentItem.city)
+//            intent.putExtra("postal_code", currentItem.postal_code)
+//            context.startActivity(intent)
+//        }
 
     }
 

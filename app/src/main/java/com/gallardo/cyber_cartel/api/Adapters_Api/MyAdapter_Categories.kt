@@ -53,8 +53,8 @@ class MyAdapter_Categories (val context: Context, val productsList: List<Product
 
             val intent = Intent(it.context, Product_Page::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intent)
-
+//            context.startActivity(intent)
+            intent.putExtra("id", currentItem.id)
             intent.putExtra("name", currentItem.name)
             intent.putExtra("price", currentItem.price)
             intent.putExtra("category", currentItem.category)
