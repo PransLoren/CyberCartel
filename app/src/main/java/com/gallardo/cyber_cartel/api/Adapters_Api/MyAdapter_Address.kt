@@ -1,6 +1,7 @@
 package com.gallardo.cyber_cartel.api.Adapters_Api
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.BASE_URL
+import com.gallardo.cyber_cartel.Checkout
+import com.gallardo.cyber_cartel.Product_Page
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
@@ -52,6 +55,16 @@ class MyAdapter_Address (val context: Context, val addressList: List<AddressItem
         holder.delete_button.setOnClickListener{
             deleteItem(currentItem.id)
         }
+
+        val intent = Intent(context, Checkout::class.java)
+
+        intent.putExtra("id", currentItem.id)
+        intent.putExtra("address", currentItem.address)
+        intent.putExtra("region", currentItem.region)
+        intent.putExtra("city", currentItem.city)
+        intent.putExtra("postal_code", currentItem.postal_code)
+        context.startActivity(intent)
+
     }
 
 
@@ -66,11 +79,11 @@ class MyAdapter_Address (val context: Context, val addressList: List<AddressItem
 
         retrofitData.enqueue(object : Callback<ResponseBody?> {
             override fun onResponse(call: Call<ResponseBody?>, response: Response<ResponseBody?>) {
-                TODO("Not yet implemented")
+                //
             }
 
             override fun onFailure(call: Call<ResponseBody?>, t: Throwable) {
-                TODO("Not yet implemented")
+                //
             }
         })
 

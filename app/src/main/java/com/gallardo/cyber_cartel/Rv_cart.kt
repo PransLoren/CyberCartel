@@ -48,6 +48,9 @@ class Rv_cart : AppCompatActivity() {
 
         // API ===
 
+        // TOKEN
+        val authToken = intent.getStringExtra("authToken")
+
         Cart_RecyclerView = findViewById(R.id.Cart_RecyclerView)
 
         Cart_RecyclerView.setHasFixedSize(true)
@@ -74,6 +77,9 @@ class Rv_cart : AppCompatActivity() {
         //Checkout Button
         checkOut = findViewById(R.id.checkOut_Button)
         checkOut.setOnClickListener{
+            // TOKEN
+            intent.putExtra("authToken", authToken)
+
             val intent = Intent(this,Checkout::class.java)
             intent.putExtra("previous_activity", "Checkout")
             startActivity(intent)
