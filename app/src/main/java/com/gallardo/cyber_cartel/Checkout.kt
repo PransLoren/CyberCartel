@@ -66,8 +66,6 @@ class Checkout: AppCompatActivity() {
 
 
         //Users Address
-        fullName = findViewById(R.id.tv_FullName_checkout)
-        fullName.text = "Full Name"
 
 
         houseNumber = findViewById(R.id.checkout_house_number)
