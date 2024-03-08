@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.gallardo.cyber_cartel.Adapters.Category.SSD_Adapter
 import com.gallardo.cyber_cartel.DataClass.Category.SSD_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Categories

@@ -4,11 +4,13 @@ import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.api.models.ProductsItem
+import com.gallardo.cyber_cartel.api.models.cartTotal
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -87,6 +89,9 @@ interface ApiService {
 
 
     // ===== FOR CART =====//
+    // SHOWS SUM FOR PRODUCTS
+    @GET("api/cart/actualsum")
+    fun getCartSum(): Call<cartTotal>
     // SHOWS CART ITEMS
     @GET("api/cart/cart-show")
     fun getCart():Call<List<CartItem>>
