@@ -91,7 +91,7 @@ class Create_account : AppCompatActivity() {
             override fun onResponse(call: retrofit2.Call<User>, response: Response<User>) {
 
                 if (response.isSuccessful) {
-                    startActivity(Intent(this@Create_account, Rv_Home_Page::class.java))
+                    startActivity(Intent(this@Create_account, Login_Page::class.java))
                     finish()
                     Toast.makeText(
                         this@Create_account,
