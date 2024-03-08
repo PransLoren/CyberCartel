@@ -1,6 +1,5 @@
 package com.gallardo.cyber_cartel
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +33,7 @@ class Product_Page : AppCompatActivity() {
         setContentView(R.layout.product_details)
 
         // FOR API === //
+
         val img_second = findViewById<ImageView>(R.id.product_viewPager2)
         val product_name = findViewById<TextView>(R.id.product_name)
         val product_price = findViewById<TextView>(R.id.product_price)
@@ -120,7 +121,6 @@ class Product_Page : AppCompatActivity() {
             intent.putExtra("category", category)
             intent.putExtra("details", details)
             intent.putExtra("photo", photo)
-
             startActivity(intent)
             finish()
         }
@@ -147,7 +147,9 @@ class Product_Page : AppCompatActivity() {
             .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
-        val retrofitData = retrofitBuilder.addToCart(id)
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+
+        val retrofitData = retrofitBuilder.addToCart(id, accessToken!!)
 
         retrofitData.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {

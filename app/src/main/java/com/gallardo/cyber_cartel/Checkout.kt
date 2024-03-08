@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +15,9 @@ import com.gallardo.cyber_cartel.Adapters.Checkout_Adapter
 import com.gallardo.cyber_cartel.DataClass.Checkout_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Checkout
 import com.gallardo.cyber_cartel.api.models.CartItem
+import com.gallardo.cyber_cartel.api.models.`₱`
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,8 +95,8 @@ class Checkout: AppCompatActivity() {
 
 
         //Total Price
-        total = findViewById(R.id.amount_Checkout)
-        total.text = "100.00"
+        total = findViewById(R.id.tv_totalCart_checkout)
+//        total.text = "100.00"
 
 
         back_btn = findViewById(R.id.Cart_backButton_checkout)
@@ -114,11 +117,38 @@ class Checkout: AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 1)
         recyclerView.adapter = checkOutAdapter
 
+        getTotal()
 //        checkOut_Data()
     }
 
 
     // FOR API ===
+    private fun getTotal(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCartSum(accessToken!!)
+
+        retrofitData.enqueue(object : Callback<`₱`?> {
+            override fun onResponse(call: Call<`₱`?>, response: Response<`₱`?>) {
+                if(response.isSuccessful){
+//                    val data = response.body()
+                    total.text = response.body().toString()
+                }
+                else{
+                    total.text = "Failed to get total"
+                }
+            }
+
+            override fun onFailure(call: Call<`₱`?>, t: Throwable) {
+                //
+            }
+        })
+    }
     private fun getMyCart(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -126,7 +156,8 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCheckout()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCart(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<CartItem>?> {
             override fun onResponse(
@@ -154,13 +185,17 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.checkout()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.checkout(accessToken!!)
 
         retrofitData.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
-                //
+                Toast.makeText(
+                    this@Checkout,
+                    "Thank you for shopping at Cyber Cartel!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-
             override fun onFailure(call: Call<Void?>, t: Throwable) {
                 //
             }

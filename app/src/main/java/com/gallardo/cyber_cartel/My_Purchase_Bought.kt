@@ -3,11 +3,9 @@ package com.gallardo.cyber_cartel
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 //import com.gallardo.cyber_cartel.Adapters.My_Purchase_Bought_Adapter
@@ -15,6 +13,7 @@ import com.gallardo.cyber_cartel.DataClass.My_Purchase_Bought_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Bought
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
@@ -47,6 +46,9 @@ class My_Purchase_Bought : AppCompatActivity() {
         setContentView(R.layout.my_purchase_bought)
 
         // API ===
+
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+
         my_purchase_bought_rv = findViewById(R.id.my_purchase_bought_rv)
 
         my_purchase_bought_rv.setHasFixedSize(true)
@@ -137,7 +139,8 @@ class My_Purchase_Bought : AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getBought()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getBought(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
             override fun onResponse(
@@ -146,7 +149,7 @@ class My_Purchase_Bought : AppCompatActivity() {
             ) {
 
                 val responseBody = response.body()!!
-                myAdapter_Bought = MyAdapter_Bought(baseContext, responseBody)
+                myAdapter_Bought = MyAdapter_Bought(baseContext, responseBody, accessToken)
                 myAdapter_Bought.notifyDataSetChanged()
                 my_purchase_bought_rv.adapter = myAdapter_Bought
             }

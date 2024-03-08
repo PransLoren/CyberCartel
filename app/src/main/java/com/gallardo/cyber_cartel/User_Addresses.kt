@@ -6,16 +6,14 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 //import com.gallardo.cyber_cartel.Adapters.User_Addresses_Adapter
 import com.gallardo.cyber_cartel.DataClass.User_Addresses_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Address
-import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Categories
 import com.gallardo.cyber_cartel.api.models.AddressItem
-import com.gallardo.cyber_cartel.api.models.ProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +26,7 @@ class User_Addresses : AppCompatActivity() {
     lateinit var myAdapter_Address: MyAdapter_Address
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var user_addresses_rv: RecyclerView
+
     //
 
 
@@ -80,7 +79,8 @@ class User_Addresses : AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getAddress()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getAddress(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<AddressItem>?> {
             override fun onResponse(

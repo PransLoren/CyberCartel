@@ -84,7 +84,7 @@
                 android:layout_width="140dp"
                 android:layout_height="16dp"
                 android:fontFamily="@font/spoof_regular"
-                android:text="DESCRIPTION"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"

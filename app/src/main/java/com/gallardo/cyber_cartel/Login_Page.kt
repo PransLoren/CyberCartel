@@ -1,25 +1,21 @@
 package com.gallardo.cyber_cartel
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.JsonToken
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.gallardo.cyber_cartel.cb_api.LoginResponse
 import com.gallardo.cyber_cartel.cb_api.LoginUser
 import com.gallardo.cyber_cartel.cb_api.RetrofitClient
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class Login_Page : AppCompatActivity() {
@@ -111,6 +107,7 @@ class Login_Page : AppCompatActivity() {
 //                    startActivity(Intent(this@Login_Page, Rv_Home_Page::class.java))
 //                    loginNav(authToken)
 
+                    SharedPreferencesManager.saveAccessToken(this@Login_Page, authToken)
                     val intent = Intent(this@Login_Page, Rv_Home_Page::class.java)
                     intent.putExtra("authToken", authToken)
                     startActivity(intent)
