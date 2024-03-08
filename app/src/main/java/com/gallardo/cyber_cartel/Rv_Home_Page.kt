@@ -63,10 +63,10 @@ class Rv_Home_Page : AppCompatActivity() {
 
 
         // CHECK IF MERON TOKEN
-        val testing = findViewById<ImageView>(R.id.imageView5)
-        testing.setOnClickListener{
-            Toast.makeText(this@Rv_Home_Page, "$authToken", Toast.LENGTH_SHORT).show()
-        }
+//        val testing = findViewById<ImageView>(R.id.imageView5)
+//        testing.setOnClickListener{
+//            Toast.makeText(this@Rv_Home_Page, "$authToken", Toast.LENGTH_SHORT).show()
+//        }
 
         mainContainer = findViewById(R.id.mainContainer)
         mainContainer.setHasFixedSize(true)

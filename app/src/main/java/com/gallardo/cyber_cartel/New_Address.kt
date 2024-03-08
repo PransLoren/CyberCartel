@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gallardo.cyber_cartel.cb_api.Addresses
 import com.gallardo.cyber_cartel.cb_api.RetrofitClient
-import com.gallardo.cyber_cartel.cb_api.User
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Callback
 import retrofit2.Response
 
@@ -69,7 +69,9 @@ class New_Address: AppCompatActivity() {
             postal_code = postal_code
         )
         val apiService = RetrofitClient.getService()
-        val call = apiService.createAddress(addresses)
+
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val call = apiService.createAddress(accessToken!!,addresses)
 
         call.enqueue(object : Callback<Addresses> {
             override fun onResponse(call: retrofit2.Call<Addresses>, response: Response<Addresses>) {

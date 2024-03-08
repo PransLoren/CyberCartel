@@ -10,6 +10,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -20,7 +21,7 @@ interface ApiService {
     @POST("api/auth/register")
     fun register(@Body user: User):Call<User>
     @POST("api/profile/address-create")
-    fun createAddress(@Body addresses: Addresses):Call<Addresses>
+    fun createAddress(@Header("Authorization") accessToken: String,@Body addresses: Addresses):Call<Addresses>
     @POST("api/auth/login")
     fun loginUser(@Body loginUser: LoginUser): Call<LoginResponse> // PINALITAN RESPONSE INTO LOGIN RESPONSE FROM LOGIN USER
 
@@ -69,21 +70,21 @@ interface ApiService {
     // SHOWS ALL CANCELLED PRODUCTS
 
     @GET("api/profile/cancelled-index")
-    fun getCancelled(): Call<List<ProfileProductsItem>>
+    fun getCancelled(@Header("Authorization") accessToken: String): Call<List<ProfileProductsItem>>
 
     // SHOWS ALL BOUGHT PRODUCTS
     @GET("api/profile/bought-index")
-    fun getBought(): Call<List<ProfileProductsItem>>
+    fun getBought(@Header("Authorization") accessToken: String): Call<List<ProfileProductsItem>>
 
     // SHOWS ALL REFUNDED PRODUCTS
     @GET("api/profile/refunded-index")
-    fun getRefunded(): Call<List<ProfileProductsItem>>
+    fun getRefunded(@Header("Authorization") accessToken: String): Call<List<ProfileProductsItem>>
 
     @POST("api/profile/products-refund/{id}")
-    fun refundProduct(@Path("id") id: Int): Call<Void>
+    fun refundProduct(@Path("id") id: Int, @Header("Authorization") accessToken: String): Call<Void>
 
     @POST("api/profile/products-cancel/{id}")
-    fun cancelProduct(@Path("id") id: Int): Call<Void>
+    fun cancelProduct(@Path("id") id: Int, @Header("Authorization") accessToken: String): Call<Void>
     // ===== END FOR PROFILE ===== //
 
 
@@ -93,21 +94,21 @@ interface ApiService {
     // ===== FOR CART =====//
     // SHOWS SUM FOR PRODUCTS
     @GET("api/cart/actualsum")
-    fun getCartSum(): Call<`₱`>
+    fun getCartSum(@Header("Authorization") accessToken: String): Call<`₱`>
     // SHOWS CART ITEMS
     @GET("api/cart/cart-show")
-    fun getCart():Call<List<CartItem>>
+    fun getCart(@Header("Authorization") accessToken: String):Call<List<CartItem>>
 
     // SHOWS CART ITEMS IN CHECKOUT
-    @GET("api/cart/cart-show")
-    fun getCheckout(): Call<List<CartItem>>
+//    @GET("api/cart/cart-show")
+//    fun getCheckout(@Header("Authorization") accessToken: String): Call<List<CartItem>>
 
     // ADD TO CART
     @POST("api/cart/cart-add/{id}")
-    fun addToCart(@Path("id") id: Int): Call<Void>
+    fun addToCart(@Path("id") id: Int, @Header("Authorization") accessToken: String): Call<Void>
 
     @POST("api/cart/cart-checkout")
-    fun checkout(): Call<Void>
+    fun checkout(@Header("Authorization") accessToken: String): Call<Void>
 
     // REMOVES FROM CART
     @DELETE("api/cart/cart-remove/{id}")
@@ -129,7 +130,7 @@ interface ApiService {
     // ===== FOR ADDRESS ===== //
     //DISPLAY ADDRESS
     @GET("api/profile/address-index")
-    fun getAddress(): Call<List<AddressItem>>
+    fun getAddress(@Header("Authorization") accessToken: String): Call<List<AddressItem>>
 
     // DELETE AN ADDRESS
     @DELETE("api/profile/address-delete/{id}")

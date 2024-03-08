@@ -2,21 +2,18 @@ package com.gallardo.cyber_cartel
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.util.Log.d
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 //import com.gallardo.cyber_cartel.Adapters.My_Purchase_Cancelled_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_Cancelled_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cancelled
-import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Refunded
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
@@ -139,7 +136,8 @@ class My_Purchase_Cancelled: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCancelled()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCancelled(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
             override fun onResponse(

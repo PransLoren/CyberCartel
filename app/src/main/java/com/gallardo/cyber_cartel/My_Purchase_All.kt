@@ -14,10 +14,10 @@ import com.gallardo.cyber_cartel.Adapters.My_Purchase_All_Adapter
 import com.gallardo.cyber_cartel.DataClass.My_Purchase_All_DC
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Bought
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cancelled
-import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_ProfileProducts
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Refunded
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,8 +63,8 @@ class My_Purchase_All : AppCompatActivity() {
 
 
         getBought()
-        getCancelled()
-        getRefunded()
+//        getCancelled()
+//        getRefunded()
         // ===
 
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
@@ -151,7 +151,8 @@ class My_Purchase_All : AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCancelled()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCancelled(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
             override fun onResponse(
@@ -177,7 +178,8 @@ class My_Purchase_All : AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getBought()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getBought(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
             override fun onResponse(
@@ -186,7 +188,7 @@ class My_Purchase_All : AppCompatActivity() {
             ) {
 
                 val responseBody = response.body()!!
-                myAdapter_Bought = MyAdapter_Bought(baseContext, responseBody)
+                myAdapter_Bought = MyAdapter_Bought(baseContext, responseBody, accessToken)
                 myAdapter_Bought.notifyDataSetChanged()
                 my_purchase_All_rv.adapter = myAdapter_Bought
             }
@@ -203,7 +205,8 @@ class My_Purchase_All : AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getRefunded()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getRefunded(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<ProfileProductsItem>?> {
             override fun onResponse(

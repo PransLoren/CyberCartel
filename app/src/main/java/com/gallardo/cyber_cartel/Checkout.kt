@@ -17,6 +17,7 @@ import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Checkout
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.`₱`
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -129,7 +130,8 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCartSum()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCartSum(accessToken!!)
 
         retrofitData.enqueue(object : Callback<`₱`?> {
             override fun onResponse(call: Call<`₱`?>, response: Response<`₱`?>) {
@@ -154,7 +156,8 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCheckout()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.getCart(accessToken!!)
 
         retrofitData.enqueue(object : Callback<List<CartItem>?> {
             override fun onResponse(
@@ -182,7 +185,8 @@ class Checkout: AppCompatActivity() {
             .build()
             .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.checkout()
+        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.checkout(accessToken!!)
 
         retrofitData.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {

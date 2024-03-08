@@ -13,15 +13,17 @@ import com.gallardo.cyber_cartel.BASE_URL
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfileProductsItem>): RecyclerView.Adapter<MyAdapter_Bought.ViewHolder>(){
+class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfileProductsItem>, val accessToken: String): RecyclerView.Adapter<MyAdapter_Bought.ViewHolder>(){
 
     class ViewHolder(cancelledView: View): RecyclerView.ViewHolder(cancelledView){
+
 
         val item_image: ImageView = cancelledView.findViewById(R.id.product_image)
 
@@ -30,6 +32,7 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
 
         val cancel_button: Button = cancelledView.findViewById(R.id.button)
         val refund_button: Button = cancelledView.findViewById(R.id.order_received_btn)
+
 
     }
 
@@ -70,7 +73,9 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
             .create(ApiService::class.java)
 
 
-        val retrofitData = retrofitBuilder.cancelProduct(id)
+        // TOKEN NUNG ADAPTER
+//        val accessToken = SharedPreferencesManager.getAccessToken(this)
+        val retrofitData = retrofitBuilder.cancelProduct(id, accessToken!!)
 
         retrofitData.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
@@ -90,8 +95,9 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
             .build()
             .create(ApiService::class.java)
 
-
-        val retrofitData = retrofitBuilder.refundProduct(id)
+        //TOKEN NUNG ADAPTER
+//        val accessToken = SharedPreferencesManagerAdapter.getAuthToken(this)
+        val retrofitData = retrofitBuilder.refundProduct(id, accessToken!!)
 
         retrofitData.enqueue(object : Callback<Void?> {
             override fun onResponse(call: Call<Void?>, response: Response<Void?>) {
