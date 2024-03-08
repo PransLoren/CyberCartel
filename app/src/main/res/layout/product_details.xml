@@ -191,8 +191,9 @@ Dimensions: L338*W255*H335mm"
 
     <Button
         android:id="@+id/product_addToCart"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginStart="40dp"
         android:background="@drawable/copper_color"
         android:fontFamily="@font/spoof_bold"
@@ -204,8 +205,9 @@ Dimensions: L338*W255*H335mm"
 
     <Button
         android:id="@+id/product_buyNow"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/custombutton"
         android:fontFamily="@font/spoof_bold"
