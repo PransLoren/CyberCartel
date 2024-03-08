@@ -15,6 +15,7 @@ import com.gallardo.cyber_cartel.cb_api.ApiService
 import com.gallardo.cyber_cartel.cb_api.LoginResponse
 import com.gallardo.cyber_cartel.cb_api.LoginUser
 import com.gallardo.cyber_cartel.cb_api.RetrofitClient
+import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -110,6 +111,8 @@ class Login_Page : AppCompatActivity() {
 //                    intent.putExtra("authToken", authToken)
 //                    startActivity(Intent(this@Login_Page, Rv_Home_Page::class.java))
 //                    loginNav(authToken)
+
+//                    SharedPreferencesManager.saveAccessToken(this, authToken)
 
                     val intent = Intent(this@Login_Page, Rv_Home_Page::class.java)
                     intent.putExtra("authToken", authToken)

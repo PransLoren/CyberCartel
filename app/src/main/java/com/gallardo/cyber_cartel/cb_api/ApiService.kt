@@ -4,13 +4,12 @@ import com.gallardo.cyber_cartel.api.models.AddressItem
 import com.gallardo.cyber_cartel.api.models.CartItem
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.api.models.ProductsItem
-import com.gallardo.cyber_cartel.api.models.cartTotal
+import com.gallardo.cyber_cartel.api.models.`₱`
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -20,6 +19,8 @@ interface ApiService {
     fun getUser(): Call<List<User>>
     @POST("api/auth/register")
     fun register(@Body user: User):Call<User>
+    @POST("api/profile/address-create")
+    fun createAddress(@Body addresses: Addresses):Call<Addresses>
     @POST("api/auth/login")
     fun loginUser(@Body loginUser: LoginUser): Call<LoginResponse> // PINALITAN RESPONSE INTO LOGIN RESPONSE FROM LOGIN USER
 
@@ -66,6 +67,7 @@ interface ApiService {
 
     // ===== FOR PROFILE ====== //
     // SHOWS ALL CANCELLED PRODUCTS
+
     @GET("api/profile/cancelled-index")
     fun getCancelled(): Call<List<ProfileProductsItem>>
 
@@ -91,7 +93,7 @@ interface ApiService {
     // ===== FOR CART =====//
     // SHOWS SUM FOR PRODUCTS
     @GET("api/cart/actualsum")
-    fun getCartSum(): Call<cartTotal>
+    fun getCartSum(): Call<`₱`>
     // SHOWS CART ITEMS
     @GET("api/cart/cart-show")
     fun getCart():Call<List<CartItem>>

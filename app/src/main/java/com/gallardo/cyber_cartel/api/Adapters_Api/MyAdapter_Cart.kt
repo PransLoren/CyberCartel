@@ -57,7 +57,7 @@ class MyAdapter_Cart (val context: Context, val cartList: List<CartItem>): Recyc
 
         holder.tv_item_model.text = currentItem.name
         holder.item_price.text = currentItem.price
-        holder.item_description.text = currentItem.details
+//        holder.item_description.text = currentItem.details
         holder.quantity_textView.text = currentItem.quantity
 
 

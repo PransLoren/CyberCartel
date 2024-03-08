@@ -120,7 +120,6 @@ class Product_Page : AppCompatActivity() {
             intent.putExtra("category", category)
             intent.putExtra("details", details)
             intent.putExtra("photo", photo)
-
             startActivity(intent)
             finish()
         }

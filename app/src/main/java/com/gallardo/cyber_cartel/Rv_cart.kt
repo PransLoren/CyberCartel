@@ -7,11 +7,11 @@ import android.util.Log.d
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gallardo.cyber_cartel.api.Adapters_Api.MyAdapter_Cart
 import com.gallardo.cyber_cartel.api.models.CartItem
+import com.gallardo.cyber_cartel.api.models.`₱`
 import com.gallardo.cyber_cartel.cb_api.ApiService
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,32 +48,20 @@ class Rv_cart : AppCompatActivity() {
         setContentView(R.layout.activity_rv_cart)
 
         // API ===
-
-        // TOKEN
-        val authToken = intent.getStringExtra("authToken")
-
         Cart_RecyclerView = findViewById(R.id.Cart_RecyclerView)
-
         Cart_RecyclerView.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
         Cart_RecyclerView.layoutManager = linearLayoutManager
         getMyCart()
 
         // DATA TRANSFER
-        val id = intent?.getIntExtra("id", 0)
-        val photo = intent?.getStringExtra("photo")
-        val name = intent?.getStringExtra("name")
-        val price = intent?.getStringExtra("price")
-        val details = intent?.getStringExtra("details")
-        val category = intent?.getStringExtra("category")
-
+        val id = intent.getIntExtra("id", 0)
+        val photo = intent.getStringExtra("photo")
+        val name = intent.getStringExtra("name")
+        val price = intent.getStringExtra("price")
+        val details = intent.getStringExtra("details")
+        val category = intent.getStringExtra("category")
         // ===
-
-        // TOKEN TESTING
-        val testing = findViewById<TextView>(R.id.tv_Cart)
-        testing.setOnClickListener{
-            Toast.makeText(this@Rv_cart, "$authToken", Toast.LENGTH_SHORT).show()
-        }
 
 //        productList = ArrayList()
 
@@ -88,26 +76,23 @@ class Rv_cart : AppCompatActivity() {
             intent.putExtra("category", category)
             intent.putExtra("details", details)
             intent.putExtra("photo", photo)
-
-            // TOKEN
-            intent.putExtra("authToken", authToken)
-
+            startActivity(intent)
+            finish()
 //            startActivity(intent)
 
             navigateBack()
         }
 
+        // YUNG TOTAL
         // Cart Prices
-        subTotal = findViewById(R.id.tv_total_price)
-        subTotal.text = "150.00"
+        subTotal = findViewById(R.id.total)
+//        subTotal.text = ""
+        getTotal()
 
 
         //Checkout Button
         checkOut = findViewById(R.id.checkOut_Button)
         checkOut.setOnClickListener{
-            // TOKEN
-            intent.putExtra("authToken", authToken)
-
             val intent = Intent(this,Checkout::class.java)
             intent.putExtra("previous_activity", "Checkout")
             startActivity(intent)
@@ -116,8 +101,32 @@ class Rv_cart : AppCompatActivity() {
 
     }
     // FOR API ===
+    private fun getTotal(){
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiService::class.java)
+
+        val retrofitData = retrofitBuilder.getCartSum()
+
+        retrofitData.enqueue(object : Callback<`₱`?> {
+            override fun onResponse(call: Call<`₱`?>, response: Response<`₱`?>) {
+                if(response.isSuccessful){
+//                    val data = response.body()
+                    subTotal.text = response.body().toString()
+                }
+                else{
+                    subTotal.text = "Failed to get total"
+                }
+            }
+
+            override fun onFailure(call: Call<`₱`?>, t: Throwable) {
+                //
+            }
+        })
+    }
     private fun getMyCart(){
-        val authToken = intent.getStringExtra("authToken")
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
@@ -145,6 +154,20 @@ class Rv_cart : AppCompatActivity() {
     // === //
 
     private fun navigateBack() {
+        val id = intent.getIntExtra("id", 0)
+        val photo = intent.getStringExtra("photo")
+        val name = intent.getStringExtra("name")
+        val price = intent.getStringExtra("price")
+        val details = intent.getStringExtra("details")
+        val category = intent.getStringExtra("category")
+
+        intent.putExtra("id", id)
+        intent.putExtra("name", name)
+        intent.putExtra("price", price)
+        intent.putExtra("category", category)
+        intent.putExtra("details", details)
+        intent.putExtra("photo", photo)
+
         val authToken = intent.getStringExtra("authToken")
         val previousActivity = intent.getStringExtra("previous_activity")
         when (previousActivity) {

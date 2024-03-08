@@ -3,6 +3,7 @@ package com.gallardo.cyber_cartel
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +29,7 @@ class User_Addresses : AppCompatActivity() {
     lateinit var myAdapter_Address: MyAdapter_Address
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var user_addresses_rv: RecyclerView
+
     //
 
 
