@@ -9,7 +9,7 @@ package com.gallardo.cyber_cartel.cb_api
 
     interface RetrofitClient {
         companion object{
-            private const val BASE_URL = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/"
+            private const val BASE_URL = "https://shy-candies-vanish.loca.lt/"
 
             fun getService(): ApiService{
                 val loggingInterceptor = HttpLoggingInterceptor().apply{

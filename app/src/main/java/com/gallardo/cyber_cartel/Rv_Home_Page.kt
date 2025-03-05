@@ -19,27 +19,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-// API ===
-const val BASE_URL = "https://fast-hollows-67866-0eecb0964658.herokuapp.com/"
-// ===
-
+const val BASE_URL = "https://shy-candies-vanish.loca.lt/"
 
 class Rv_Home_Page : AppCompatActivity() {
 
-    // API ===
     lateinit var myAdapter_Products: MyAdapter_Products
     lateinit var linearLayoutManager: LinearLayoutManager
     lateinit var mainContainer: RecyclerView
-    //
 
-//    private var recyclerView : RecyclerView? = null
-//    private var rv_homepage_Adapter : rv_homepage_Adapter? = null
-//    private var productList = mutableListOf<Rv_hompage_dataclass>()
-//
-
-
-    //CATEGORIES PART
     private lateinit var homepagecategoriesRV : RecyclerView
     private var categories_dataClass = mutableListOf<home_page_categories_DC>()
     private var home_page_categories_adapter : home_page_categories_adapter? = null
@@ -53,20 +40,10 @@ class Rv_Home_Page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rv_home_page)
 
-        // API ===
-
-        // TOKEN
         val authToken = intent.getStringExtra("authToken")
 
         val intent = Intent(this@Rv_Home_Page, MyAdapter_Products::class.java)
         intent.putExtra("authToken", authToken)
-
-
-        // CHECK IF MERON TOKEN
-//        val testing = findViewById<ImageView>(R.id.imageView5)
-//        testing.setOnClickListener{
-//            Toast.makeText(this@Rv_Home_Page, "$authToken", Toast.LENGTH_SHORT).show()
-//        }
 
         mainContainer = findViewById(R.id.mainContainer)
         mainContainer.setHasFixedSize(true)
@@ -74,66 +51,45 @@ class Rv_Home_Page : AppCompatActivity() {
         mainContainer.layoutManager = linearLayoutManager
 
         getMyProducts()
-        // END OF API===
 
         cartlogo = findViewById(R.id.img_cart_homepage)
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
 
         cartlogo.setOnClickListener(){
             val intent = Intent(this, Rv_cart::class.java)
-
-            // TOKEN
             intent.putExtra("authToken", authToken)
             startActivity(intent)
         }
 
         bottomNaviation.setOnItemSelectedListener {
             when(it.itemId){
-//                R.id.home -> {val intent = Intent(this, rvHompagee::class.java)
-//                    startActivity(intent)
-//                    finish()}
-
-                R.id.home ->{val intent = Intent(this, Rv_Home_Page::class.java)
-                    // TOKEN
+                R.id.home -> {
+                    val intent = Intent(this, Rv_Home_Page::class.java)
                     intent.putExtra("authToken", authToken)
-
                     startActivity(intent)
-                    finish()}
-
-                R.id.me_profile -> {val  intent = Intent(this, My_Account::class.java)
-                    // TOKEN
+                    finish()
+                }
+                R.id.me_profile -> {
+                    val intent = Intent(this, My_Account::class.java)
                     intent.putExtra("authToken", authToken)
-
                     startActivity(intent)
-                    finish()}
+                    finish()
+                }
             }
             true
         }
-//
-//
-//        productList = ArrayList()
+
         categories_dataClass = ArrayList()
 
         homepagecategoriesRV = findViewById<View>(R.id.recyclerView_Categories) as RecyclerView
-        home_page_categories_adapter = home_page_categories_adapter(this@Rv_Home_Page,categories_dataClass )
-        val catlayoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+        home_page_categories_adapter = home_page_categories_adapter(this@Rv_Home_Page, categories_dataClass)
+        val catlayoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         homepagecategoriesRV!!.layoutManager = catlayoutManager
         homepagecategoriesRV!!.adapter = home_page_categories_adapter
 
         prepareiconListData()
-
-
-//        recyclerView= findViewById<View>(R.id.mainContainer) as RecyclerView
-//        rv_homepage_Adapter = rv_homepage_Adapter(this@Rv_Home_Page,productList)
-//        val layoutManager : RecyclerView.LayoutManager = GridLayoutManager(this,2)
-//        recyclerView!!.layoutManager = layoutManager
-//        recyclerView!!.adapter = rv_homepage_Adapter
-
-//        prepareProductData()
-
     }
 
-    // FOR API ===
     private fun getMyProducts(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -159,9 +115,6 @@ class Rv_Home_Page : AppCompatActivity() {
             }
         })
     }
-    // ===
-
-
 
     private fun prepareiconListData() {
         var icon = home_page_categories_DC(R.drawable.processor)
@@ -179,26 +132,4 @@ class Rv_Home_Page : AppCompatActivity() {
         icon = home_page_categories_DC(R.drawable.chassis)
         categories_dataClass.add(icon)
     }
-//
-//
-//    private fun prepareProductData() {
-//        var product = Rv_hompage_dataclass("CPU", "10,000",R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//        product = Rv_hompage_dataclass("CPU", "10,000", R.drawable.cpu_product1, Product_Page::class.java)
-//        productList.add(product)
-//
-//
-//    }
 }

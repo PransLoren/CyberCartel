@@ -15,16 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize Firebase Realtime Database
-        val database = Firebase.database("https://cybercartel-74e4f-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        val database = Firebase.database("https://cybercartel-74e4s-default-rtdb.firebaseio.com/")
 
-        //Example of writing data to the database after the delay
         Handler().postDelayed({
             val intent = Intent(this, Login_Page::class.java)
             startActivity(intent)
             finish()
 
-            // Write data to the database after the splash screen.
             val myRef = database.getReference("myData")
             val dataToWrite = mapOf("message" to "App Started")
             myRef.setValue(dataToWrite)

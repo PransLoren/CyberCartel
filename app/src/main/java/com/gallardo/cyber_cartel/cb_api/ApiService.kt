@@ -26,7 +26,6 @@ interface ApiService {
     fun loginUser(@Body loginUser: LoginUser): Call<LoginResponse> // PINALITAN RESPONSE INTO LOGIN RESPONSE FROM LOGIN USER
 
 
-
     // ===== FOR PRODUCTS ===== //
     // SHOWS ALL PRODUCTS FOR SALE
     @GET("api/products/products-show")

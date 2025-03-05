@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,7 +25,7 @@
             android:name=".Rv_amd_build"
             android:exported="false" />
         <activity
-            android:name=".Rv_hompage_dataclass"
+            android:name=".Rv_homepage_dataclass"
             android:exported="false" />
         <activity
             android:name=".Rv_Home_Page"
