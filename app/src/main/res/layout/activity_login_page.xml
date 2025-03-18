@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Login_Page">
 
+    <ImageView
+        android:id="@+id/logo_activityMain"
+        android:layout_width="300dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.18"
+        app:srcCompat="@drawable/cbcartel_text" />
 
-    <TextView
-        android:id="@+id/tv_createAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:text="Create Account"
-        android:fontFamily="@font/spoof_regular"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/bt_logIn"
-        app:layout_constraintTop_toBottomOf="@+id/bt_logIn" />
-
-
+    <!-- Email Field -->
     <EditText
         android:id="@+id/et_email_logInPage"
         android:layout_width="327dp"
@@ -38,6 +37,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_activityMain" />
 
+    <!-- 📱 Phone Number Field -->
+    <EditText
+        android:id="@+id/et_phone_logInPage"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_background_for_edittext"
+        android:ems="10"
+        android:fontFamily="@font/spoof_regular"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_email_logInPage"
+        app:layout_constraintStart_toStartOf="@+id/et_email_logInPage"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_logInPage" />
+
+    <!-- Password Field -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_Password_LogIn"
         android:layout_width="wrap_content"
@@ -46,7 +63,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="@+id/et_email_logInPage"
         app:layout_constraintStart_toStartOf="@+id/et_email_logInPage"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_logInPage"
+        app:layout_constraintTop_toBottomOf="@+id/et_phone_logInPage"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -59,26 +76,10 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="15dp"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="42dp"
-            tools:layout_editor_absoluteY="354dp" />
-
-
+            android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/logo_activityMain"
-        android:layout_width="300dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
-        app:srcCompat="@drawable/cbcartel_text" />
-
+    <!-- Login Button -->
     <Button
         android:id="@+id/bt_logIn"
         android:layout_width="325dp"
@@ -93,5 +94,17 @@
         app:layout_constraintStart_toStartOf="@+id/til_Password_LogIn"
         app:layout_constraintTop_toBottomOf="@+id/til_Password_LogIn" />
 
+    <!-- Create Account Text -->
+    <TextView
+        android:id="@+id/tv_createAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text="Create Account"
+        android:fontFamily="@font/spoof_regular"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/bt_logIn"
+        app:layout_constraintTop_toBottomOf="@+id/bt_logIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

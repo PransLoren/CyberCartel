@@ -10,5 +10,6 @@
     <color name="lapis">#2832C2</color>
     <color name="stone">#89788E</color>
     <color name="gray">#808080</color>
+    <color name="enabled_button_color">#4CAF50</color>
 </resources>
 

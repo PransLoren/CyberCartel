@@ -82,8 +82,8 @@ class Create_account : AppCompatActivity() {
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: retrofit2.Call<User>, response: Response<User>) {
                 if (response.isSuccessful) {
-                    // Save user to Firebase after successful MySQL registration
-                    saveUserToFirebase(name, email)
+
+                    saveUserToFirebase(name, email, password)
 
                     startActivity(Intent(this@Create_account, Login_Page::class.java))
                     finish()
@@ -99,7 +99,7 @@ class Create_account : AppCompatActivity() {
         })
     }
 
-    private fun saveUserToFirebase(name: String, email: String) {
+    private fun saveUserToFirebase(name: String, email: String, password: String) {
         val database = FirebaseDatabase.getInstance("https://cybercartel-74e4s-default-rtdb.firebaseio.com/")
         val usersRef = database.getReference("users")
         val userId = usersRef.push().key
@@ -108,7 +108,8 @@ class Create_account : AppCompatActivity() {
             val userMap = mapOf(
                 "id" to userId,
                 "name" to name,
-                "email" to email
+                "email" to email,
+                "password" to password
             )
 
             usersRef.child(userId).setValue(userMap)

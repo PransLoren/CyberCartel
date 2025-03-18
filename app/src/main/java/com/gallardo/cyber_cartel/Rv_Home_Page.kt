@@ -19,7 +19,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://shy-candies-vanish.loca.lt/"
+const val BASE_URL = "https://floppy-bobcats-admire.loca.lt/"
 
 class Rv_Home_Page : AppCompatActivity() {
 

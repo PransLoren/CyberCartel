@@ -1,31 +1,23 @@
 package com.gallardo.cyber_cartel
 
-
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gallardo.cyber_cartel.cb_api.LoginResponse
-import com.gallardo.cyber_cartel.cb_api.LoginUser
-import com.gallardo.cyber_cartel.cb_api.RetrofitClient
 import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
+import com.google.firebase.database.*
 
 class Login_Page : AppCompatActivity() {
 
     private lateinit var createAccount: TextView
-    private lateinit var button : Button
-    private lateinit var email : EditText
-    private lateinit var password : EditText
-
-
+    private lateinit var button: Button
+    private lateinit var email: EditText
+    private lateinit var phone: EditText
+    private lateinit var password: EditText
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,123 +26,82 @@ class Login_Page : AppCompatActivity() {
         createAccount = findViewById(R.id.tv_createAcc)
         button = findViewById(R.id.bt_logIn)
         email = findViewById(R.id.et_email_logInPage)
+        phone = findViewById(R.id.et_phone_logInPage) // 🔹 Added Phone Number Field
         password = findViewById(R.id.et_passwordLogIn)
 
+        database = FirebaseDatabase.getInstance("https://cybercartel-74e4s-default-rtdb.firebaseio.com/").reference
 
-        createAccount.setOnClickListener (){
+        createAccount.setOnClickListener {
             val intent = Intent(this, Create_account::class.java)
             startActivity(intent)
             finish()
         }
 
-        button.setOnClickListener(){
+        button.setOnClickListener {
             loginUser()
         }
-
-
     }
-//    private fun loginUser(){
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        val service = retrofit.create(ApiService::class.java)
-//        val request = LoginUser(email.text.toString(), password.text.toString())
-//        val loginCall = service.loginUser(request)
-//
-//        loginCall.enqueue(object : Callback<LoginResponse?> {
-//            override fun onResponse(
-//                call: Call<LoginResponse?>, response: Response<LoginResponse?>) {
-//
-//                if (response.isSuccessful){
-//                    val loginResponse = response.body()
-//                    if (loginResponse != null) {
-//                        Log.d("Login", response.body().toString())
-//                        val authToken = "Bearer ${response.body()?.token}"
-//                    }
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<LoginResponse?>, t: Throwable) {
-//                //
-//            }
-//        }))
-//        )
-//    }
 
-    // PINALITAN KO RESPONSES FROM LOGIN USER TO LOGIN RESPONSE
     private fun loginUser() {
-        val email = findViewById<EditText>(R.id.et_email_logInPage).text.toString().trim()
-        val password = findViewById<EditText>(R.id.et_passwordLogIn).text.toString().trim()
+        val userEmail = email.text.toString().trim()
+        var userPhone = phone.text.toString().trim()
+        val userPassword = password.text.toString().trim()
 
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(
-                this@Login_Page,
-                "Please fill in all fields",
-                Toast.LENGTH_SHORT
-            ).show()
+        if (userEmail.isEmpty() || userPassword.isEmpty()) {
+            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             return
         }
-        Log.d("LoginRequest", "Email: $email, Password: $password")
 
-        val call = RetrofitClient.getService().loginUser(LoginUser(email = email, password = password))
+        // ✅ Validate phone number format (convert to +63XXXXXXXXXX)
+        if (userPhone.isNotEmpty() && userPhone.length == 11 && userPhone.startsWith("09")) {
+            userPhone = "+63" + userPhone.substring(1)
+        } else if (userPhone.isNotEmpty()) {
+            Toast.makeText(this, "Invalid phone number format!", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        call.enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful) {
+        database.child("users").orderByChild("email").equalTo(userEmail)
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        for (userSnap in snapshot.children) {
+                            val storedPassword = userSnap.child("password").value.toString()
+                            val userId = userSnap.child("id").value.toString()
+                            val username = userSnap.child("name").value.toString()
+                            val storedPhone = userSnap.child("phone").value?.toString()
 
-                    // TOKEN
-                    val authToken = "Bearer ${response.body()?.token}"
-                    // Login successful, navigate to main activity
-//                    intent.putExtra("authToken", authToken)
-//                    startActivity(Intent(this@Login_Page, Rv_Home_Page::class.java))
-//                    loginNav(authToken)
+                            if (storedPassword == userPassword) {
+                                // ✅ Save phone number ONLY IF it's not already stored
+                                if (storedPhone.isNullOrEmpty() && userPhone.isNotEmpty()) {
+                                    database.child("users").child(userSnap.key!!)
+                                        .child("phone").setValue(userPhone)
+                                }
 
-                    SharedPreferencesManager.saveAccessToken(this@Login_Page, authToken)
-                    val intent = Intent(this@Login_Page, Rv_Home_Page::class.java)
-                    intent.putExtra("authToken", authToken)
-                    startActivity(intent)
-                    // END NG TOKEN PART
+                                SharedPreferencesManager.saveUserDetails(
+                                    this@Login_Page,
+                                    userId,
+                                    username,
+                                    userEmail
+                                )
 
-                    finish()
-                    Toast.makeText(
-                        this@Login_Page,
-                        "Login Successful",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                } else {
-                    // Login failed, show error message
-                    val errorBody = response.errorBody()?.string()
-                    val errorMessage = if (errorBody.isNullOrEmpty()) {
-                        "Login failed. Please check your credentials."
+                                val intent = Intent(this@Login_Page, LoginVerification::class.java)
+                                intent.putExtra("userId", userId)
+                                startActivity(intent)
+                                finish()
+                                return
+                            } else {
+                                Toast.makeText(this@Login_Page, "Invalid password", Toast.LENGTH_SHORT).show()
+                                return
+                            }
+                        }
                     } else {
-                        errorBody
+                        Toast.makeText(this@Login_Page, "User not found", Toast.LENGTH_SHORT).show()
                     }
-
-                    Log.e("LoginError", "Error body: $errorMessage")
-                    Toast.makeText(
-                        this@Login_Page,
-                        errorMessage,
-                        Toast.LENGTH_SHORT
-                    ).show()
                 }
-            }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e("LoginError", "Login request failed", t)
-                Toast.makeText(
-                    this@Login_Page,
-                    "Login request failed. Please try again later.",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@Login_Page, "Firebase error: ${error.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
     }
-    private fun loginNav(authToken: String){
-        intent.putExtra("authToken", authToken)
-        startActivity(Intent(this@Login_Page, Rv_Home_Page::class.java))
-    }
-
 }
-
