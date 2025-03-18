@@ -91,7 +91,7 @@ class LoginVerification : AppCompatActivity() {
         val formattedPhone = when {
             phone.startsWith("+63") -> phone
             phone.startsWith("09") -> "+63" + phone.substring(1)
-            else -> phone // If it's already in international format
+            else -> phone
         }
 
         Log.d("Twilio", "Sending OTP to: $formattedPhone") // Debugging
