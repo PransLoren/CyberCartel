@@ -132,7 +132,6 @@ class My_Purchase_Refunded : AppCompatActivity() {
     private fun getRefunded(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

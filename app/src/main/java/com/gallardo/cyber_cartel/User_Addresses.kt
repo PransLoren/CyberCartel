@@ -23,44 +23,44 @@ import retrofit2.converter.gson.GsonConverterFactory
 class User_Addresses : AppCompatActivity() {
 
     // API ===
-    lateinit var myAdapter_Address: MyAdapter_Address
-    lateinit var linearLayoutManager: LinearLayoutManager
-    lateinit var user_addresses_rv: RecyclerView
+//    lateinit var myAdapter_Address: MyAdapter_Address
+//    lateinit var linearLayoutManager: LinearLayoutManager
+//    lateinit var user_addresses_rv: RecyclerView
 
     //
 
 
-    private lateinit var recyclerView: RecyclerView
+//    private lateinit var recyclerView: RecyclerView
 //    private lateinit var userAddressAdapter: User_Addresses_Adapter
-    private var address = ArrayList<User_Addresses_DC>()
-    private lateinit var img_back : ImageView
-    private lateinit var tv_new_address : TextView
+//    private var address = ArrayList<User_Addresses_DC>()
+//    private lateinit var img_back : ImageView
+//    private lateinit var tv_new_address : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.user_addresses)
 
         // API ===
-        user_addresses_rv = findViewById(R.id.user_addresses_rv)
-        user_addresses_rv.setHasFixedSize(true)
-        linearLayoutManager = LinearLayoutManager(this)
-        user_addresses_rv.layoutManager = linearLayoutManager
-        getAddress()
+//        user_addresses_rv = findViewById(R.id.user_addresses_rv)
+//        user_addresses_rv.setHasFixedSize(true)
+//        linearLayoutManager = LinearLayoutManager(this)
+//        user_addresses_rv.layoutManager = linearLayoutManager
+//        getAddress()
         // ===
 
-        img_back = findViewById(R.id.back_to_profile)
-        img_back.setOnClickListener{
-            val intent = Intent(this,My_Account::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        img_back = findViewById(R.id.back_to_profile)
+//        img_back.setOnClickListener{
+//            val intent = Intent(this,My_Account::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
-        tv_new_address = findViewById(R.id.add_new_address_tv)
-        tv_new_address.setOnClickListener{
-            val intent = Intent(this,New_Address::class.java)
-            startActivity(intent)
-            finish()
-        }
+//        tv_new_address = findViewById(R.id.add_new_address_tv)
+//        tv_new_address.setOnClickListener{
+//            val intent = Intent(this,New_Address::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
 
 //        recyclerView = findViewById(R.id.user_addresses_rv)
 //        userAddressAdapter = User_Addresses_Adapter(this, address)
@@ -71,34 +71,34 @@ class User_Addresses : AppCompatActivity() {
 //        my_Purchase_All_Data()
     }
 
-    // FOR API ===
-    private fun getAddress(){
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiService::class.java)
-
-        val accessToken = SharedPreferencesManager.getAccessToken(this)
-        val retrofitData = retrofitBuilder.getAddress(accessToken!!)
-
-        retrofitData.enqueue(object : Callback<List<AddressItem>?> {
-            override fun onResponse(
-                call: Call<List<AddressItem>?>,
-                response: Response<List<AddressItem>?>
-            ) {
-                val responseBody = response.body()!!
-
-                myAdapter_Address = MyAdapter_Address(baseContext, responseBody)
-                myAdapter_Address.notifyDataSetChanged()
-                user_addresses_rv.adapter = myAdapter_Address
-            }
-
-            override fun onFailure(call: Call<List<AddressItem>?>, t: Throwable) {
-                Log.d("HomePage", "onFailure" + t.message)
-            }
-        })
-    }
+//    // FOR API ===
+//    private fun getAddress(){
+//        val retrofitBuilder = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(BASE_URL)
+//            .build()
+//            .create(ApiService::class.java)
+//
+//        val accessToken = SharedPreferencesManager.getAccessToken(this)
+//        val retrofitData = retrofitBuilder.getAddress(accessToken!!)
+//
+//        retrofitData.enqueue(object : Callback<List<AddressItem>?> {
+//            override fun onResponse(
+//                call: Call<List<AddressItem>?>,
+//                response: Response<List<AddressItem>?>
+//            ) {
+//                val responseBody = response.body()!!
+//
+//                myAdapter_Address = MyAdapter_Address(baseContext, responseBody)
+//                myAdapter_Address.notifyDataSetChanged()
+//                user_addresses_rv.adapter = myAdapter_Address
+//            }
+//
+//            override fun onFailure(call: Call<List<AddressItem>?>, t: Throwable) {
+//                Log.d("HomePage", "onFailure" + t.message)
+//            }
+//        })
+//    }
     // ===
 
 //    private fun my_Purchase_All_Data() {

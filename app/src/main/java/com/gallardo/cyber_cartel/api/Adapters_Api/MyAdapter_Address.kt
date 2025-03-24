@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gallardo.cyber_cartel.BASE_URL
 import com.gallardo.cyber_cartel.Checkout
 import com.gallardo.cyber_cartel.Product_Page
 import com.gallardo.cyber_cartel.R
@@ -88,7 +87,6 @@ class MyAdapter_Address (val context: Context, val addressList: List<AddressItem
     fun deleteItem(id: Int){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

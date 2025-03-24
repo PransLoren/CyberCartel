@@ -72,7 +72,6 @@ class Category_Ram: AppCompatActivity() {
     private fun getRAM(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

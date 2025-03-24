@@ -73,7 +73,6 @@ class Category_MoBo: AppCompatActivity() {
     private fun getMotherboard(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

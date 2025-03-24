@@ -147,7 +147,6 @@ class My_Purchase_All : AppCompatActivity() {
     private fun getCancelled(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 
@@ -174,7 +173,6 @@ class My_Purchase_All : AppCompatActivity() {
     private fun getBought(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 
@@ -201,7 +199,6 @@ class My_Purchase_All : AppCompatActivity() {
     private fun getRefunded(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

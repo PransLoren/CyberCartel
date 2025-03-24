@@ -132,7 +132,6 @@ class My_Purchase_Cancelled: AppCompatActivity() {
     private fun getCancelled(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

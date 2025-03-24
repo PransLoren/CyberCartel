@@ -18,8 +18,8 @@ import retrofit2.http.Path
 interface ApiService {
     @GET("user")
     fun getUser(): Call<List<User>>
-    @POST("api/auth/register")
-    fun register(@Body user: User):Call<User>
+    @POST("register.php")
+    fun register(@Body user: User): Call<UserResponse>
     @POST("api/profile/address-create")
     fun createAddress(@Header("Authorization") accessToken: String,@Body addresses: Addresses):Call<Addresses>
     @POST("api/auth/login")

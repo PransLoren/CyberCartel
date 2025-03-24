@@ -7,101 +7,137 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gallardo.cyber_cartel.cb_api.SharedPreferencesManager
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import okhttp3.*
+import java.io.IOException
 
 class Login_Page : AppCompatActivity() {
 
-    private lateinit var createAccount: TextView
-    private lateinit var button: Button
-    private lateinit var email: EditText
-    private lateinit var phone: EditText
-    private lateinit var password: EditText
-    private lateinit var database: DatabaseReference
+    private lateinit var emailField: EditText
+    private lateinit var phoneField: EditText
+    private lateinit var passwordField: EditText
+    private lateinit var loginButton: Button
+    private lateinit var createAccountText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_page)
 
-        createAccount = findViewById(R.id.tv_createAcc)
-        button = findViewById(R.id.bt_logIn)
-        email = findViewById(R.id.et_email_logInPage)
-        phone = findViewById(R.id.et_phone_logInPage) // 🔹 Added Phone Number Field
-        password = findViewById(R.id.et_passwordLogIn)
+        emailField = findViewById(R.id.et_email_logInPage)
+        phoneField = findViewById(R.id.et_phone_logInPage)
+        passwordField = findViewById(R.id.et_passwordLogIn)
+        loginButton = findViewById(R.id.bt_logIn)
+        createAccountText = findViewById(R.id.tv_createAcc)
 
-        database = FirebaseDatabase.getInstance("https://cybercartel-74e4s-default-rtdb.firebaseio.com/").reference
+        loginButton.setOnClickListener {
+            validateUser()
+        }
 
-        createAccount.setOnClickListener {
+        createAccountText.setOnClickListener {
             val intent = Intent(this, Create_account::class.java)
             startActivity(intent)
             finish()
         }
-
-        button.setOnClickListener {
-            loginUser()
-        }
     }
 
-    private fun loginUser() {
-        val userEmail = email.text.toString().trim()
-        var userPhone = phone.text.toString().trim()
-        val userPassword = password.text.toString().trim()
+    private fun validateUser() {
+        val email = emailField.text.toString().trim()
+        var phone = phoneField.text.toString().trim()
+        val password = passwordField.text.toString().trim()
 
-        if (userEmail.isEmpty() || userPassword.isEmpty()) {
-            Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
+        if (email.isEmpty() || password.isEmpty()) {
+            showToast("Please fill in all required fields")
             return
         }
 
-        // ✅ Validate phone number format (convert to +63XXXXXXXXXX)
-        if (userPhone.isNotEmpty() && userPhone.length == 11 && userPhone.startsWith("09")) {
-            userPhone = "+63" + userPhone.substring(1)
-        } else if (userPhone.isNotEmpty()) {
-            Toast.makeText(this, "Invalid phone number format!", Toast.LENGTH_SHORT).show()
+        if (phone.isNotEmpty() && phone.length == 11 && phone.startsWith("09")) {
+            phone = "+63" + phone.substring(1)
+        } else if (phone.isNotEmpty() && !phone.startsWith("+63")) {
+            showToast("Invalid phone number format!")
             return
         }
 
-        database.child("users").orderByChild("email").equalTo(userEmail)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if (snapshot.exists()) {
-                        for (userSnap in snapshot.children) {
-                            val storedPassword = userSnap.child("password").value.toString()
-                            val userId = userSnap.child("id").value.toString()
-                            val username = userSnap.child("name").value.toString()
-                            val storedPhone = userSnap.child("phone").value?.toString()
+        checkUserInXampp(email, phone, password)
+    }
 
-                            if (storedPassword == userPassword) {
-                                // ✅ Save phone number ONLY IF it's not already stored
-                                if (storedPhone.isNullOrEmpty() && userPhone.isNotEmpty()) {
-                                    database.child("users").child(userSnap.key!!)
-                                        .child("phone").setValue(userPhone)
-                                }
+    private fun checkUserInXampp(email: String, phone: String, password: String) {
+        val client = OkHttpClient()
+        val formBody = FormBody.Builder()
+            .add("email", email)
+            .add("password", password)
+            .build()
 
-                                SharedPreferencesManager.saveUserDetails(
-                                    this@Login_Page,
-                                    userId,
-                                    username,
-                                    userEmail
-                                )
+        val request = Request.Builder()
+            .url("http://192.168.206.88/cybercartel/login.php")
+            .post(formBody)
+            .build()
 
-                                val intent = Intent(this@Login_Page, LoginVerification::class.java)
-                                intent.putExtra("userId", userId)
-                                startActivity(intent)
-                                finish()
-                                return
-                            } else {
-                                Toast.makeText(this@Login_Page, "Invalid password", Toast.LENGTH_SHORT).show()
-                                return
-                            }
-                        }
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    showToast("Error connecting to server: ${e.message}")
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                runOnUiThread {
+                    if (response.isSuccessful && responseBody == "Login successful") {
+                        checkUserInFirebase(email, phone, password)
                     } else {
-                        Toast.makeText(this@Login_Page, "User not found", Toast.LENGTH_SHORT).show()
+                        showToast("Invalid credentials or user not found")
                     }
                 }
+            }
+        })
+    }
 
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(this@Login_Page, "Firebase error: ${error.message}", Toast.LENGTH_SHORT).show()
+    private fun checkUserInFirebase(email: String, phone: String, password: String) {
+        val database = Firebase.database("https://cybercartel-74e4s-default-rtdb.firebaseio.com/")
+        val usersRef = database.getReference("users")
+
+        usersRef.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (userSnapshot in snapshot.children) {
+                        val storedPassword = userSnapshot.child("password").getValue(String::class.java)
+                        val userId = userSnapshot.child("id").getValue(String::class.java)
+                        val storedPhone = userSnapshot.child("phone").getValue(String::class.java)
+
+                        if (storedPassword == password) {
+                            if (storedPhone.isNullOrEmpty() && phone.isNotEmpty()) {
+                                usersRef.child(userSnapshot.key!!).child("phone").setValue(phone)
+                            }
+
+                            navigateToVerification(userId ?: "")
+                            return
+                        }
+                    }
+                    showToast("Incorrect password")
+                } else {
+                    showToast("User not found in Firebase")
                 }
-            })
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                showToast("Database error: ${error.message}")
+            }
+        })
+    }
+
+    private fun navigateToVerification(userId: String) {
+        showToast("Login successful! Redirecting to OTP verification.")
+        val intent = Intent(this, LoginVerification::class.java)
+        intent.putExtra("userId", userId)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

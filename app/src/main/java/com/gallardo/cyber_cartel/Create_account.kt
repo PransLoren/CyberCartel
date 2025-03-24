@@ -1,18 +1,16 @@
 package com.gallardo.cyber_cartel
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import android.util.Log
-import com.gallardo.cyber_cartel.cb_api.RetrofitClient
-import com.gallardo.cyber_cartel.cb_api.User
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
-import retrofit2.Callback
-import retrofit2.Response
+import okhttp3.*
+import java.io.IOException
 
 class Create_account : AppCompatActivity() {
 
@@ -21,8 +19,8 @@ class Create_account : AppCompatActivity() {
     private lateinit var confirm: Button
     private lateinit var et_username: EditText
     private lateinit var et_email: EditText
-    private lateinit var et_pasword: EditText
-    private lateinit var et_confirmpasswrod: EditText
+    private lateinit var et_password: EditText
+    private lateinit var et_confirmpassword: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +28,8 @@ class Create_account : AppCompatActivity() {
 
         et_username = findViewById(R.id.et_username_createAccountPage)
         et_email = findViewById(R.id.et_email_createAccountPage)
-        et_pasword = findViewById(R.id.et_password_createAccountPage)
-        et_confirmpasswrod = findViewById(R.id.et_Confirmpassword_createAccountPage)
+        et_password = findViewById(R.id.et_password_createAccountPage)
+        et_confirmpassword = findViewById(R.id.et_Confirmpassword_createAccountPage)
 
         alreadyhaveanaccount = findViewById(R.id.tv_alreadyHave_anAccount)
         login = findViewById(R.id.tv_already_have_an_account_logIn)
@@ -55,46 +53,55 @@ class Create_account : AppCompatActivity() {
     private fun registerUser() {
         val name = et_username.text.toString().trim()
         val email = et_email.text.toString().trim()
-        val password = et_pasword.text.toString().trim()
-        val confirmPassword = et_confirmpasswrod.text.toString().trim()
+        val password = et_password.text.toString().trim()
+        val confirmPassword = et_confirmpassword.text.toString().trim()
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+            showToast("Please fill in all fields")
             return
         }
 
         if (password != confirmPassword) {
-            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
-            et_pasword.text.clear()
-            et_confirmpasswrod.text.clear()
+            showToast("Passwords do not match")
+            et_password.text.clear()
+            et_confirmpassword.text.clear()
             return
         }
 
-        val user = User(
-            name = name,
-            email = email,
-            password = password,
-            confirm_password = confirmPassword
-        )
-        val apiService = RetrofitClient.getService()
-        val call = apiService.register(user)
+        sendRegistrationToXampp(name, email, password)
+    }
 
-        call.enqueue(object : Callback<User> {
-            override fun onResponse(call: retrofit2.Call<User>, response: Response<User>) {
-                if (response.isSuccessful) {
+    private fun sendRegistrationToXampp(name: String, email: String, password: String) {
+        val client = OkHttpClient()
+        val formBody = FormBody.Builder()
+            .add("name", name)
+            .add("email", email)
+            .add("password", password)
+            .build()
 
-                    saveUserToFirebase(name, email, password)
+        val request = Request.Builder()
+            .url("http://192.168.206.88/cybercartel/register.php")
+            .post(formBody)
+            .build()
 
-                    startActivity(Intent(this@Create_account, Login_Page::class.java))
-                    finish()
-                    Toast.makeText(this@Create_account, "Registered successfully", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@Create_account, "Registration failed", Toast.LENGTH_SHORT).show()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                runOnUiThread {
+                    showToast("Error connecting to server: ${e.message}")
                 }
             }
 
-            override fun onFailure(call: retrofit2.Call<User>, t: Throwable) {
-                Toast.makeText(this@Create_account, "User Already Exists!", Toast.LENGTH_SHORT).show()
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                Log.d("RegisterDebug", "Server Response: $responseBody")
+
+                runOnUiThread {
+                    if (response.isSuccessful && responseBody == "Registration successful") {
+                        saveUserToFirebase(name, email, password)
+                    } else {
+                        showToast("Registration failed: $responseBody")
+                    }
+                }
             }
         })
     }
@@ -115,10 +122,21 @@ class Create_account : AppCompatActivity() {
             usersRef.child(userId).setValue(userMap)
                 .addOnSuccessListener {
                     Log.d("Firebase", "User saved successfully")
+                    navigateToLogin()
                 }
                 .addOnFailureListener { e ->
                     Log.e("Firebase", "Error saving user: ${e.message}")
                 }
         }
+    }
+
+    private fun navigateToLogin() {
+        showToast("Registered successfully")
+        startActivity(Intent(this, Login_Page::class.java))
+        finish()
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }

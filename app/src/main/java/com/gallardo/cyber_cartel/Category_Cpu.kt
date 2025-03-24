@@ -76,7 +76,6 @@ class Category_Cpu:AppCompatActivity() {
     private fun getCPUS(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

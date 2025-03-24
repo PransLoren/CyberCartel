@@ -135,7 +135,6 @@ class My_Purchase_Bought : AppCompatActivity() {
     private fun getBought(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

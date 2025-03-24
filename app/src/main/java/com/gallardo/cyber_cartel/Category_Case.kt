@@ -33,7 +33,7 @@ class Category_Case: AppCompatActivity() {
         category_cpu_rv.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(this)
         category_cpu_rv.layoutManager = linearLayoutManager
-        getCase()
+
 
         img_back = findViewById(R.id.back_to_home)
         img_back.setOnClickListener{
@@ -54,30 +54,7 @@ class Category_Case: AppCompatActivity() {
         finish()
     }
 
-    private fun getCase(){
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getCase()
 
-        retrofitData.enqueue(object : Callback<List<ProductsItem>?> {
-            override fun onResponse(
-                call: Call<List<ProductsItem>?>,
-                response: Response<List<ProductsItem>?>
-            ) {
-                val responseBody = response.body()!!
 
-                myAdapter_Category_CPU = MyAdapter_Categories(baseContext, responseBody)
-                myAdapter_Category_CPU.notifyDataSetChanged()
-                category_cpu_rv.adapter = myAdapter_Category_CPU
-            }
-
-            override fun onFailure(call: Call<List<ProductsItem>?>, t: Throwable) {
-                Log.d("HomePage", "onFailure" + t.message)
-            }
-        })
-    }
 }

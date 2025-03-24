@@ -19,7 +19,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "https://floppy-bobcats-admire.loca.lt/"
 
 class Rv_Home_Page : AppCompatActivity() {
 
@@ -50,7 +49,7 @@ class Rv_Home_Page : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         mainContainer.layoutManager = linearLayoutManager
 
-        getMyProducts()
+        
 
         cartlogo = findViewById(R.id.img_cart_homepage)
         bottomNaviation = findViewById(R.id.btnav_bottomNavigation_MyProfile)
@@ -90,31 +89,7 @@ class Rv_Home_Page : AppCompatActivity() {
         prepareiconListData()
     }
 
-    private fun getMyProducts(){
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiService::class.java)
 
-        val retrofitData = retrofitBuilder.getProducts()
-
-        retrofitData.enqueue(object : Callback<List<ProductsItem>?> {
-            override fun onResponse(
-                call: Call<List<ProductsItem>?>,
-                response: Response<List<ProductsItem>?>) {
-                val responseBody = response.body()!!
-
-                myAdapter_Products = MyAdapter_Products(baseContext, responseBody)
-                myAdapter_Products.notifyDataSetChanged()
-                mainContainer.adapter = myAdapter_Products
-            }
-
-            override fun onFailure(call: Call<List<ProductsItem>?>, t: Throwable) {
-                d("HomePage", "onFailure" + t.message)
-            }
-        })
-    }
 
     private fun prepareiconListData() {
         var icon = home_page_categories_DC(R.drawable.processor)

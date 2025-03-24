@@ -126,7 +126,6 @@ class Checkout: AppCompatActivity() {
     private fun getTotal(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 
@@ -152,7 +151,6 @@ class Checkout: AppCompatActivity() {
     private fun getMyCart(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 
@@ -181,7 +179,6 @@ class Checkout: AppCompatActivity() {
     private fun checkout(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

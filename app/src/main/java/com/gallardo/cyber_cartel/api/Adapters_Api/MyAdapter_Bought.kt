@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.gallardo.cyber_cartel.BASE_URL
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProfileProductsItem
 import com.gallardo.cyber_cartel.cb_api.ApiService
@@ -68,7 +67,6 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
     fun cancelProduct(id:Int){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 
@@ -91,7 +89,6 @@ class MyAdapter_Bought (val context: Context, val cancelledList: List<ProfilePro
     fun refundProduct(id:Int){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

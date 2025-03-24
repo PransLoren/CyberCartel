@@ -144,7 +144,6 @@ class Product_Page : AppCompatActivity() {
     fun addToCart(id:Int){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
         val accessToken = SharedPreferencesManager.getAccessToken(this)

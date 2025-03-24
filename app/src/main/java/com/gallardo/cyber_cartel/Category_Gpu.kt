@@ -74,7 +74,6 @@ class Category_Gpu:AppCompatActivity() {
     private fun getGPUS(){
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
             .build()
             .create(ApiService::class.java)
 

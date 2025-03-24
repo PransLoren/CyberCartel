@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.gallardo.cyber_cartel.BASE_URL
 import com.gallardo.cyber_cartel.Product_Page
 import com.gallardo.cyber_cartel.R
 import com.gallardo.cyber_cartel.api.models.ProductsItem
