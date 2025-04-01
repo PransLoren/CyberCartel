@@ -22,6 +22,7 @@ class Login_Page : AppCompatActivity() {
     private lateinit var passwordField: EditText
     private lateinit var loginButton: Button
     private lateinit var createAccountText: TextView
+    private lateinit var forgotPasswordText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class Login_Page : AppCompatActivity() {
         passwordField = findViewById(R.id.et_passwordLogIn)
         loginButton = findViewById(R.id.bt_logIn)
         createAccountText = findViewById(R.id.tv_createAcc)
+        forgotPasswordText = findViewById(R.id.tv_forgot_password) // Added Forgot Password TextView
 
         loginButton.setOnClickListener {
             validateUser()
@@ -41,6 +43,11 @@ class Login_Page : AppCompatActivity() {
             val intent = Intent(this, Create_account::class.java)
             startActivity(intent)
             finish()
+        }
+
+        forgotPasswordText.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -61,40 +68,10 @@ class Login_Page : AppCompatActivity() {
             return
         }
 
-        checkUserInXampp(email, phone, password)
+        checkUserInFirebase(email, phone, password)
     }
 
-    private fun checkUserInXampp(email: String, phone: String, password: String) {
-        val client = OkHttpClient()
-        val formBody = FormBody.Builder()
-            .add("email", email)
-            .add("password", password)
-            .build()
 
-        val request = Request.Builder()
-            .url("http://192.168.206.88/cybercartel/login.php")
-            .post(formBody)
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    showToast("Error connecting to server: ${e.message}")
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body?.string()
-                runOnUiThread {
-                    if (response.isSuccessful && responseBody == "Login successful") {
-                        checkUserInFirebase(email, phone, password)
-                    } else {
-                        showToast("Invalid credentials or user not found")
-                    }
-                }
-            }
-        })
-    }
 
     private fun checkUserInFirebase(email: String, phone: String, password: String) {
         val database = Firebase.database("https://cybercartel-74e4s-default-rtdb.firebaseio.com/")

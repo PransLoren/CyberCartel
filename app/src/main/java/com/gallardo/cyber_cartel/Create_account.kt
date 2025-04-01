@@ -21,6 +21,7 @@ class Create_account : AppCompatActivity() {
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var et_confirmpassword: EditText
+    private lateinit var et_phone: EditText // Added phone number field
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +31,7 @@ class Create_account : AppCompatActivity() {
         et_email = findViewById(R.id.et_email_createAccountPage)
         et_password = findViewById(R.id.et_password_createAccountPage)
         et_confirmpassword = findViewById(R.id.et_Confirmpassword_createAccountPage)
+        et_phone = findViewById(R.id.et_phone_createAccountPage) // Initialize phone field
 
         alreadyhaveanaccount = findViewById(R.id.tv_alreadyHave_anAccount)
         login = findViewById(R.id.tv_already_have_an_account_logIn)
@@ -55,9 +57,18 @@ class Create_account : AppCompatActivity() {
         val email = et_email.text.toString().trim()
         val password = et_password.text.toString().trim()
         val confirmPassword = et_confirmpassword.text.toString().trim()
+        var phoneNumber = et_phone.text.toString().trim() // Get phone number
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
             showToast("Please fill in all fields")
+            return
+        }
+
+        // Phone number validation & formatting
+        if (phoneNumber.length == 11 && phoneNumber.startsWith("09")) {
+            phoneNumber = "+63" + phoneNumber.substring(1)
+        } else if (!phoneNumber.startsWith("+63")) {
+            showToast("Invalid phone number format!")
             return
         }
 
@@ -66,47 +77,15 @@ class Create_account : AppCompatActivity() {
             et_password.text.clear()
             et_confirmpassword.text.clear()
             return
+
         }
+        saveUserToFirebase(name, email, password, phoneNumber)
 
-        sendRegistrationToXampp(name, email, password)
     }
 
-    private fun sendRegistrationToXampp(name: String, email: String, password: String) {
-        val client = OkHttpClient()
-        val formBody = FormBody.Builder()
-            .add("name", name)
-            .add("email", email)
-            .add("password", password)
-            .build()
 
-        val request = Request.Builder()
-            .url("http://192.168.206.88/cybercartel/register.php")
-            .post(formBody)
-            .build()
 
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                runOnUiThread {
-                    showToast("Error connecting to server: ${e.message}")
-                }
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                val responseBody = response.body?.string()
-                Log.d("RegisterDebug", "Server Response: $responseBody")
-
-                runOnUiThread {
-                    if (response.isSuccessful && responseBody == "Registration successful") {
-                        saveUserToFirebase(name, email, password)
-                    } else {
-                        showToast("Registration failed: $responseBody")
-                    }
-                }
-            }
-        })
-    }
-
-    private fun saveUserToFirebase(name: String, email: String, password: String) {
+    private fun saveUserToFirebase(name: String, email: String, password: String, phoneNumber: String) {
         val database = FirebaseDatabase.getInstance("https://cybercartel-74e4s-default-rtdb.firebaseio.com/")
         val usersRef = database.getReference("users")
         val userId = usersRef.push().key
@@ -116,13 +95,14 @@ class Create_account : AppCompatActivity() {
                 "id" to userId,
                 "name" to name,
                 "email" to email,
-                "password" to password
+                "password" to password,
+                "phone" to phoneNumber // Save phone number
             )
 
             usersRef.child(userId).setValue(userMap)
                 .addOnSuccessListener {
                     Log.d("Firebase", "User saved successfully")
-                    navigateToLogin()
+                    navigateToWhatsAppVerification(phoneNumber)
                 }
                 .addOnFailureListener { e ->
                     Log.e("Firebase", "Error saving user: ${e.message}")
@@ -130,9 +110,11 @@ class Create_account : AppCompatActivity() {
         }
     }
 
-    private fun navigateToLogin() {
-        showToast("Registered successfully")
-        startActivity(Intent(this, Login_Page::class.java))
+    private fun navigateToWhatsAppVerification(phoneNumber: String) {
+        showToast("Registered successfully. Verifying WhatsApp...")
+        val intent = Intent(this, WhatsAppRegisterVerification::class.java)
+        intent.putExtra("phone_number", phoneNumber)
+        startActivity(intent)
         finish()
     }
 

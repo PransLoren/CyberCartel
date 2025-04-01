@@ -4,164 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Create_account">
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_Password_LogIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/et_email_createAccountPage"
-        app:layout_constraintStart_toStartOf="@+id/et_email_createAccountPage"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_createAccountPage"
-        app:passwordToggleEnabled="true">
-
-        <EditText
-            android:id="@+id/et_password_createAccountPage"
-            android:layout_width="325dp"
-            android:layout_height="63dp"
-            android:background="@drawable/custom_background_for_edittext"
-            android:ems="10"
-            android:hint="Password"
-            android:fontFamily="@font/spoof_regular"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="44dp"
-            tools:layout_editor_absoluteY="421dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_ConfirmPassword_LogIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="@+id/til_Password_LogIn"
-        app:layout_constraintStart_toStartOf="@+id/til_Password_LogIn"
-        app:layout_constraintTop_toBottomOf="@+id/til_Password_LogIn"
-        app:passwordToggleEnabled="true">
-
-        <EditText
-            android:id="@+id/et_Confirmpassword_createAccountPage"
-            android:layout_width="325dp"
-            android:layout_height="63dp"
-            android:background="@drawable/custom_background_for_edittext"
-            android:ems="10"
-            android:hint="Confirm Password"
-            android:fontFamily="@font/spoof_regular"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="45dp"
-            tools:layout_editor_absoluteY="489dp" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tv_createAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Create Account"
-        android:textSize="25sp"
-        android:fontFamily="@font/spoof_bold"
-        app:layout_constraintEnd_toEndOf="@+id/logo_createAccountPage"
-        app:layout_constraintStart_toStartOf="@+id/logo_createAccountPage"
-        app:layout_constraintTop_toBottomOf="@+id/logo_createAccountPage" />
-
-    <TextView
-        android:id="@+id/tv_alreadyHave_anAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="70dp"
-        android:text="ALREADY HAVE AN ACCOUNT?"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:fontFamily="@font/spoof_regular"
-        app:layout_constraintEnd_toEndOf="@+id/bt_createAccount"
-        app:layout_constraintStart_toStartOf="@+id/bt_createAccount"
-        app:layout_constraintTop_toBottomOf="@+id/bt_createAccount" />
-
-    <TextView
-        android:id="@+id/tv_already_have_an_account_logIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
-        android:text="LOG IN"
-        android:fontFamily="@font/spoof_regular"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_alreadyHave_anAccount"
-        app:layout_constraintTop_toBottomOf="@+id/bt_createAccount" />
-
-    <EditText
-        android:id="@+id/et_username_createAccountPage"
-        android:layout_width="327dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_background_for_edittext"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
-        android:fontFamily="@font/spoof_regular"
-        android:paddingLeft="15dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_createAccount" />
-
-    <EditText
-        android:id="@+id/et_email_createAccountPage"
-        android:layout_width="327dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_background_for_edittext"
-        android:ems="10"
-        android:hint="Email"
-        android:fontFamily="@font/spoof_regular"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="15dp"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_username_createAccountPage"
-        app:layout_constraintStart_toStartOf="@+id/et_username_createAccountPage"
-        app:layout_constraintTop_toBottomOf="@+id/et_username_createAccountPage" />
 
     <ImageView
         android:id="@+id/logo_createAccountPage"
         android:layout_width="300dp"
         android:layout_height="97dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_createAccount"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintVertical_bias="0.2"
         app:srcCompat="@drawable/cbcartel_text" />
 
+    <TextView
+        android:id="@+id/tv_createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/spoof_bold"
+        android:text="Create Account"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_createAccountPage" />
+
+    <EditText
+        android:id="@+id/et_username_createAccountPage"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:hint="Username"
+        android:inputType="text"
+        android:background="@drawable/custom_background_for_edittext"
+        android:fontFamily="@font/spoof_regular"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_createAccount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:id="@+id/et_email_createAccountPage"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/custom_background_for_edittext"
+        android:fontFamily="@font/spoof_regular"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/et_username_createAccountPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/et_phone_createAccountPage"
+        android:layout_width="327dp"
+        android:layout_height="63dp"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:background="@drawable/custom_background_for_edittext"
+        android:fontFamily="@font/spoof_regular"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/et_email_createAccountPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_Password_LogIn"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/et_phone_createAccountPage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_password_createAccountPage"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:background="@drawable/custom_background_for_edittext"
+            android:fontFamily="@font/spoof_regular"
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_ConfirmPassword_LogIn"
+        android:layout_width="327dp"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/til_Password_LogIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/et_Confirmpassword_createAccountPage"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:background="@drawable/custom_background_for_edittext"
+            android:fontFamily="@font/spoof_regular"
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/bt_createAccount"
-        android:layout_width="325dp"
+        android:layout_width="327dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/custombutton"
         android:text="CONFIRM"
         android:fontFamily="@font/spoof_regular"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/til_ConfirmPassword_LogIn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/til_ConfirmPassword_LogIn"
-        app:layout_constraintTop_toBottomOf="@+id/til_ConfirmPassword_LogIn" />
+        app:layout_constraintTop_toBottomOf="@id/til_ConfirmPassword_LogIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp" />
 
+    <TextView
+        android:id="@+id/tv_alreadyHave_anAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="ALREADY HAVE AN ACCOUNT?"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_createAccount" />
 
+    <TextView
+        android:id="@+id/tv_already_have_an_account_logIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/spoof_regular"
+        android:text="LOG IN"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/tv_alreadyHave_anAccount"
+        app:layout_constraintTop_toBottomOf="@id/bt_createAccount" />
 </androidx.constraintlayout.widget.ConstraintLayout>
